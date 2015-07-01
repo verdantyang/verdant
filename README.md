@@ -1,5 +1,5 @@
 # About verdant
 
-This a project just for learning~
+This is a project just for learning~
 
 0.0
