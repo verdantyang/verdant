@@ -9,7 +9,6 @@ struct ListNode {
 	ListNode(int x) : val(x), next(NULL) {}
 };
 
-/* Solution */
 class Solution {
 public:
 	void deleteNode(ListNode* node) {
@@ -18,7 +17,3 @@ public:
 		node->next = node->next->next ? node->next->next : NULL;
 	}
 };
-
-/* Test Case */
-int main() {
-}
