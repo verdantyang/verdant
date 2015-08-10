@@ -1,3 +1,7 @@
+/**
+ * @Time Complexity:	O(1)
+ * @Space Complexity:	O(1)
+ */
 #include <stdio.h>
 
 /**
@@ -9,6 +13,7 @@ struct ListNode {
 	ListNode(int x) : val(x), next(NULL) {}
 };
 
+/* Solution */
 class Solution {
 public:
 	void deleteNode(ListNode* node) {

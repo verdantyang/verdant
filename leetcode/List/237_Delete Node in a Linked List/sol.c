@@ -1,6 +1,3 @@
-/**
- * @Time Complexity: O(1)
- */
 #include <stdio.h>
 
 /**
