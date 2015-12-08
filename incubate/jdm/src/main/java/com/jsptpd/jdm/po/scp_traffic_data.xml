@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<!DOCTYPE mapper   
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+  
+<mapper namespace="com.jsptpd.jdm.dao.mapper.Scp_traffic_data">  
+	<resultMap type="scp_traffic_data" id="scp_traffic">
+    	<result property="date_id" column="scp_traffic"/>
+	</resultMap>  
+	
+    <select id="testQuery" resultType="scp_traffic_data">  
+     	<![CDATA[
+        	select date_id,gczbs,fx_id,t_qty from scp_traffic_data_s4 where rownum<10
+        ]]> 
+    </select> 
+    
+    <select id="statSiteFlow" resultType="scp_traffic_data">
+        select date_id,fx_id,gczbs,sum(t_qty) from scp_traffic_data_s4 
+        	where fx_id!=30 group by (date_id,fx_id,gczbs) order by date_id
+    </select>  
+</mapper>   
+

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<!DOCTYPE mapper   
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+  
+<mapper namespace="com.jsptpd.jdm.dao.mapper.Jdm_regression_site_flow">  
+	<resultMap type="jdm_site_flow" id="jdm_site_flow">
+    	<result property="date_id" column="date_id"/>
+	</resultMap>  
+</mapper>   
+

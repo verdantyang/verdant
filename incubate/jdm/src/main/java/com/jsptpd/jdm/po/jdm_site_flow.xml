@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<!DOCTYPE mapper   
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+  
+<mapper namespace="com.jsptpd.jdm.dao.mapper.Jdm_site_flow">  
+ 	<resultMap type="jdm_site_flow" id="jdm_site_flow">
+    	<result property="date_id" column="date_id"/>
+	</resultMap> 
+	<insert id="insetSiteFlow">
+       insert into jdm_site_flow(date_id,site_id,direction_id,total_flow)
+          select date_id,gczbs,fx_id,sum(t_qty) from scp_traffic_data_s4 
+          where fx_id!=30 group by (date_id,gczbs,fx_id) order by date_id
+    </insert> 
+        
+    <select id="getSiteList" resultType="string">
+       select distinct(site_id) from jdm_site_flow
+    </select> 
+    
+    <select id="getFlowList"  parameterType="hashmap" resultType="jdm_site_flow">
+       select date_id,site_id,direction_id,total_flow from jdm_site_flow where
+          site_id=#{siteID} and date_id between #{startDay} and #{endDay}
+    </select>   
+</mapper>   
+
