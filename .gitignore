@@ -1,7 +1,13 @@
+# Java
 *.class
-
 *.classpath
-*.project
-.setting/
 target/
 jar/
+
+# Eclipse
+*.project
+.setting/
+
+# IntelliJ IDEA
+.idea
+*.iml
