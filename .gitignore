@@ -1,13 +1,13 @@
 # Java
 *.class
-*.classpath
 target/
-jar/
 
 # Eclipse
 *.project
+*.classpath
 .setting/
 
 # IntelliJ IDEA
-.idea
 *.iml
+.idea/
+out/
