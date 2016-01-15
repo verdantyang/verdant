@@ -1,11 +1,4 @@
-/*
- * 文  件  名：HttpClientHelper.java
- * 版         权：Copyright 2014 GSOFT Tech.Co.Ltd.All Rights Reserved.
- * 描         述：
- * 修  改  人：hadoop
- * 修改时间：2015年5月7日
- * 修改内容：新增
- */
+
 package com.jtools.common.utils;
 
 import com.alibaba.fastjson.JSON;
@@ -44,7 +37,6 @@ import java.nio.charset.CodingErrorAction;
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -55,9 +47,9 @@ import java.util.Set;
  * @author gj
  * @version 2015年5月7日
  */
-public class HttpClientHelper {
+public class HttpClientUtils {
 
-    private static final Logger logger = LoggerFactory.getLogger(HttpClientHelper.class);
+    private static final Logger logger = LoggerFactory.getLogger(HttpClientUtils.class);
 
     public static String userAgent;
 
@@ -79,7 +71,7 @@ public class HttpClientHelper {
 
     private PoolingHttpClientConnectionManager httpClientConnectionManager = null;
 
-    private static HttpClientHelper helper;
+    private static HttpClientUtils helper;
 
     RequestConfig defaultRequestConfig = null;
 
@@ -95,15 +87,15 @@ public class HttpClientHelper {
         }
     }
 
-    public static HttpClientHelper getInstance() {
+    public static HttpClientUtils getInstance() {
         if (helper == null) {
-            helper = new HttpClientHelper();
+            helper = new HttpClientUtils();
             helper.initialize();
         }
         return helper;
     }
 
-    private HttpClientHelper() {
+    private HttpClientUtils() {
     }
 
     private void initialize() {
@@ -341,10 +333,10 @@ public class HttpClientHelper {
     }
 
     public static void main(String[] args) throws Exception{
-//        System.out.println(HttpClientHelper.getInstance().getPlain("http://192.168.6.221:8080/cgpboss-admin-web/api/engine/health/192.168.6.123",null,null));
-        System.out.println(HttpClientHelper.getInstance().postPlain("https://open.weixin.qq.com/",
+//        System.out.println(HttpClientUtils.getInstance().getPlain("http://192.168.6.221:8080/cgpboss-admin-web/api/engine/health/192.168.6.123",null,null));
+        System.out.println(HttpClientUtils.getInstance().postPlain("https://open.weixin.qq.com/",
                 new StringEntity("{}", ContentType.APPLICATION_JSON),null));
-        System.out.println(HttpClientHelper.getInstance().postPlain("https://kyfw.12306.cn/otn/leftTicket/init",
+        System.out.println(HttpClientUtils.getInstance().postPlain("https://kyfw.12306.cn/otn/leftTicket/init",
                 new StringEntity("{}", ContentType.APPLICATION_JSON),null));
     }
 }

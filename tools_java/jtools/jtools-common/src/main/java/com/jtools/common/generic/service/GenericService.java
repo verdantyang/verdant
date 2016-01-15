@@ -1,13 +1,13 @@
-package com.commons.common.generic.service;
+package com.jtools.common.generic.service;
 
 
-import com.commons.metadata.code.ResultCode;
-import com.commons.metadata.exception.ServiceException;
-import com.commons.metadata.generic.IRepository;
-import com.commons.metadata.generic.IService;
-import com.commons.metadata.model.Page;
-import com.commons.metadata.model.PageParam;
-import com.commons.metadata.model.PageWrapper;
+import com.jtools.metadata.code.ResultCode;
+import com.jtools.metadata.exception.ServiceException;
+import com.jtools.metadata.generic.IRepository;
+import com.jtools.metadata.generic.IService;
+import com.jtools.metadata.model.Page;
+import com.jtools.metadata.model.PageParam;
+import com.jtools.metadata.model.PageWrapper;
 
 import java.util.List;
 

@@ -4,14 +4,14 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>
-            classpath:/web/sys.spring.xml
-            classpath:/proxy/sys.proxy.xml
-            classpath:/cache/sys.cache.xml
-        </param-value>
-    </context-param>
+    <!--<context-param>-->
+        <!--<param-name>contextConfigLocation</param-name>-->
+        <!--<param-value>-->
+            <!--classpath:/web/sys.spring.xml-->
+            <!--classpath:/proxy/sys.proxy.xml-->
+            <!--classpath:/cache/sys.cache.xml-->
+        <!--</param-value>-->
+    <!--</context-param>-->
 
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -63,7 +63,7 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath*:/web/sys.web.xml</param-value>
+            <param-value>classpath*:/web/sys.dispatcherServlet.xml</param-value>
         </init-param>
 
         <load-on-startup>0</load-on-startup>

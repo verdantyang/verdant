@@ -1,11 +1,11 @@
 package com.jtools.common.generic.model;
 
 
-import com.commons.common.support.spring.ContextHolder;
-import com.commons.common.utils.StringUtil;
-import com.commons.metadata.code.ResultCode;
-import com.commons.metadata.exception.ServiceException;
-import com.commons.metadata.model.Page;
+import com.jtools.common.support.spring.ContextHolder;
+import com.jtools.common.utils.StringUtil;
+import com.jtools.metadata.code.ResultCode;
+import com.jtools.metadata.exception.ServiceException;
+import com.jtools.metadata.model.Page;
 
 public class ResponseMessage {
     /**

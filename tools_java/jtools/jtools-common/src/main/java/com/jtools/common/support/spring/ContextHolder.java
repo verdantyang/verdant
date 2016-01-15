@@ -1,9 +1,8 @@
 package com.jtools.common.support.spring;
 
 import com.alibaba.fastjson.JSON;
-import com.commons.common.utils.StringUtil;
-import com.commons.metadata.constant.CommonEnum;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.jtools.common.utils.StringUtil;
+import com.jtools.metadata.constant.CommonEnum;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -15,9 +14,7 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.File;
 import java.io.IOException;
-import java.util.Map;
 
 public class ContextHolder extends ApplicationObjectSupport {
 

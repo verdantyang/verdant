@@ -1,11 +1,10 @@
 package com.jtools.common.utils;
 
+import com.jtools.spring.utils.PropUtil;
 import freemarker.cache.StringTemplateLoader;
-import freemarker.ext.beans.BeansWrapper;
 import freemarker.template.*;
 
 import java.io.StringWriter;
-import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
