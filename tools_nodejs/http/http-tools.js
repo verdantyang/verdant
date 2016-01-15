@@ -2,6 +2,7 @@ var http = require('http'),
     qs = require('querystring');
 
 var genReq = function(options) {
+    console.log("URL: " + options.hostname + ":" + options.port + options.path);
     var req = http.request(options, function(res) {
         console.log('RESPONSE STATUS: ' + res.statusCode);
         console.log('RESPONSE HEADERS: ' + JSON.stringify(res.headers));
@@ -15,8 +16,8 @@ var genReq = function(options) {
         });
 
         res.on('end', function() {
-            var resultObject = JSON.parse(responseString);
-            console.log('-----Response Body-----', resultObject);
+            // var resultObject = JSON.parse(responseString);
+            console.log('-----Response Body-----', responseString);
         });
     });
 

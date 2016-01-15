@@ -41,5 +41,3 @@ public class SingletonSync {
         System.out.println(instance == null);
     }
 }
-
-
