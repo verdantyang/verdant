@@ -8,7 +8,7 @@
     <modules>
         <module>jtools-common</module>
         <module>jtools-metadata</module>
-        <module>spring-demo</module>
+        <module>demo-spring</module>
     </modules>
     <packaging>pom</packaging>
 
