@@ -1,43 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+            http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-    <!--<context-param>-->
-        <!--<param-name>contextConfigLocation</param-name>-->
-        <!--<param-value>-->
-            <!--classpath:/web/sys.spring.xml-->
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            classpath:/web/sys.spring.xml
             <!--classpath:/proxy/sys.proxy.xml-->
             <!--classpath:/cache/sys.cache.xml-->
-        <!--</param-value>-->
-    <!--</context-param>-->
+        </param-value>
+    </context-param>
+
 
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
     <!--  support "_method" in request form field -->
-    <filter>
-        <filter-name>httpMethodFilter</filter-name>
-        <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
-        <async-supported>true</async-supported>
-    </filter>
-    <filter-mapping>
-        <filter-name>httpMethodFilter</filter-name>
-        <servlet-name>dispatcher</servlet-name>
-    </filter-mapping>
+
+    -->
 
     <!-- support method=PUT|PATCH  method -->
-    <filter>
-        <filter-name>httpPutFormFilter</filter-name>
-        <filter-class>org.springframework.web.filter.HttpPutFormContentFilter</filter-class>
-        <async-supported>true</async-supported>
-    </filter>
-    <filter-mapping>
-        <filter-name>httpPutFormFilter</filter-name>
-        <servlet-name>dispatcher</servlet-name>
-    </filter-mapping>
+    <!--<filter>-->
+        <!--<filter-name>httpPutFormFilter</filter-name>-->
+        <!--<filter-class>org.springframework.web.filter.HttpPutFormContentFilter</filter-class>-->
+        <!--<async-supported>true</async-supported>-->
+    <!--</filter>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>httpPutFormFilter</filter-name>-->
+        <!--<servlet-name>dispatcher</servlet-name>-->
+    <!--</filter-mapping>-->
 
     <!-- encoding filter -->
     <filter>
@@ -66,7 +62,7 @@
             <param-value>classpath*:/web/sys.dispatcherServlet.xml</param-value>
         </init-param>
 
-        <load-on-startup>0</load-on-startup>
+        <load-on-startup>1</load-on-startup>
         <async-supported>true</async-supported>
     </servlet>
     <servlet-mapping>
@@ -74,6 +70,9 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
 
     <session-config>
         <session-timeout>30</session-timeout>

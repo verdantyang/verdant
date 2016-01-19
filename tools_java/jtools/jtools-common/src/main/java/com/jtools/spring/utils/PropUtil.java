@@ -15,15 +15,14 @@ import java.util.regex.Pattern;
 
 public class PropUtil {
 
-    public static final String FOLDER = "prop";
+    public static String FOLDER = "prop";
     private static Properties properties;
 
-    private static void initCheck() {
+    static {
         if (properties == null) {
-            properties = new Properties();
             try {
+                properties = new Properties();
                 Properties files = PropertiesLoaderUtils.loadAllProperties(FOLDER);
-                
                 for (Object key : files.keySet()) {
                     URL url = ClassUtils.getDefaultClassLoader().getResource(FOLDER + "/" + key.toString());
                     FileSystemResource fileSystemResource = new FileSystemResource(ResourceUtils.getFile(url));
@@ -36,17 +35,20 @@ public class PropUtil {
     }
 
     public static String get(String key) {
-        initCheck();
         return properties.getProperty(key);
     }
 
+    public static String get(String key, Object defaultVal) {
+        return properties.getProperty(key, String.valueOf(defaultVal));
+    }
+    
     public static Map<String, String> getPrefix(String keyPrefix) {
         Hashtable result = new Hashtable();
         Iterator i$ = properties.stringPropertyNames().iterator();
 
-        while(i$.hasNext()) {
-            String key = (String)i$.next();
-            if(key.startsWith(keyPrefix + ".")) {
+        while (i$.hasNext()) {
+            String key = (String) i$.next();
+            if (key.startsWith(keyPrefix + ".")) {
                 result.put(key, get(key));
             }
         }
@@ -62,7 +64,6 @@ public class PropUtil {
      * @return
      */
     public static String getPlaceholder(String keyString, String keyPatten, String defaultVal) {
-        initCheck();
         if (keyPatten == null) {
             keyPatten = "\\$\\{(.+)\\}";
         }
@@ -75,11 +76,4 @@ public class PropUtil {
             return defaultVal;
         }
     }
-
-
-    public static String get(String key, Object defaultVal) {
-        initCheck();
-        return properties.getProperty(key, String.valueOf(defaultVal));
-    }
-
 }
