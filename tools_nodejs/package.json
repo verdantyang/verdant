@@ -2,6 +2,22 @@
 	"name": "tools_nodejs",
 	"version": "0.0.0",
 	"main": "",
+	"bin" : {
+        "tools-node": "./bin/tools-node" 
+    },
 	"private": true,
-	"dependencies": {}
+	"dependencies": {
+
+	},
+	"devDependencies": {
+		"grunt": "~0.4.1",
+		"grunt-contrib-clean": "~0.7.0",
+		"grunt-contrib-compress": "~0.14.0",
+		"grunt-contrib-jshint": "^0.11.3",
+		"grunt-express-server": "^0.5.1",
+		"grunt-mocha-test": "^0.12.7",
+		"grunt-ssh": "~0.12.8",
+		"mocha": "^2.3.4"
+	}
+
 }
