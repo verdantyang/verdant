@@ -166,6 +166,16 @@
                     </webResources>
                 </configuration>
             </plugin>
+
+            <!-- 排除测试文件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${plugin.maven.surefire}</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
         </plugins>
 
 

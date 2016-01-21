@@ -41,7 +41,12 @@ public class PropUtil {
     public static String get(String key, Object defaultVal) {
         return properties.getProperty(key, String.valueOf(defaultVal));
     }
-    
+
+    /**
+     * 根据前缀查找配置参数
+     * @param keyPrefix
+     * @return
+     */
     public static Map<String, String> getPrefix(String keyPrefix) {
         Hashtable result = new Hashtable();
         Iterator i$ = properties.stringPropertyNames().iterator();
@@ -56,24 +61,22 @@ public class PropUtil {
     }
 
     /**
-     * 从keystring中解析patten得到key再从配置文件中获取
-     *
-     * @param keyString  ${proxy.platform.ip}
-     * @param keyPatten  default \$\{(.+)\}
-     * @param defaultVal null
+     * 根据正则表达式查找配置参数
+     * @param keyPattern
      * @return
      */
-    public static String getPlaceholder(String keyString, String keyPatten, String defaultVal) {
-        if (keyPatten == null) {
-            keyPatten = "\\$\\{(.+)\\}";
+    public static Map<String, String> getPattern(String keyPattern) {
+        Hashtable result = new Hashtable();
+        Iterator i$ = properties.stringPropertyNames().iterator();
+        Pattern p = Pattern.compile(keyPattern);
+
+        while (i$.hasNext()) {
+            String key = String.valueOf(i$.next());
+            Matcher m = p.matcher(key);
+            if (m.matches()) {
+                result.put(key, get(key));
+            }
         }
-        Pattern p = Pattern.compile(keyPatten);
-        Matcher m = p.matcher(keyString);
-        String str = "";
-        if (m.find()) {
-            return PropUtil.get(m.group(1).trim());
-        } else {
-            return defaultVal;
-        }
+        return result;
     }
 }
