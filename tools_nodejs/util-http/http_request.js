@@ -22,20 +22,20 @@ var genReq = function(options) {
     });
 
     req.on('error', function(e) {
-        console.log('problem with request: ' + e.message);
+        console.log('error|http|request|' + e.message);
     });
 
     return req;
 }
 
-function get(data, options) {
+function get(options, data) {
     var content = qs.stringify(data);
     options.path = options.path + "?" + content;
     var req = genReq(options);
     req.end();
 }
 
-function post(body, options) {
+function post(options, body) {
     var bodyString = JSON.stringify(body);
     var req = genReq(options);
 
