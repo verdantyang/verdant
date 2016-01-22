@@ -4,8 +4,8 @@ var http = require('http'),
 var genReq = function(options) {
     console.log("URL: " + options.hostname + ":" + options.port + options.path);
     var req = http.request(options, function(res) {
-        console.log('RESPONSE STATUS: ' + res.statusCode);
-        console.log('RESPONSE HEADERS: ' + JSON.stringify(res.headers));
+        console.log('success|response|status|' + res.statusCode);
+        console.log('success|response|headers|' + JSON.stringify(res.headers));
 
         res.setEncoding('utf8');
 
@@ -17,12 +17,12 @@ var genReq = function(options) {
 
         res.on('end', function() {
             // var resultObject = JSON.parse(responseString);
-            console.log('-----Response Body-----', responseString);
+            console.log('success|response|body|', responseString);
         });
     });
 
     req.on('error', function(e) {
-        console.log('error|http|request|' + e.message);
+        console.log('error|request_native|' + e.message);
     });
 
     return req;
