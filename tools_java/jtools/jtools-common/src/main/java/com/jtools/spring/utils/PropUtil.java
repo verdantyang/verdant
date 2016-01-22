@@ -13,6 +13,11 @@ import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * PropUtil Spring配置文件获取工具
+ * Author: verdant
+ * Create: 2016/01/18
+ */
 public class PropUtil {
 
     public static String FOLDER = "prop";

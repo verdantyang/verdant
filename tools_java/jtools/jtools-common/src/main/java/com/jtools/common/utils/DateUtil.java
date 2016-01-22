@@ -6,7 +6,9 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
- * 日期工具类
+ * DateUtil 日期工具类
+ * Author: verdant
+ * Create: 2016/01/22
  */
 public class DateUtil {
 
@@ -23,7 +25,7 @@ public class DateUtil {
     }
 
     /**
-     * 将date按照showType转换成string
+     * 将date按照showType转换成String
      *
      * @param dDate
      * @param showType
@@ -36,7 +38,7 @@ public class DateUtil {
     }
 
     /**
-     * 将string转换成date类型
+     * 将string转换成Date类型
      *
      * @param sDate    sDate的格式要和showType相符
      * @param showType
@@ -48,9 +50,19 @@ public class DateUtil {
         try {
             date = df.parse(sDate);
         } catch (ParseException e) {
-            System.out.println("DateUtil|turnStringToDate|Error|格式不一致，返回null");
+            System.out.println("Error|DateUtil|turnStringToDate|格式不一致");
         }
         return date;
+    }
+
+    /**
+     * 将时间戳转换成Date类型
+     *
+     * @param timestamp    时间戳
+     * @return
+     */
+    public static Date turnTimestampToDate(long timestamp) {
+        return new Date(timestamp);
     }
 
     /**

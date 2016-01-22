@@ -18,5 +18,7 @@ public class DateUtilTest {
         String transDateStr = DateUtil.turnDateToString(nowDate, sdf);
         Assert.assertEquals(nowStr, transDateStr);
         System.out.println(nowStr);
+        Date now=DateUtil.turnTimestampToDate(System.currentTimeMillis());
+        System.out.println(now);
     }
 }
