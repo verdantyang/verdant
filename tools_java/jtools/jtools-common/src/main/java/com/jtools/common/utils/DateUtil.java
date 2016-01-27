@@ -114,4 +114,32 @@ public class DateUtil {
         cal.setTime(dDate);
         return cal.getActualMaximum(Calendar.DAY_OF_MONTH);
     }
+
+    /**
+     * 根据毫秒数格式化时间
+     * @param src
+     * @return
+     */
+    public static String timeConversion(long src) {
+        int second = 1000;
+        int minute = second * 60;
+        int hour = minute * 60;
+        int day = hour * 24;
+        StringBuilder sb = new StringBuilder();
+        if (src / day > 0) {
+            sb.append( src / day + "天");
+            src = src % day;
+        }
+        if (src / hour > 0) {
+            sb.append( src / hour + "小时");
+            src = src % hour;
+        }
+        if (src / minute > 0) {
+            sb.append( src / minute + "分");
+            src = src % minute;
+        }
+        if (src != 0)
+            sb.append( src / second + "秒");
+        return sb.toString();
+    }
 }

@@ -20,5 +20,7 @@ public class DateUtilTest {
         System.out.println(nowStr);
         Date now=DateUtil.turnTimestampToDate(System.currentTimeMillis());
         System.out.println(now);
+        String formatMS = DateUtil.timeConversion(312313000);
+        System.out.println(formatMS);
     }
 }
