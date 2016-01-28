@@ -8,8 +8,10 @@
     <artifactId>jtools</artifactId>
     <version>0.1-SNAPSHOT</version>
     <modules>
+        <module>design-pattern</module>
         <module>jtools-common</module>
         <module>jtools-metadata</module>
+        <module>demo-common</module>
         <module>demo-spring</module>
     </modules>
     <packaging>pom</packaging>

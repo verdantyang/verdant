@@ -1,6 +1,6 @@
 package common;
 
-import com.jtools.common.utils.DateUtil;
+import com.jtools.common.utils.DateUtils2;
 import org.junit.Test;
 import org.junit.Assert;
 
@@ -13,14 +13,14 @@ public class DateUtilTest {
     @Test
     public void usage() {
         String sdf = "yyyy-MM-dd HH:mm:ss";
-        String nowStr = DateUtil.getNowTime(sdf);
-        Date nowDate = DateUtil.turnStringToDate(nowStr, sdf);
-        String transDateStr = DateUtil.turnDateToString(nowDate, sdf);
+        String nowStr = DateUtils2.getNowTime(sdf);
+        Date nowDate = DateUtils2.turnStringToDate(nowStr, sdf);
+        String transDateStr = DateUtils2.turnDateToString(nowDate, sdf);
         Assert.assertEquals(nowStr, transDateStr);
         System.out.println(nowStr);
-        Date now=DateUtil.turnTimestampToDate(System.currentTimeMillis());
+        Date now= DateUtils2.turnTimestampToDate(System.currentTimeMillis());
         System.out.println(now);
-        String formatMS = DateUtil.timeConversion(312313000);
+        String formatMS = DateUtils2.timeConversion(312313000);
         System.out.println(formatMS);
     }
 }

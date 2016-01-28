@@ -1,6 +1,6 @@
 package com.jtools.common.utils;
 
-import com.jtools.spring.utils.PropUtil;
+import com.jtools.spring.utils.PropUtils;
 import freemarker.cache.StringTemplateLoader;
 import freemarker.template.*;
 
@@ -31,11 +31,11 @@ public class TemplateUtil {
      */
     private static Class[] defaultStaticClasses =
             {
-                    IPUtil.class,
-                    StringUtil.class,
-                    DateUtil.class,
+                    IPUtils2.class,
+                    StringUtils2.class,
+                    DateUtils2.class,
                     Collections3.class,
-                    PropUtil.class,
+                    PropUtils.class,
                     String.class,
                     Integer.class,
                     Boolean.class,

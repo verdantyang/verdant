@@ -1,7 +1,7 @@
 package com.jtools.common.support.spring;
 
 import com.alibaba.fastjson.JSON;
-import com.jtools.common.utils.StringUtil;
+import com.jtools.common.utils.StringUtils2;
 import com.jtools.metadata.constant.CommonEnum;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
@@ -91,13 +91,13 @@ public class ContextHolder extends ApplicationObjectSupport {
             return null;
         }
         String ip = request.getHeader("x-forwarded-for");
-        if (StringUtil.isEmpty(ip) || "unknown".equalsIgnoreCase(ip)) {
+        if (StringUtils2.isEmpty(ip) || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getHeader("Proxy-Client-IP");
         }
-        if (StringUtil.isEmpty(ip) || "unknown".equalsIgnoreCase(ip)) {
+        if (StringUtils2.isEmpty(ip) || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getHeader("WL-Proxy-Client-IP");
         }
-        if (StringUtil.isEmpty(ip) || "unknown".equalsIgnoreCase(ip)) {
+        if (StringUtils2.isEmpty(ip) || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getRemoteAddr();
         }
         return ip;

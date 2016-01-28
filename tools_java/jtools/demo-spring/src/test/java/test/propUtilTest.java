@@ -1,6 +1,6 @@
 package test;
 
-import com.jtools.spring.utils.PropUtil;
+import com.jtools.spring.utils.PropUtils;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,7 +14,7 @@ public class propUtilTest {
     }
     @Test
     public void testProp() {
-        PropUtil.getPattern("mysql.*");
-        System.out.println(PropUtil.getPattern("mysql.*"));
+        PropUtils.getPattern("mysql.*");
+        System.out.println(PropUtils.getPattern("mysql.*"));
     }
 }

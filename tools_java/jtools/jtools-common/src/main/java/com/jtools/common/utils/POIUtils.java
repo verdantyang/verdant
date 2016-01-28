@@ -142,7 +142,7 @@ public class POIUtils
     if (!new File(rootPath).exists()) {
       new File(rootPath).mkdirs();
     }
-    filename = filename.substring(0, filename.lastIndexOf(".")) + "-" + DateUtil.getNowTime("yyyyMMddHHmmss") + filename.substring(filename.lastIndexOf("."));
+    filename = filename.substring(0, filename.lastIndexOf(".")) + "-" + DateUtils2.getNowTime("yyyyMMddHHmmss") + filename.substring(filename.lastIndexOf("."));
     try {
       FileOutputStream out = new FileOutputStream(rootPath + File.separator + filename);
       wb.write(out);

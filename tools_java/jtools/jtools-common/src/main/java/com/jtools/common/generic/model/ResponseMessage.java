@@ -2,7 +2,7 @@ package com.jtools.common.generic.model;
 
 
 import com.jtools.common.support.spring.ContextHolder;
-import com.jtools.common.utils.StringUtil;
+import com.jtools.common.utils.StringUtils2;
 import com.jtools.metadata.code.ResultCode;
 import com.jtools.metadata.exception.ServiceException;
 import com.jtools.metadata.model.Page;
@@ -130,7 +130,7 @@ public class ResponseMessage {
     }
 
     private void processCode() {
-        if (!StringUtil.isEmpty(this.code) && this.code.matches("(\\w+(\\.*)\\w+)*")) {
+        if (!StringUtils2.isEmpty(this.code) && this.code.matches("(\\w+(\\.*)\\w+)*")) {
             String message[] = ContextHolder.getMessage(this.code).split("\\|");
             this.message = message[0];
             this.code = message[1];

@@ -2,7 +2,6 @@ package com.jtools.common.utils;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.jasypt.salt.RandomSaltGenerator;
-import org.jasypt.util.digest.Digester;
 import org.jasypt.util.text.BasicTextEncryptor;
 
 
@@ -12,7 +11,7 @@ public class SecurityUtils {
 	 * 生成盐值
      */
 	public static String generateSalt(int len){
-		return StringUtil.byte2hex(new RandomSaltGenerator().generateSalt(len));
+		return StringUtils2.byte2hex(new RandomSaltGenerator().generateSalt(len));
 	}
 
 	/**
@@ -65,11 +64,11 @@ public class SecurityUtils {
 //		System.out.println(ste.encrypt("888888"));
 //		System.out.println(ste.encrypt("888888"));
 //		System.out.println(ste.decrypt("7SHekh4iR3tIXCTz+/4WzQ=="));
-//		System.out.println(StringUtil.byte2hex(new RandomSaltGenerator().generateSalt(2)));
-//		System.out.println(StringUtil.byte2hex(new RandomSaltGenerator().generateSalt(3)));
-//		System.out.println(StringUtil.byte2hex(new RandomSaltGenerator().generateSalt(4)));
-//		System.out.println(StringUtil.byte2hex(new RandomSaltGenerator().generateSalt(5)));
-//		System.out.println(StringUtil.byte2hex(new RandomSaltGenerator().generateSalt(6)));
+//		System.out.println(StringUtils2.byte2hex(new RandomSaltGenerator().generateSalt(2)));
+//		System.out.println(StringUtils2.byte2hex(new RandomSaltGenerator().generateSalt(3)));
+//		System.out.println(StringUtils2.byte2hex(new RandomSaltGenerator().generateSalt(4)));
+//		System.out.println(StringUtils2.byte2hex(new RandomSaltGenerator().generateSalt(5)));
+//		System.out.println(StringUtils2.byte2hex(new RandomSaltGenerator().generateSalt(6)));
 
 //		System.out.println( DigestUtils.md5Hex("{js2}"));
 

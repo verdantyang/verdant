@@ -1,12 +1,12 @@
 package com.spring.demo.web;
-import com.jtools.spring.utils.PropUtil;
+import com.jtools.spring.utils.PropUtils;
 /**
  * Created by verdant on 2016/1/15.
  */
 public class first {
     public static void main(String[] args) {
 
-//        System.out.println(PropUtil.get("mysql.client"));
-        System.out.println(PropUtil.getPattern("mysql.*"));
+//        System.out.println(PropUtils.get("mysql.client"));
+        System.out.println(PropUtils.getPattern("mysql.*"));
     }
 }
