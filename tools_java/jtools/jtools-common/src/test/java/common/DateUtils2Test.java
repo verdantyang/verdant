@@ -7,9 +7,11 @@ import org.junit.Assert;
 import java.util.Date;
 
 /**
- * Created by verdant on 2016/1/21.
+ * Author: verdant
+ * Create: 2016/1/22
+ * Func:   日期工具测试类
  */
-public class DateUtilTest {
+public class DateUtils2Test {
     @Test
     public void usage() {
         String sdf = "yyyy-MM-dd HH:mm:ss";
