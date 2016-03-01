@@ -21,13 +21,13 @@ public:
         ListNode* ptemp;
 
         pcurrent = head;
-        pnext = pcurrent == NULL ? NULL : pcurrent -> next;
+        pnext = NULL == pcurrent ? NULL : pcurrent -> next;
 
-        if (pcurrent == NULL || pnext == NULL)
+        if (NULL == pcurrent || NULL == pnext)
             return head;
 
         pcurrent -> next = NULL;
-        while (pnext != NULL) {
+        while (NULL != pnext) {
             ptemp = pnext -> next;
             pnext -> next = pcurrent;
             pcurrent = pnext;
