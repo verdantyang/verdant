@@ -1,0 +1,49 @@
+curl -X POST 'http://192.168.0.198:9200/cgpboss/_close'
+
+curl -X DELETE 'http://192.168.0.198:9200/cgpboss/'
+curl -X DELETE 'http://192.168.112.172:9200/cgpboss/attack_alarm'
+curl -X DELETE 'http://192.168.112.172:9200/cgpboss_month_201601/attack_alarm/_query'
+
+curl -X GET 192.168.0.198:9200/_stats/indices?pretty
+
+curl -X POST 'http://192.168.0.198:9200/cgpboss_month_201601/attack_alarm/_search?pretty' -d '{
+  "size":300,
+  "query": {
+    "match_all": {}
+  }
+}'
+
+curl -X POST 'http://192.168.0.198:9200/cgpboss_month_201601/attack_alarm/_search?pretty' -d '{
+  "size": 50,
+  "query": {
+    "bool": {
+      "must": {
+        "term":{
+          "customerId":15
+        },
+        "range": {
+          "startTime": {
+            "gte": "2016-01-26 09:21:17",
+            "lte": "2016-01-26 10:21:17"
+          }
+        }
+      }
+    }
+  }
+}'
+
+
+curl -X POST 'http://192.168.0.198:9200/cgpboss_month_201601/attack_alarm/_search?pretty' -d '{
+  "size": 50,
+  "query": {
+    "bool": {
+      "must": {
+        "term":{
+          "attackId":"31c9c71904474f2590cee244e2121bd9"
+        }
+      }
+    }
+  }
+}'
+
+

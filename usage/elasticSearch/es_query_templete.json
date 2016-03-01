@@ -1,0 +1,263 @@
+'cgpboss_month_201601/attack_alarm/'
+'cgpboss_day_20160118/monitor_oid/'
+
+/*
+ * Setting
+ */
+//PUT /_cluster/settings 
+{
+  "persistent": {
+    "indices.breaker.fielddata.limit": "40%"
+  }
+}
+
+/*
+ * Optimize
+ */
+//PUT /music/_mapping/song
+{
+  "properties": {
+    "tag": {
+      "type": "string",
+      "fielddata": { 
+        "filter": {
+          "frequency": { 
+            "min":              0.01, 
+            "min_segment_size": 500  
+          }
+        }
+      }
+    }
+  }
+}
+
+/*
+ * _search
+ */
+{
+  "size": 50,
+  "query": {
+    "match_all": {}
+  }
+}
+
+{
+  "sort": {
+    "startTime": {
+      "order": "asc"
+    }
+  },
+  "query": {
+    "bool": {
+      "must": {
+        "term": {
+          "customerId": 15
+        },
+        "range": {
+          "startTime": {
+            "gte": "2016-01-26 09:21:17",
+            "lte": "2016-01-26 10:21:17"
+          }
+        }
+      }
+    }
+  }
+}
+
+//highlight高亮
+{
+  "highlight": {
+    "fields": {
+      "about": {}
+    }
+  }
+}
+
+//aggs聚合
+{
+  "aggs": {
+    "alarmSum": {
+      "sum": {
+        "field": "alarmLevel"
+      }
+    }
+  }
+}
+
+//aggs: buckets in buckets
+{
+  "size": 0,
+  "aggs": {
+    "colors": {
+      "terms": {
+        "field": "color"
+      },
+      "aggs": {
+        "avg_price": {
+          "avg": {
+            "field": "price"
+          }
+        },
+        "make": {
+          "terms": {
+            "field": "make"
+          },
+          "aggs": {
+            "min_price": {
+              "min": {
+                "field": "price"
+              }
+            },
+            "max_price": {
+              "max": {
+                "field": "price"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//histogram
+{
+  "size": 0,
+  "aggs": {
+    "price": {
+      "histogram": {
+        "field": "price",
+        "interval": 20000
+      },
+      "aggs": {
+        "revenue": {
+          "sum": {
+            "field": "price"
+          }
+        }
+      }
+    }
+  }
+}
+
+//date_histogram
+{
+  "size": 0,
+  "aggs": {
+    "sales": {
+      "date_histogram": {
+        "field": "sold",
+        "interval": "month",
+        "format": "yyyy-MM-dd",
+        "min_doc_count": 0,
+        "extended_bounds": {
+          "min": "2014-01-01",
+          "max": "2014-12-31"
+        }
+      }
+    }
+  }
+}
+
+//filter
+{
+  "size": 0,
+  "query": {
+    "filtered": {
+      "filter": {
+        "range": {
+          "price": {
+            "gte": 10000
+          }
+        }
+      }
+    }
+  },
+  "aggs": {
+    "single_avg_price": {
+      "avg": {
+        "field": "price"
+      }
+    }
+  }
+}
+
+//组合排序
+{
+  "size": 0,
+  "aggs": {
+    "colors": {
+      "histogram": {
+        "field": "price",
+        "interval": 20000,
+        "order": {
+          "red_green_cars>stats.variance": "asc"
+        }
+      },
+      "aggs": {
+        "red_green_cars": {
+          "filter": {
+            "terms": {
+              "color": ["red", "green"]
+            }
+          },
+          "aggs": {
+            "stats": {
+              "extended_stats": {
+                "field": "price"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/*
+ * _update
+ */
+{
+  "script": "ctx._source.views+=1",
+  "upsert": {
+    "views": 1
+  }
+}
+
+
+'cgpboss_month_*/attack_alarm/'
+{
+  "size": 0,
+  "query": {
+    "term": {
+      "customerId": "15"
+    }
+  },
+  "aggs": {
+    "hourSummary": {
+      "date_histogram": {
+        "field": "startTime",
+        "interval": "1h",
+        "format": "yyyy-MM-dd HH:mm:ss",
+        "min_doc_count": 1
+      }
+    }
+  }
+}
+
+{
+  "size": 0,
+  "query": {
+    "term": {
+      "customerId": "15"
+    }
+  },
+  "aggs": {
+    "rateSummary": {
+      "histogram": {
+        "field": "maxTrafficRate",
+        "interval": "50"
+      }
+    }
+  }
+}
