@@ -1,3 +1,6 @@
+# C
+*.exe
+
 # Java
 *.class
 target/
