@@ -9,6 +9,6 @@ import creational.abstractFactory.component.AbstractComponentB;
  * Desc: 抽象工厂
  */
 public interface AbstractFactory {
-    public AbstractComponentA createComponentA();
-    public AbstractComponentB createComponentB();
+    AbstractComponentA createComponentA();
+    AbstractComponentB createComponentB();
 }

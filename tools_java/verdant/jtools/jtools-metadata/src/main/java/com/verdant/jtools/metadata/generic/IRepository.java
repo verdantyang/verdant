@@ -5,7 +5,9 @@ import com.verdant.jtools.metadata.model.PageParam;
 import com.verdant.jtools.metadata.model.PageWrapper;
 
 /**
- * Mybatis动态代理接口
+ * IRepository Mybatis动态代理接口
+ * Author: verdant
+ * Create: 2016/03/14
  */
 public interface IRepository<T> {
     /**

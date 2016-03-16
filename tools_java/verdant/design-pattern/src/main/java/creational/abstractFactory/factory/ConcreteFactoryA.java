@@ -8,10 +8,12 @@ import creational.abstractFactory.component.*;
  * Desc: 实例化工厂A
  */
 public class ConcreteFactoryA implements AbstractFactory {
+    @Override
     public AbstractComponentA createComponentA() {
         return new ConcreteComponentAA();
     }
 
+    @Override
     public AbstractComponentB createComponentB() {
         return new ConcreteComponentBA();
     }

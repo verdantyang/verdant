@@ -3,6 +3,11 @@ package com.verdant.jtools.metadata.exception;
 
 import com.verdant.jtools.metadata.code.ResultCode;
 
+/**
+ * ResultCode Web接口返回信息
+ * Author: verdant
+ * Create: 2016/03/14
+ */
 public class ServiceException extends Exception {
 
     /**
@@ -44,6 +49,9 @@ public class ServiceException extends Exception {
         return isCausedBy(cause, causeExceptionClasses);
     }
 
+    /**
+     * 判断异常是否由某些底层的异常引起.
+     */
     public boolean isCausedBy(Throwable cause, Class<? extends Exception>... causeExceptionClasses) {
         while (cause != null) {
             for (Class<? extends Exception> causeClass : causeExceptionClasses) {

@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * Copyright (C), 2015-2016 中盈优创
  * ZookeeperConfiguration
- * Author: 龚健
+ * Author: verdant
  * Date: 2015/11/12
  */
 public class ZookeeperConfiguration implements Serializable{

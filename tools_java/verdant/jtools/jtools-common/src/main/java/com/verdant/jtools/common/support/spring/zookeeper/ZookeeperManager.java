@@ -9,7 +9,7 @@ import java.util.*;
 /**
  * Copyright (C), 2015-2016 中盈优创
  * ZookeeperManager
- * Author: 龚健
+ * Author: verdant
  * Date: 2015/11/12
  */
 public class ZookeeperManager {

@@ -9,7 +9,9 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- *
+ * IService 数据库操作接口
+ * Author: verdant
+ * Create: 2016/03/14
  */
 public interface IService<T> extends Serializable{
     /**

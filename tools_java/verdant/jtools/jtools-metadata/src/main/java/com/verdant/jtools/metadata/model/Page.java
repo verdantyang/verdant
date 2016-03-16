@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * 序列化Page - 分页对象参数
- *
- * @author 龚健
+ * Page 序列化Page - 分页对象参数
+ * Author: verdant
+ * Create: 2016/03/14
  */
 public class Page<E> implements Serializable{
 
@@ -44,7 +44,6 @@ public class Page<E> implements Serializable{
      */
     private int endRow;
 
-
     /**
      * 上一页
      */
@@ -54,7 +53,6 @@ public class Page<E> implements Serializable{
      * 下一页
      */
     private int nextPage;
-
 
     /**
      * 是否为第一页

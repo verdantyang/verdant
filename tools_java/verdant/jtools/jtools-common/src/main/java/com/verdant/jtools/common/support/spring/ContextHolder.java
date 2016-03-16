@@ -2,7 +2,7 @@ package com.verdant.jtools.common.support.spring;
 
 import com.alibaba.fastjson.JSON;
 import com.verdant.jtools.common.utils.StringUtils2;
-import com.verdant.jtools.metadata.constant.CommonEnum;
+import com.spring.demo.web.constant.CommonEnum;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;

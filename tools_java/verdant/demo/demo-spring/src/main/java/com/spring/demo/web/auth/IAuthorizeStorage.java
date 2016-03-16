@@ -1,14 +1,11 @@
-package com.verdant.jtools.metadata.generic;
+package com.spring.demo.web.auth;
 
 import com.verdant.jtools.metadata.exception.ServiceException;
-import com.verdant.jtools.metadata.model.AuthToken;
 
 /**
- * 授权存储数据
- * Copyright (C), 2015-2016 中盈优创
- * IUserStorage
- * Author: 龚健
- * Date: 2016/1/13
+ * IAuthorizeStorage 授权存储数据
+ * Author: verdant
+ * Create: 2016/03/14
  */
 public interface IAuthorizeStorage {
 

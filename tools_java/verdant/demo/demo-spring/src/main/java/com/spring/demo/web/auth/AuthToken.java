@@ -1,11 +1,11 @@
-package com.verdant.jtools.metadata.model;
+package com.spring.demo.web.auth;
 
 import java.io.Serializable;
 
 /**
  * Copyright (C), 2015-2016 中盈优创
  * Token
- * Author: 龚健
+ * Author: verdant
  * Date: 2016/1/13
  */
 public class AuthToken implements Serializable {

@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Mybatis用分页对象 继承Arraylist
+ * PageWrapper Mybatis用分页对象 继承Arraylist
+ * Author: verdant
+ * Create: 2016/03/14
  */
 public class PageWrapper<E> extends ArrayList<E> implements Serializable {
     private static final long serialVersionUID = 1L;

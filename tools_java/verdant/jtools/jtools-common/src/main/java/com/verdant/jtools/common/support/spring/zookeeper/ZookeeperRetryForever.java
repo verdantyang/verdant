@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Copyright (C), 2015-2016 中盈优创
  * ZookeeperRetryForever
- * Author: 龚健
+ * Author: verdant
  * Date: 2015/11/12
  */
 public class ZookeeperRetryForever implements RetryPolicy {

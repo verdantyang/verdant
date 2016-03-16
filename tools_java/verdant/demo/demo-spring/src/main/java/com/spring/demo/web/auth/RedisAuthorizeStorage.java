@@ -3,8 +3,6 @@ package com.spring.demo.web.auth;
 import com.verdant.jtools.cache.util.CacheUtil;
 import com.verdant.jtools.metadata.code.ResultCode;
 import com.verdant.jtools.metadata.exception.ServiceException;
-import com.verdant.jtools.metadata.generic.IAuthorizeStorage;
-import com.verdant.jtools.metadata.model.AuthToken;
 
 public class RedisAuthorizeStorage implements IAuthorizeStorage {
     @Override
