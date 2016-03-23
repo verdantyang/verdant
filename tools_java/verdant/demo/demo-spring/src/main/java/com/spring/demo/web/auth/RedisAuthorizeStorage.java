@@ -10,7 +10,7 @@ public class RedisAuthorizeStorage implements IAuthorizeStorage {
         if (token == null || user == null) {
             throw new ServiceException(ResultCode.ERROR_PARAMETER_REQUIRED);
         }
-        CacheUtil.getInstance().getCache().set(token.getType() + ":" + token.getValue(), user, token.getExpire());
+        CacheUtil.getInstance().getCache().set(token.getSessionPrefix() + ":" + token.getValue(), user, token.getExpire());
     }
 
     @Override

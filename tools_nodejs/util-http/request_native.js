@@ -36,7 +36,8 @@ function get(options, data) {
 }
 
 function post(options, body) {
-    var bodyString = JSON.stringify(body);
+    var bodyString = qs.stringify(body); 
+    // var bodyString = JSON.stringify(body);
     var req = genReq(options);
 
     // write data to request body

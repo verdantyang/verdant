@@ -1,7 +1,8 @@
 package creational.builder.product;
 
 import utils.DebugLog;
-import utils.DesigiPatternEnum;
+import utils.DebugLogFactory;
+import utils.DesignPatternEnum;
 
 /**
  * Author: verdant
@@ -9,7 +10,10 @@ import utils.DesigiPatternEnum;
  * Desc:   产品B
  */
 public class ProductB extends Product {
+
+    private static final DebugLog logger = DebugLogFactory.getLogger(ProductB.class, DesignPatternEnum.Builder);
+
     public ProductB() {
-        DebugLog.print("Create -> ProductB", DesigiPatternEnum.Builder, ProductA.class);
+        logger.log("Create -> ProductB");
     }
 }

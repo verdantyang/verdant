@@ -12,11 +12,11 @@ import creational.abstractFactory.factory.ConcreteFactoryB;
 public class ClientAbstract {
     public static void main(String[] args) {
         AbstractFactory concreteFactoryA = new ConcreteFactoryA();
-        concreteFactoryA.createComponentA();
-        concreteFactoryA.createComponentB();
+        concreteFactoryA.createComponent1();
+        concreteFactoryA.createComponent2();
 
         AbstractFactory concreteFactoryB = new ConcreteFactoryB();
-        concreteFactoryB.createComponentA();
-        concreteFactoryB.createComponentB();
+        concreteFactoryB.createComponent1();
+        concreteFactoryB.createComponent2();
     }
 }

@@ -1,7 +1,8 @@
 package creational.factory.product;
 
 import utils.DebugLog;
-import utils.DesigiPatternEnum;
+import utils.DebugLogFactory;
+import utils.DesignPatternEnum;
 
 /**
  * Author: verdant
@@ -9,7 +10,10 @@ import utils.DesigiPatternEnum;
  * Desc:   实例化产品B
  */
 public class ConcreteProductB implements AbstractProduct{
+
+    private static final DebugLog logger = DebugLogFactory.getLogger(ConcreteProductB.class, DesignPatternEnum.Factory);
+
     public ConcreteProductB() {
-        DebugLog.print("Create -> ProductB", DesigiPatternEnum.Factory, ConcreteProductA.class);
+        logger.log("Create -> ProductB");
     }
 }

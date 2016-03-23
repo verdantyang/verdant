@@ -2,13 +2,34 @@ package utils;
 
 /**
  * Author: verdant
- * Create: 2016/1/27
- * Func:   格式化输出
+ * Create: 2016/3/23
+ * Func:   格式化日志
  */
 public class DebugLog {
-    public static <T> void print(String content, DesigiPatternEnum dp, Class<T> clazz) {
-        String format = "{ %s }(%s): %s";
-        String info = String.format(format, dp.getName(), clazz.getName(), content);
+
+    private static final String format = "{%s}(%s): %s";
+
+    private String name;
+    private DesignPatternEnum designPattern;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public DesignPatternEnum getDesignPattern() {
+        return designPattern;
+    }
+
+    public void setDesignPattern(DesignPatternEnum designPattern) {
+        this.designPattern = designPattern;
+    }
+
+    public void log(String content) {
+        String info = String.format(format, designPattern.getName(), this.name, content);
         System.out.println(info);
     }
 }

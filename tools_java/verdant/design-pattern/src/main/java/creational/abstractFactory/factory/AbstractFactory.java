@@ -1,7 +1,7 @@
 package creational.abstractFactory.factory;
 
-import creational.abstractFactory.component.AbstractComponentA;
-import creational.abstractFactory.component.AbstractComponentB;
+import creational.abstractFactory.component.AbstractComponent1;
+import creational.abstractFactory.component.AbstractComponent2;
 
 /**
  * Author: verdant
@@ -9,6 +9,6 @@ import creational.abstractFactory.component.AbstractComponentB;
  * Desc: 抽象工厂
  */
 public interface AbstractFactory {
-    AbstractComponentA createComponentA();
-    AbstractComponentB createComponentB();
+    AbstractComponent1 createComponent1();
+    AbstractComponent2 createComponent2();
 }

@@ -8,5 +8,5 @@ import creational.factory.product.AbstractProduct;
  * Desc:   抽象工厂
  */
 public interface AbstractFactory {
-    public AbstractProduct createProduct();
+    AbstractProduct createProduct();
 }

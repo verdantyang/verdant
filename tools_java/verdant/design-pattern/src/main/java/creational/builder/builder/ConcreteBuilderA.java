@@ -3,7 +3,8 @@ package creational.builder.builder;
 import creational.builder.product.Product;
 import creational.builder.product.ProductA;
 import utils.DebugLog;
-import utils.DesigiPatternEnum;
+import utils.DebugLogFactory;
+import utils.DesignPatternEnum;
 
 /**
  * Author: verdant
@@ -11,6 +12,9 @@ import utils.DesigiPatternEnum;
  * Desc:   实例化生成器A
  */
 public class ConcreteBuilderA implements AbstractBuilder{
+
+    private static final DebugLog logger = DebugLogFactory.getLogger(ConcreteBuilderA.class, DesignPatternEnum.Builder);
+
     Product product;
     public ConcreteBuilderA() {
         product = new ProductA();
@@ -18,12 +22,12 @@ public class ConcreteBuilderA implements AbstractBuilder{
 
     @Override
     public void buildPartOne() {
-        DebugLog.print("ProductA -> Build PartOne", DesigiPatternEnum.Builder, ProductA.class);
+        logger.log("ProductA -> Build PartOne");
         product.setPartOne("Build ProductA PartOne");
     }
     @Override
     public void buildPartTwo() {
-        DebugLog.print("ProductA -> Build PartTwo", DesigiPatternEnum.Builder, ProductA.class);
+        logger.log("ProductA -> Build PartTwo");
         product.setPartTwo("Build ProductA PartTwo");
     }
     @Override

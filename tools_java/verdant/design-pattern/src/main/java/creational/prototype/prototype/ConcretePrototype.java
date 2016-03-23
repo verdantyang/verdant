@@ -1,7 +1,8 @@
 package creational.prototype.prototype;
 
 import utils.DebugLog;
-import utils.DesigiPatternEnum;
+import utils.DebugLogFactory;
+import utils.DesignPatternEnum;
 
 /**
  * Author: verdant
@@ -9,8 +10,10 @@ import utils.DesigiPatternEnum;
  * Desc:   实例化原型
  */
 public class ConcretePrototype extends Prototype {
+
+    private static final DebugLog logger = DebugLogFactory.getLogger(ConcretePrototype.class, DesignPatternEnum.Prototype);
+
     public void valid(ConcretePrototype cp) {
-        DebugLog.print(this != cp ? "Cloned" : "False",
-                DesigiPatternEnum.Prototype, ConcretePrototype.class);
+        logger.log(this != cp ? "Cloned" : "False");
     }
 }

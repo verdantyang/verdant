@@ -7,12 +7,10 @@
             http://www.springframework.org/schema/task
             http://www.springframework.org/schema/task/spring-task.xsd">
 
-
     <!--<bean id="messageSource"-->
           <!--class="org.springframework.context.support.ReloadableResourceBundleMessageSource">-->
         <!--<property name="basenames">-->
             <!--<list>-->
-                <!--&lt;!&ndash; 在web环境中一定要定位到classpath 否则默认到当前web应用下找 &ndash;&gt;-->
                 <!--<value>classpath:lang/system_messages</value>-->
                 <!--<value>classpath:lang/api_messages</value>-->
             <!--</list>-->
@@ -23,7 +21,10 @@
     <!--</bean>-->
 
     <!--ContextHolder-->
-    <bean class="com.verdant.common.support.spring.ContextHolder"></bean>
+    <!--<bean class="com.verdant.common.support.spring.ContextHolder"></bean>-->
+
+    <!-- 鉴权存储实现 -->
+    <!--<bean class="com.commons.common.auth.SessionAuthorizeStorage"></bean>-->
 
     <bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
         <!-- 核心线程数，默认为10 -->

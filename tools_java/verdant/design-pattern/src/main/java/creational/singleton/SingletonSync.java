@@ -1,7 +1,8 @@
 package creational.singleton;
 
 import utils.DebugLog;
-import utils.DesigiPatternEnum;
+import utils.DebugLogFactory;
+import utils.DesignPatternEnum;
 
 /**
  * Author: verdant
@@ -10,6 +11,9 @@ import utils.DesigiPatternEnum;
  * Desc:   线程安全通过同步块（同时添加了个引用计数，用以回收）
  */
 public class SingletonSync {
+
+    private static final DebugLog logger = DebugLogFactory.getLogger(Singleton.class, DesignPatternEnum.Singleton);
+
     private static SingletonSync instance;
     private static int count = 1;
 
@@ -39,11 +43,9 @@ public class SingletonSync {
     public static void main(String[] args) {
         SingletonSync instance = SingletonSync.getInstance();
         SingletonSync instance2 = SingletonSync.getInstance();
-        DebugLog.print(instance == instance2 ? "Instance same" : "False",
-                DesigiPatternEnum.Singleton, Singleton.class);
+        logger.log(instance == instance2 ? "Instance same" : "False");
         SingletonSync.destroy();
         SingletonSync.destroy();
-        DebugLog.print(instance == null ? "Instance destroy" : "False",
-                DesigiPatternEnum.Singleton, Singleton.class);
+        logger.log(instance == null ? "Instance destroy" : "False");
     }
 }

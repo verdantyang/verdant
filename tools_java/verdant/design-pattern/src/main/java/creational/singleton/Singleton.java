@@ -1,7 +1,8 @@
 package creational.singleton;
 
 import utils.DebugLog;
-import utils.DesigiPatternEnum;
+import utils.DebugLogFactory;
+import utils.DesignPatternEnum;
 
 /**
  * Author: verdant
@@ -10,6 +11,8 @@ import utils.DesigiPatternEnum;
  * Desc:   线程安全通过静态内部类（保证只在加载的时候执行一次）
  */
 public class Singleton {
+
+    private static final DebugLog logger = DebugLogFactory.getLogger(Singleton.class, DesignPatternEnum.Singleton);
 
     private Singleton() {
     }
@@ -25,7 +28,6 @@ public class Singleton {
     public static void main(String[] args) {
         Singleton instance = Singleton.getInstance();
         Singleton instance2 = Singleton.getInstance();
-        DebugLog.print(instance == instance2 ? "Instance same" : "False",
-                DesigiPatternEnum.Singleton, Singleton.class);
+        logger.log(instance == instance2 ? "Instance same" : "False");
     }
 }

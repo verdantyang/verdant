@@ -5,14 +5,15 @@ package utils;
  * Create: 2016/1/27
  * Func:   设计模式类型枚举
  */
-public enum DesigiPatternEnum {
-    Singleton(1, "Singleton"),
-    Factory(2, "Factory"),
-    AbstractFactory(3, "AbstractFactory"),
-    Prototype(4, "Prototype"),
-    Builder(5, "Builder");
+public enum DesignPatternEnum {
+    Singleton(11, "Singleton"),
+    Factory(12, "Factory"),
+    AbstractFactory(13, "AbstractFactory"),
+    Prototype(14, "Prototype"),
+    Builder(15, "Builder"),
+    Strategy(21, "Strategy");
 
-    private DesigiPatternEnum(Integer code, String name) {
+    private DesignPatternEnum(Integer code, String name) {
         this.code = code;
         this.name = name;
     }
