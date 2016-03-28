@@ -12,7 +12,7 @@ describe('util-http', function() {
             if ("/json" === pathname) {
                 res.writeHead(200);
                 res.end(JSON.stringify({
-                    "cont": "hello"
+                    "cont": "Hello JSON!"
                 }));
             }
             if ("/hello" === pathname) {
@@ -41,7 +41,6 @@ describe('util-http', function() {
             hostname: '127.0.0.1',
             port: 8081,
             path: '/hello',
-            method: 'GET',
             headers: {
                 'Content-Type': 'application/json; charset=UTF-8'
             }
@@ -53,15 +52,14 @@ describe('util-http', function() {
 
     it("POST", function() {
         var body = {
-            "attackId": "d4b88ea0b07e487f8b59c4fb4edbf813",
-            "trafficRate": 693.77696
+            "param1": "abc",
+            "param2": 123
         };
 
         var options = {
             hostname: '127.0.0.1',
             port: 8081,
             path: '/json',
-            method: 'POST',
             headers: {
                 'Content-Type': 'application/json; charset=UTF-8'
             }

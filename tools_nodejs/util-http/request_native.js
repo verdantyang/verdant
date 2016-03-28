@@ -2,7 +2,7 @@ var http = require('http'),
     qs = require('querystring');
 
 var genReq = function(options) {
-    console.log("URL: " + options.hostname + ":" + options.port + options.path);
+    console.log("URL: " + options.host + ":" + options.port + options.path);
     var req = http.request(options, function(res) {
         console.log('success|response|status|' + res.statusCode);
         console.log('success|response|headers|' + JSON.stringify(res.headers));
@@ -29,6 +29,7 @@ var genReq = function(options) {
 }
 
 function get(options, data) {
+    options.method = "GET";
     var content = qs.stringify(data);
     options.path = options.path + "?" + content;
     var req = genReq(options);
@@ -36,8 +37,13 @@ function get(options, data) {
 }
 
 function post(options, body) {
-    var bodyString = qs.stringify(body); 
-    // var bodyString = JSON.stringify(body);
+    options.method = "POST";
+    var bodyString;
+    if (options.headers["Content-Type"].indexOf("json") > 0)
+        bodyString = JSON.stringify(body);
+    else
+        bodyString = qs.stringify(body);
+    
     var req = genReq(options);
 
     // write data to request body

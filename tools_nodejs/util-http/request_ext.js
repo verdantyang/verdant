@@ -15,19 +15,22 @@ function callback(error, response, data) {
 }
 
 function get(options, data) {
+	options.method = "GET";
 	var content = qs.stringify(data);
 	options.path = options.path + "?" + content;
-	options.url = "http://" + options.hostname + ":" + options.port + options.path
+	options.url = "http://" + options.host + ":" + options.port + options.path;
+
 	request(options, callback);
 }
 
 function post(options, body) {
-	// options.body = body;
-	// options.json = true;
-	options.body = JSON.stringify(body);
-	options.url = "http://" + options.hostname + ":" + options.port + options.path
-	console.log(options.url)
-	console.log(options)
+	options.method = "POST";
+	if (options.headers["Content-Type"].indexOf("json") > 0)
+		options.body = JSON.stringify(body);
+	else
+		options.body = qs.stringify(body);
+	options.url = "http://" + options.host + ":" + options.port + options.path;
+
 	request(options, callback);
 }
 
