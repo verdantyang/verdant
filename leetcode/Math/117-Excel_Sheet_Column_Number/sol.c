@@ -1,6 +1,6 @@
 /**
- * @Time Complexity: O(n)
- * @Space Complexity: O(2n)
+ * @Time Complexity:	O(n)
+ * @Space Complexity:	O(2n)
  */
 #include <string.h>
 #include <stdio.h>

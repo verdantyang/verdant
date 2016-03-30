@@ -15,6 +15,6 @@ public class ConcreteStrategy2 implements Strategy {
 
     @Override
     public void execute() {
-        logger.log("Strategy -> execute ConcreteStrategy2");
+        logger.log("Execute -> " + DebugLog.getClassName(this.getClass()));
     };
 }

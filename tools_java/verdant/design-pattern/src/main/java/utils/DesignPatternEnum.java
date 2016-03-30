@@ -11,7 +11,11 @@ public enum DesignPatternEnum {
     AbstractFactory(13, "AbstractFactory"),
     Prototype(14, "Prototype"),
     Builder(15, "Builder"),
-    Strategy(21, "Strategy");
+    Strategy(21, "Strategy"),
+    State(22, "State"),
+    Observer(23, "Observer"),
+    Command(24, "Command"),
+    Template(25, "Template");
 
     private DesignPatternEnum(Integer code, String name) {
         this.code = code;

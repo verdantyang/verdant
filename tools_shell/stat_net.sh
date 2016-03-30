@@ -1,5 +1,6 @@
 #!/bin/bash
 #Func: statics network bandwidth
+
 function usage() {
     echo "Usage: $0 <ethernet device>"
     echo " e.g. $0 eth0"

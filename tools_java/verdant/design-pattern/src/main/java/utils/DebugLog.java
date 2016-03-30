@@ -32,4 +32,9 @@ public class DebugLog {
         String info = String.format(format, designPattern.getName(), this.name, content);
         System.out.println(info);
     }
+
+    public static <T> String getClassName(Class<T> clazz) {
+        String[] classFullName = clazz.getName().split("\\.");
+        return classFullName[classFullName.length - 1];
+    }
 }

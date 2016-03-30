@@ -9,7 +9,7 @@ import creational.abstractFactory.factory.ConcreteFactoryB;
  * Create: 2016/1/14
  * Func:   抽象工厂模式（将产品组件化）
  */
-public class ClientAbstract {
+public class Client {
     public static void main(String[] args) {
         AbstractFactory concreteFactoryA = new ConcreteFactoryA();
         concreteFactoryA.createComponent1();

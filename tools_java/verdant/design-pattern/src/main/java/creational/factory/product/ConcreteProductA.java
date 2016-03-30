@@ -16,6 +16,6 @@ public class ConcreteProductA implements AbstractProduct {
     private static final DebugLog logger = DebugLogFactory.getLogger(ConcreteProductA.class, DesignPatternEnum.Factory);
 
     public ConcreteProductA() {
-        logger.log("Create -> ProductA");
+        logger.log("Create -> " + DebugLog.getClassName(this.getClass()));
     }
 }

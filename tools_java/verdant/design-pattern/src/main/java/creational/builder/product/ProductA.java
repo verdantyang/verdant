@@ -14,6 +14,6 @@ public class ProductA extends Product {
     private static final DebugLog logger = DebugLogFactory.getLogger(ProductA.class, DesignPatternEnum.Builder);
 
     public ProductA() {
-        logger.log("Create -> ProductA");
+        logger.log("Create -> " + DebugLog.getClassName(this.getClass()));
     }
 }

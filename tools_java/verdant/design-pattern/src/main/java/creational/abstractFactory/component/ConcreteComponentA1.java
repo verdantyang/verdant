@@ -14,6 +14,6 @@ public class ConcreteComponentA1 implements AbstractComponent1 {
     private static final DebugLog logger = DebugLogFactory.getLogger(ConcreteComponentA1.class, DesignPatternEnum.AbstractFactory);
 
     public ConcreteComponentA1(){
-        logger.log("Create -> ConcreteComponentA1");
+        logger.log("Create -> " + DebugLog.getClassName(this.getClass()));
     }
 }
