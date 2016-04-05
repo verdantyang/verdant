@@ -6,6 +6,7 @@
 #include <iostream>
 using namespace std;
 
+/* Solution */
 class Solution {
 public:
   int majorityElement(vector<int>& nums) {
