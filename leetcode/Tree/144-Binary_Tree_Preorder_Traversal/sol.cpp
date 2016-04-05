@@ -22,10 +22,10 @@ class Solution {
 public:
 	vector<int> preorderTraversal(TreeNode* root) {
 		std::stack<TreeNode*> cache;
-		std::vector<int> result;
+		std::vector<int> rets;
 		while (NULL != root || !cache.empty()) {
 			if (NULL != root) {
-				result.push_back(root->val);
+				rets.push_back(root->val);
 				cache.push(root);
 				root = root->left;
 			} else if (NULL == root && !cache.empty()) {
@@ -33,6 +33,6 @@ public:
 				cache.pop();
 			}
 		}
-		return result;
+		return rets;
 	}
 };

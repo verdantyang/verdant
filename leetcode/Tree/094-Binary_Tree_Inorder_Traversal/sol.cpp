@@ -22,17 +22,17 @@ class Solution {
 public:
 	vector<int> inorderTraversal(TreeNode* root) {
 		stack<TreeNode*> cache;
-		vector<int> result;
+		vector<int> rets;
 		while (NULL != root || !cache.empty()) {
 			if (NULL != root) {
 				cache.push(root);
 				root = root->left;
 			} else if (NULL == root && !cache.empty()) {
-				result.push_back(cache.top()->val);
+				rets.push_back(cache.top()->val);
 				root = cache.top()->right;
 				cache.pop();
 			}
 		}
-		return result;
+		return rets;
 	}
 };

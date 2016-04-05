@@ -7,11 +7,11 @@
 
 /* Solution */
 int titleToNumber(char* s) {
-	int res = 0;
+	int ret = 0;
 	for (int i = 0; i < strlen(s); i++) {
-		res = res * 26 + s[i] - 64;
+		ret = ret * 26 + s[i] - 64;
 	}
-	return res;
+	return ret;
 }
 
 /* Test Case */

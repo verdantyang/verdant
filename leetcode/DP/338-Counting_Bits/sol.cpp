@@ -12,19 +12,19 @@ using namespace std;
 class Solution {
 public:
 	vector<int> countBits(int num) {
-		vector<int> res(num + 1);
-		res[0] = 0;
+		vector<int> rets(num + 1);
+		rets[0] = 0;
 		for (int i = 1; i <= num; i++)
-			res[i] = res[i & (i - 1)] + 1;
-		return res;
+			rets[i] = rets[i & (i - 1)] + 1;
+		return rets;
 	}
 };
 
 int main() {
 	Solution sol;
-	vector<int> res = sol.countBits(6);
+	vector<int> rets = sol.countBits(6);
 	vector<int>::iterator iter;
-	for (iter = res.begin(); iter != res.end(); iter++)
+	for (iter = rets.begin(); iter != rets.end(); iter++)
 	{
 		cout << *iter << ' ';
 	}

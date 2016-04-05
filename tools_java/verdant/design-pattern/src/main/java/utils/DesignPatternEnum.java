@@ -15,7 +15,9 @@ public enum DesignPatternEnum {
     State(22, "State"),
     Observer(23, "Observer"),
     Command(24, "Command"),
-    Template(25, "Template");
+    Template(25, "Template"),
+    Iterator(26, "Iterator"),
+    Mediator(27, "Iterator");
 
     private DesignPatternEnum(Integer code, String name) {
         this.code = code;

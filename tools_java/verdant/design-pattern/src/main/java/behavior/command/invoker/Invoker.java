@@ -5,7 +5,7 @@ import behavior.command.command.Command;
 /**
  * Author: verdant
  * Create: 2016/3/30
- * Desc:   命令执行者
+ * Desc:   命令发起者
  */
 public class Invoker {
     private Command command1, command2;

@@ -7,7 +7,7 @@ import utils.DesignPatternEnum;
 /**
  * Author: verdant
  * Create: 2016/3/30
- * Desc:   命令接受者
+ * Desc:   命令接收者
  */
 public class Receiver {
 
