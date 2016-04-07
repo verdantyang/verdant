@@ -2,27 +2,31 @@
  * @Time Complexity:    O(1)
  * @Space Complexity:   O(1)
  */
+
 #include <cmath>
 #include <cstdio>
 #include <vector>
+#include <map>
 #include <iostream>
 #include <algorithm>
 using namespace std;
 
+unsigned long long sumOfSquares(unsigned long long n) {
+	return (n * (n + 1) * (2 * n + 1)) / 6;
+}
+
+unsigned long long squareOfSums(unsigned long long n) {
+	return pow(n * (n + 1), 2) / 4;
+}
+
 int main() {
 	/* Enter your code here. Read input from STDIN. Print output to STDOUT */
 	int N;
-	long num, sum, three, five, fifteen = 0;
+	unsigned long long num = 0;
 	cin >> N;
 	for (int i = 1; i <= N; i++) {
 		cin >> num;
-		three = (num - 1) / 3;
-		five = (num - 1) / 5;
-		fifteen = (num - 1) / 15;
-		sum = 3 * (three * (three + 1) / 2)
-		      + 5 * (five * (five + 1) / 2) +
-		      -15 * (fifteen * (fifteen + 1) / 2);
-		cout << sum << endl;
+		cout << squareOfSums(num) - sumOfSquares(num) << endl;
 	}
 	return 0;
 }
