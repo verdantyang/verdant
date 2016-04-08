@@ -11,15 +11,26 @@ public enum DesignPatternEnum {
     AbstractFactory(13, "AbstractFactory"),
     Prototype(14, "Prototype"),
     Builder(15, "Builder"),
-    Strategy(21, "Strategy"),
-    State(22, "State"),
-    Observer(23, "Observer"),
-    Command(24, "Command"),
-    Template(25, "Template"),
-    Iterator(26, "Iterator"),
-    Mediator(27, "Iterator");
+    Decorator(21, "Decorator"),
+    Adapter(22, "Adapter"),
+    Bridge(23, "Bridge"),
+    Facade(24, "Facade"),
+    Proxy(25, "Proxy"),
+    Composite(26, "Composite"),
+    Flyweight(27, "Flyweight"),
+    Strategy(31, "Strategy"),
+    State(32, "State"),
+    Observer(33, "Observer"),
+    Command(34, "Command"),
+    Template(35, "Template"),
+    Iterator(36, "Iterator"),
+    Mediator(37, "Iterator"),
+    Visitor(38, "Visitor"),
+    Memento(39, "Memento"),
+    ChainOfResponsibility(40, "ChainOfResponsibility"),
+    Interpreter(41, "Interpreter");
 
-    private DesignPatternEnum(Integer code, String name) {
+    DesignPatternEnum(Integer code, String name) {
         this.code = code;
         this.name = name;
     }
