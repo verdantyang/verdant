@@ -7,7 +7,7 @@ import java.io.*;
 /**
  * Created by Administrator on 2016/4/6.
  */
-public class StreamOperate {
+public class OutputStreamAndInputStream {
 
     public InputStream getInputStream(String string) {
         InputStream is = new ByteArrayInputStream(string.getBytes());

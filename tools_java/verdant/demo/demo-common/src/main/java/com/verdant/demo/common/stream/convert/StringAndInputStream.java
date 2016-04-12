@@ -7,7 +7,7 @@ import java.io.*;
 /**
  * Created by Administrator on 2016/4/8.
  */
-public class ConvertStream {
+public class StringAndInputStream {
 
     /**
      * String转InputStream
