@@ -1,4 +1,4 @@
-package com.verdant.demo.common.type.convert;
+package com.verdant.demo.common.basicType.convert;
 
 import com.verdant.jtools.common.utils.ReflectUtils2;
 
@@ -7,7 +7,7 @@ import com.verdant.jtools.common.utils.ReflectUtils2;
  * Create: 2016/1/28
  * Func:   数字类型转换（int、Integer、String）
  */
-public class ConvertNumber {
+public class NumberAndString {
 
     /**
      * int转Integer

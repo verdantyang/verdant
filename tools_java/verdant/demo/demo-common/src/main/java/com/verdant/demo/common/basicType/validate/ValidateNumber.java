@@ -1,4 +1,4 @@
-package com.verdant.demo.common.type.validate;
+package com.verdant.demo.common.basicType.validate;
 
 import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.Assert;

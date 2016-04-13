@@ -6,7 +6,7 @@ package com.verdant.demo.common.list.sort.model;
  * Func:   列表排序
  * Desc：  方法二（重载Collections.sort方法）
  */
-public class Way2_Person {
+public class PersonWay2 {
     private String name;
     private Integer order;
 

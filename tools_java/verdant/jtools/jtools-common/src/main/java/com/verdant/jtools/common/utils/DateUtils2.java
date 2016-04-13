@@ -28,32 +28,32 @@ public class DateUtils2 {
     /**
      * 将date按照showType转换成String
      *
-     * @param dDate
+     * @param date
      * @param showType
      * @since 1.0
      * @return
      */
-    public static String turnDateToString(Date dDate, String showType) {
+    public static String turnDateToString(Date date, String showType) {
         DateFormat df = new SimpleDateFormat(showType);
-        String dateString = df.format(dDate);
+        String dateString = df.format(date);
         return dateString;
     }
 
     /**
-     * 将string转换成Date类型
+     * 将String转换成Date类型
      *
-     * @param sDate    sDate的格式要和showType相符
+     * @param strDate    sDate的格式要和showType相符
      * @param showType
      * @since 1.0
      * @return
      */
-    public static Date turnStringToDate(String sDate, String showType) {
+    public static Date turnStringToDate(String strDate, String showType) {
         DateFormat df = new SimpleDateFormat(showType);
         Date date = null;
         try {
-            date = df.parse(sDate);
+            date = df.parse(strDate);
         } catch (ParseException e) {
-            System.out.println("Error|DateUtils2|turnStringToDate|格式不一致");
+            System.err.println("Error|DateUtils2|turnStringToDate|格式不一致");
         }
         return date;
     }
@@ -72,40 +72,40 @@ public class DateUtils2 {
     /**
      * 获取处于一年中的第几周
      *
-     * @param sDate
+     * @param date
      * @since 1.0
      * @return
      */
-    public static int getWeek(Date sDate) {
+    public static int getWeek(Date date) {
         Calendar cal = Calendar.getInstance();
-        cal.setTime(sDate);
+        cal.setTime(date);
         return cal.get(Calendar.WEEK_OF_YEAR);
     }
 
     /**
      * 获取处于一年中的第几季度
      *
-     * @param sDate
+     * @param date
      * @since 1.0
      * @return
      */
-    public static int getQuarter(Date sDate) {
+    public static int getQuarter(Date date) {
         Calendar cal = Calendar.getInstance();
-        cal.setTime(sDate);
+        cal.setTime(date);
         return cal.get(Calendar.MONTH) / 4 + 1;
     }
 
     /**
      * 获取days天后的日期
      *
-     * @param dDate
+     * @param date
      * @param days
      * @since 1.0
      * @return
      */
-    public static Date getSomeDaysAgo(Date dDate, int days) {
+    public static Date getSomeDaysAgo(Date date, int days) {
         Calendar calendar = new GregorianCalendar();
-        calendar.setTime(dDate);
+        calendar.setTime(date);
         calendar.add(calendar.DATE, days);
         return calendar.getTime();
     }
@@ -113,13 +113,13 @@ public class DateUtils2 {
     /**
      * 计算一个月有多少天
      *
-     * @param dDate
+     * @param date
      * @since 1.0
      * @return
      */
-    public static int getMouthDayCount(Date dDate) {
+    public static int getMouthDayCount(Date date) {
         Calendar cal = Calendar.getInstance();
-        cal.setTime(dDate);
+        cal.setTime(date);
         return cal.getActualMaximum(Calendar.DAY_OF_MONTH);
     }
 

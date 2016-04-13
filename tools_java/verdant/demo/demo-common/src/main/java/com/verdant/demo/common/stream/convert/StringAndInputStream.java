@@ -5,7 +5,9 @@ import org.apache.commons.lang3.StringUtils;
 import java.io.*;
 
 /**
- * Created by Administrator on 2016/4/8.
+ * Author: verdant
+ * Create: 2016/4/13
+ * Desc:   String和InputStream互转
  */
 public class StringAndInputStream {
 
@@ -27,7 +29,9 @@ public class StringAndInputStream {
      * 方法一：使用BufferedReader
      *
      * @param is
+     * @param charsetName
      * @return
+     * @throws UnsupportedEncodingException
      */
     public String streamToString1(InputStream is, String charsetName) throws UnsupportedEncodingException {
         charsetName = checkCharset(charsetName);
@@ -40,6 +44,12 @@ public class StringAndInputStream {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return sb.toString();
     }
@@ -49,8 +59,8 @@ public class StringAndInputStream {
      * 方法二：直接用InputStream的read方法
      *
      * @param is
+     * @param charsetName
      * @return
-     * @throws IOException
      */
     public String streamToString2(InputStream is, String charsetName) {
         charsetName = checkCharset(charsetName);
@@ -73,7 +83,9 @@ public class StringAndInputStream {
      * 备注：中间使用BufferInputStream可以提高大块数据读取效率（不用也行）
      *
      * @param is
+     * @param charsetName
      * @return
+     * @throws UnsupportedEncodingException
      */
     public static String streamToString3(InputStream is, String charsetName) throws UnsupportedEncodingException {
         charsetName = checkCharset(charsetName);
@@ -101,6 +113,7 @@ public class StringAndInputStream {
 
     /**
      * 字符集检查
+     *
      * @param charsetName
      * @return
      */
