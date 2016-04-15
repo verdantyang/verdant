@@ -1,6 +1,7 @@
 package com.verdant.jtools.common.utils;
 
 import java.util.*;
+import java.util.regex.Pattern;
 
 /**
  * Author: verdant
@@ -56,6 +57,17 @@ import java.util.*;
  * checkSubnetMaskSize        验证掩码位数有效性，掩码位数>=1 且 <=32 为有效，否则抛异常
  */
 public class IPUtils2 {
+    private static final Pattern IP_ADDRESS = Pattern.compile(
+            "^(([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.){3}([01]?\\d\\d?|2[0-4]\\d|25[0-5])$");
+    /**
+     * 检查 IP地址是否是 合法的
+     *
+     * @param ip
+     * @return
+     */
+    public static boolean checkValid(String ip) {
+        return IP_ADDRESS.matcher(ip).matches();
+    }
     /**
      * 校验两个IP地址段是否一致
      *
