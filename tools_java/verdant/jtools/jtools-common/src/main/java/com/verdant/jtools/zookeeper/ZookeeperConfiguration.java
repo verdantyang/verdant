@@ -1,4 +1,4 @@
-package com.verdant.jtools.common.support.spring.zookeeper;
+package com.verdant.jtools.zookeeper;
 
 import org.apache.curator.RetryPolicy;
 

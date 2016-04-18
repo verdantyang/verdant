@@ -1,13 +1,14 @@
 package com.verdant.jtools.common.generic.model;
 
 
-import com.verdant.jtools.common.support.spring.ContextHolder;
-import com.verdant.jtools.common.utils.StringUtils2;
+import com.verdant.jtools.spring.support.ContextHolder;
 import com.verdant.jtools.metadata.code.ResultCode;
 import com.verdant.jtools.metadata.exception.ServiceException;
 import com.verdant.jtools.metadata.model.Page;
+import org.apache.commons.lang3.StringUtils;
 
 public class ResponseMessage {
+    private static final String CODE_PATTERN = "(\\w+(\\.*)\\w+)*";
     /**
      * 接口返回码
      */
@@ -130,7 +131,7 @@ public class ResponseMessage {
     }
 
     private void processCode() {
-        if (!StringUtils2.isEmpty(this.code) && this.code.matches("(\\w+(\\.*)\\w+)*")) {
+        if (!StringUtils.isEmpty(this.code) && this.code.matches(CODE_PATTERN)) {
             String message[] = ContextHolder.getMessage(this.code).split("\\|");
             this.message = message[0];
             this.code = message[1];

@@ -1,8 +1,7 @@
-package com.verdant.jtools.common.support.spring.zookeeper;
+package com.verdant.jtools.zookeeper;
 
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
-import org.apache.zookeeper.data.Stat;
 
 import java.util.*;
 
