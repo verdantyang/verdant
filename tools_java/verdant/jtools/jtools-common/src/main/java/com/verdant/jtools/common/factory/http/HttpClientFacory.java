@@ -1,4 +1,4 @@
-package com.verdant.jtools.common.factory;
+package com.verdant.jtools.common.factory.http;
 
 import org.apache.http.Consts;
 import org.apache.http.HttpEntityEnclosingRequest;
@@ -29,15 +29,16 @@ import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 
 /**
- * Created by Administrator on 2016/4/20.
+ * HttpClient工厂
+ *
+ * @author verdant
+ * @version 2016.4.20
  */
 public class HttpClientFacory {
 
     private static CloseableHttpClient httpClient = null;
-    private static HttpClientContext httpClientContext = null;
 
     private static PoolingHttpClientConnectionManager httpClientConnectionManager = null;
-
     private static RequestConfig defaultRequestConfig = null;
     private static TrustManager[] trustManagers = new TrustManager[1];
     private static SSLContext sslContext = null;
@@ -52,15 +53,6 @@ public class HttpClientFacory {
 
     public static CloseableHttpClient getInstance() {
         return httpClient;
-    }
-
-
-    public static void destory() {
-        try {
-            httpClient.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     static {
@@ -78,6 +70,14 @@ public class HttpClientFacory {
         httpClientBuilder.setRetryHandler(inintRetryHandler());
 
         httpClient = httpClientBuilder.build();
+    }
+
+    public static void destory() {
+        try {
+            httpClient.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private static HttpRequestRetryHandler inintRetryHandler() {
@@ -102,8 +102,6 @@ public class HttpClientFacory {
         };
         return retryHandler;
     }
-
-
 
     private static void initConnectionManager() {
         // Connection配置
@@ -148,7 +146,7 @@ public class HttpClientFacory {
         };
 
         try {
-//            SSLContext sslContext = SSLContexts.custom()
+//            sslContext = SSLContexts.custom()
 //                    .useProtocol(PROTOCOL_SSL)
 //                    .loadTrustMaterial(null, new TrustSelfSignedStrategy())
 //                    .build();

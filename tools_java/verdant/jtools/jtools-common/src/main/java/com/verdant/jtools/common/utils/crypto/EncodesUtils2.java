@@ -3,8 +3,9 @@
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  */
-package com.verdant.jtools.common.utils;
+package com.verdant.jtools.common.utils.crypto;
 
+import com.verdant.jtools.common.utils.Exceptions;
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.binary.Hex;
@@ -15,15 +16,15 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 
 /**
- * 封装各种格式的编码解码工具类.
- * 
- * 1.Commons-Codec的 hex/base64 编码
- * 2.自制的base62 编码
- * 3.Commons-Lang的xml/html escape
- * 4.JDK提供的URLEncoder
- * 
+ * Author: verdant
+ * Create: 2016/4/25
+ * Func:   封装各种格式的编码解码工具类
+ *     Commons-Codec的 hex/base64 编码
+ *     Commons-Lang的xml/html escape
+ *     JDK提供的URLEncoder
+ *     自制的base62 编码
  */
-public class Encodes {
+public class EncodesUtils2 {
 
 	private static final String DEFAULT_URL_ENCODING = "UTF-8";
 	private static final char[] BASE62 = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".toCharArray();
@@ -68,7 +69,7 @@ public class Encodes {
 	}
 
 	/**
-	 * Base62编码。
+	 * Base62编码
 	 */
 	public static String encodeBase62(byte[] input) {
 		char[] chars = new char[input.length];
@@ -79,35 +80,35 @@ public class Encodes {
 	}
 
 	/**
-	 * Html 转码.
+	 * Html 转码
 	 */
 	public static String escapeHtml(String html) {
 		return StringEscapeUtils.escapeHtml4(html);
 	}
 
 	/**
-	 * Html 解码.
+	 * Html 解码
 	 */
 	public static String unescapeHtml(String htmlEscaped) {
 		return StringEscapeUtils.unescapeHtml4(htmlEscaped);
 	}
 
 	/**
-	 * Xml 转码.
+	 * Xml 转码
 	 */
 	public static String escapeXml(String xml) {
 		return StringEscapeUtils.escapeXml10(xml);
 	}
 
 	/**
-	 * Xml 解码.
+	 * Xml 解码
 	 */
 	public static String unescapeXml(String xmlEscaped) {
 		return StringEscapeUtils.unescapeXml(xmlEscaped);
 	}
 
 	/**
-	 * URL 编码, Encode默认为UTF-8. 
+	 * URL 编码, Encode默认为UTF-8.
 	 */
 	public static String urlEncode(String part) {
 		try {
@@ -118,7 +119,7 @@ public class Encodes {
 	}
 
 	/**
-	 * URL 解码, Encode默认为UTF-8. 
+	 * URL 解码, Encode默认为UTF-8.
 	 */
 	public static String urlDecode(String part) {
 

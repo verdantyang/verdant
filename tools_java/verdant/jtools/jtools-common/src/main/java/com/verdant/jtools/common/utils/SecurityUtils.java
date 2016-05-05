@@ -1,5 +1,6 @@
 package com.verdant.jtools.common.utils;
 
+import com.verdant.jtools.common.utils.baseType.StringUtils2;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.jasypt.salt.RandomSaltGenerator;
 import org.jasypt.util.text.BasicTextEncryptor;

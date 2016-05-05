@@ -23,43 +23,49 @@ import java.nio.charset.MalformedInputException;
 public class HttpConn {
     private final Integer TIMEOUT_CONN = 60;
     private final Integer TIMEOUT_READ = 60;
+    private final String url = "http://localhost/api/manage/login";
 
 
     public void way1() {
 
-        HttpClient httpclient = new DefaultHttpClient();
-
-        HttpPost httpPost = new HttpPost("http://localhost/api/manage/login");
+        HttpClient httpClient = new DefaultHttpClient();
+        HttpPost httpPost = new HttpPost(url);
         MultipartEntity entity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE, null, Charset.forName("UTF-8"));
-        entity.addPart("user_id", new StringBody("test@sh.com", Charset.forName("UTF-8")));
-        httpPost.setEntity(entity);
+        try {
+            entity.addPart("user_id", new StringBody("test@sh.com", Charset.forName("UTF-8")));
+            httpPost.setEntity(entity);
 
-        HttpResponse response = httpclient.execute(httpPost);
-        if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-            System.out.println(EntityUtils.toString(response.getEntity()));
-            finally{
-                httpPost.releaseConnection();
+            HttpResponse response = httpClient.execute(httpPost);
+            if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+                System.out.println(EntityUtils.toString(response.getEntity()));
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            httpPost.releaseConnection();
         }
     }
 
     public void way2(String url) throws MalformedURLException {
-        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+        try {
+            HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
 
-        //设置是否从httpUrlConnection读入，默认情况下是true
-        connection.setDoInput(true);
-        //设置是否向httpUrlConnection输出（默认情况false），post请求参数要放在http正文内
-        connection.setDoOutput(true);
+            //设置是否从httpUrlConnection读入，默认情况下是true
+            connection.setDoInput(true);
+            //设置是否向httpUrlConnection输出（默认情况false），post请求参数要放在http正文内
+            connection.setDoOutput(true);
 
-        connection.setConnectTimeout(TIMEOUT_CONN);
-        connection.setReadTimeout(TIMEOUT_READ);
+            connection.setConnectTimeout(TIMEOUT_CONN);
+            connection.setReadTimeout(TIMEOUT_READ);
 
-        connection.setRequestProperty("timestamp", System.currentTimeMillis() + "");
+            connection.setRequestProperty("timestamp", System.currentTimeMillis() + "");
 
-        connection.setRequestMethod("GET");
-        if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-            InputStream is = connection.getInputStream());
-
+            connection.setRequestMethod("GET");
+            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                InputStream is = connection.getInputStream();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

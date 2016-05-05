@@ -1,7 +1,8 @@
 package com.verdant.jtools.spring.support;
 
 import com.alibaba.fastjson.JSON;
-import com.verdant.jtools.common.utils.StringUtils2;
+import com.verdant.jtools.common.utils.baseType.StringUtils2;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -90,13 +91,13 @@ public class ContextHolder extends ApplicationObjectSupport {
             return null;
         }
         String ip = request.getHeader("x-forwarded-for");
-        if (StringUtils2.isEmpty(ip) || "unknown".equalsIgnoreCase(ip)) {
+        if (StringUtils.isEmpty(ip) || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getHeader("Proxy-Client-IP");
         }
-        if (StringUtils2.isEmpty(ip) || "unknown".equalsIgnoreCase(ip)) {
+        if (StringUtils.isEmpty(ip) || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getHeader("WL-Proxy-Client-IP");
         }
-        if (StringUtils2.isEmpty(ip) || "unknown".equalsIgnoreCase(ip)) {
+        if (StringUtils.isEmpty(ip) || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getRemoteAddr();
         }
         return ip;

@@ -16,7 +16,7 @@ public class Context {
     public void setStrategy(Strategy strategy){
         this.strategy = strategy;
     }
-    public void execut(){
+    public void execute(){
         this.strategy.execute();
     }
 }

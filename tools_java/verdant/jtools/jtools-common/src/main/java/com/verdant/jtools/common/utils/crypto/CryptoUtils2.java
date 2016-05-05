@@ -1,4 +1,4 @@
-package com.verdant.jtools.common.utils;
+package com.verdant.jtools.common.utils.crypto;
 
 import javax.crypto.Mac;
 import javax.crypto.SecretKey;

@@ -1,4 +1,4 @@
-package com.verdant.jtools.common.utils;
+package com.verdant.jtools.common.utils.baseType;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -6,9 +6,9 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
+ * 日期工具类
+ *
  * Author: verdant
- * Create: 2016/1/22
- * Func:   日期工具类
  */
 public class DateUtils2 {
 

@@ -1,13 +1,9 @@
 package common;
 
-import com.verdant.jtools.common.utils.HttpClientUtils2;
-import org.apache.http.HttpEntity;
+import com.verdant.jtools.common.utils.http.HttpClientUtils2;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
-import org.apache.http.util.EntityUtils;
 import org.junit.Test;
-
-import java.io.InputStream;
 
 /**
  * Created by Administrator on 2016/4/20.

@@ -3,7 +3,7 @@
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  */
-package com.verdant.jtools.common.utils;
+package com.verdant.jtools.common.utils.crypto;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -39,7 +39,6 @@ public class Identities {
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	/**
@@ -69,7 +68,7 @@ public class Identities {
 	public static String randomBase62(int length) {
 		byte[] randomBytes = new byte[length];
 		random.nextBytes(randomBytes);
-		return Encodes.encodeBase62(randomBytes);
+		return EncodesUtils2.encodeBase62(randomBytes);
 	}
 
 	/**

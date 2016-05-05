@@ -1,4 +1,4 @@
-package com.verdant.jtools.common.utils;
+package com.verdant.jtools.common.utils.other;
 
 import java.util.*;
 import java.util.regex.Pattern;

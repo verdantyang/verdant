@@ -15,12 +15,12 @@ public class Client {
         Context context;
 
         context = new Context(new ConcreteStrategy1());
-        context.execut();
+        context.execute();
 
         context.setStrategy(new ConcreteStrategy2());
-        context.execut();
+        context.execute();
 
         context.setStrategy(new ConcreteStrategy3());
-        context.execut();
+        context.execute();
     }
 }
