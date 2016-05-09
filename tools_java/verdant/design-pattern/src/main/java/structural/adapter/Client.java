@@ -1,7 +1,7 @@
 package structural.adapter;
 
-import structural.adapter.target.ConcreteTarget;
-import structural.adapter.target.Target;
+import structural.adapter.adapterTarget.ConcreteTarget;
+import structural.adapter.adapterTarget.Target;
 import structural.adapter.adapter.Adapter;
 
 /**

@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>jtools</artifactId>
-        <groupId>com.jtools</groupId>
+        <groupId>com.verdant</groupId>
+        <artifactId>verdant</artifactId>
         <version>0.1-SNAPSHOT</version>
     </parent>
 

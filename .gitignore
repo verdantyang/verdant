@@ -15,9 +15,9 @@ target/
 .idea/
 out/
 
-#Node.JS
+# Node.JS
 node_modules/
 npm-debug.log
 
-#Work
+# Work
 work

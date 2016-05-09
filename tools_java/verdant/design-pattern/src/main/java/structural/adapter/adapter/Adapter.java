@@ -1,6 +1,6 @@
 package structural.adapter.adapter;
 
-import structural.adapter.target.Target;
+import structural.adapter.adapterTarget.Target;
 import structural.adapter.adaptee.Adaptee;
 
 /**
