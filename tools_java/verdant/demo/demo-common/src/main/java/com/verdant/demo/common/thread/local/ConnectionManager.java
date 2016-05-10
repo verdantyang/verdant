@@ -5,7 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- * Created by Administrator on 2016/4/15.
+ * Author: verdant
+ * Desc:   本地线程应用
  */
 public class ConnectionManager {
 

@@ -10,9 +10,9 @@ import java.net.Socket;
 
 /**
  * Author: verdant
- * Func:   BIO客户端
+ * Desc:   TCP BIO客户端
  */
-public class BioClient {
+public class TcpBioClient {
     private static final String HOST = "127.0.0.1";
     private static final Integer PORT = 7888;
     private static final String END = "quit";
@@ -21,7 +21,7 @@ public class BioClient {
 
     private Socket socket;
 
-    public BioClient() throws IOException {
+    public TcpBioClient() throws IOException {
         socket = new Socket(HOST, PORT);
         BufferedReader systemIn = new BufferedReader(new InputStreamReader(System.in));
         PrintWriter clientOut = new PrintWriter(socket.getOutputStream(), true);
@@ -49,7 +49,7 @@ public class BioClient {
 
     public static void main(String[] args) {
         try {
-            new BioClient();
+            new TcpBioClient();
         } catch (IOException e) {
             e.printStackTrace();
         }

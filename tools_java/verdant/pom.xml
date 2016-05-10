@@ -68,21 +68,21 @@
 
         <!--9.3.x must need java8,so we use 9.2.x-->
         <jetty.version>9.2.10.v20150310</jetty.version>
-        <maven.repository.address>http://192.168.6.217:8081</maven.repository.address>
+        <maven.repository.address>http://maven.oschina.net</maven.repository.address>
 
     </properties>
 
     <repositories>
-        <repository>
-            <id>nexus-releases</id>
-            <name>Internal Releases</name>
-            <url>${maven.repository.address}/nexus/content/repositories/releases</url>
-        </repository>
-        <repository>
-            <id>nexus-snapshots</id>
-            <name>Internal Snapshots</name>
-            <url>${maven.repository.address}/nexus/content/repositories/snapshots/</url>
-        </repository>
+        <!--<repository>-->
+            <!--<id>nexus-releases</id>-->
+            <!--<name>Internal Releases</name>-->
+            <!--<url>${maven.repository.address}/nexus/content/repositories/releases</url>-->
+        <!--</repository>-->
+        <!--<repository>-->
+            <!--<id>nexus-snapshots</id>-->
+            <!--<name>Internal Snapshots</name>-->
+            <!--<url>${maven.repository.address}/nexus/content/repositories/snapshots/</url>-->
+        <!--</repository>-->
     </repositories>
 
     <distributionManagement>

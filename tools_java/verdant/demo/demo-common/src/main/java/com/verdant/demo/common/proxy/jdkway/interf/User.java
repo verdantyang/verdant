@@ -1,4 +1,4 @@
-package com.verdant.demo.common.proxy.jdkway.inter;
+package com.verdant.demo.common.proxy.jdkway.interf;
 
 /**
  * Author: verdant

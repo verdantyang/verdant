@@ -7,8 +7,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.InetSocketAddress;
-import java.net.SocketAddress;
-import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
@@ -16,20 +14,20 @@ import java.nio.charset.Charset;
 
 /**
  * Author: verdant
- * Func:   NIO客户端
+ * Desc:   TCP NIO客户端
  */
-public class NioClient {
+public class TcpNioClient {
     private static final String HOST = "127.0.0.1";
     private static final Integer PORT = 7889;
     private static final String END = "quit";
-    private static final Integer TIME_OUT = 60;
+    private static final Integer TIME_OUT = 1000;
 
     private volatile boolean flag = true;
 
     private SocketChannel channel;
     private Selector selector;
 
-    public NioClient() throws IOException {
+    public TcpNioClient() throws IOException {
         selector = Selector.open();
         channel = SocketChannel.open();
         channel.configureBlocking(false);
@@ -40,8 +38,8 @@ public class NioClient {
         BufferedReader systemIn = new BufferedReader(new InputStreamReader(System.in));
 
         while (flag) {
-            System.out.println("Please enter the send message:");
             if (channel.isConnected()) {
+                System.out.println("Please enter the send message:");
                 String clientSay = systemIn.readLine();
                 if (StringUtils.isEmpty(clientSay)) {
                     continue;
@@ -53,7 +51,6 @@ public class NioClient {
             }
 
             int nKeys = selector.select(TIME_OUT);
-            // nKeys>0 说明有IO事件发生
             if (nKeys > 0) {
                 for (SelectionKey key : selector.selectedKeys()) {
                     if (key.isConnectable()) {      //发生连接的事件
@@ -61,7 +58,7 @@ public class NioClient {
                         sc.configureBlocking(false);
                         sc.register(selector, SelectionKey.OP_READ);
                         sc.finishConnect();
-                    } else if (key.isReadable()) {      //有流可读取
+                    } else if (key.isReadable()) {
                         SocketChannel sc = (SocketChannel) key.channel();
                         System.out.println("Server reply：" + SocketUtils2.readFromChannel(sc));
                     }
@@ -73,13 +70,13 @@ public class NioClient {
         systemIn.close();
         channel.close();
         selector.close();
-//        System.exit(0);
+        System.exit(0);
     }
 
 
     public static void main(String[] args) throws IOException {
         try {
-            new NioClient();
+            new TcpNioClient();
         } catch (IOException e) {
             e.printStackTrace();
         }

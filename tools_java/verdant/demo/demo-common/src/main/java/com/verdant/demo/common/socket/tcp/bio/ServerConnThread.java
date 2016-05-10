@@ -10,7 +10,7 @@ import java.net.Socket;
 
 /**
  * Author: verdant
- * Func:   BIO服务端线程
+ * Desc:   BIO服务端线程
  */
 public class ServerConnThread implements Runnable {
     private static final String END = "bye";

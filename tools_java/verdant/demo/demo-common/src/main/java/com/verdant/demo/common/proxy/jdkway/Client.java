@@ -1,6 +1,6 @@
 package com.verdant.demo.common.proxy.jdkway;
 
-import com.verdant.demo.common.proxy.jdkway.inter.User;
+import com.verdant.demo.common.proxy.jdkway.interf.User;
 import com.verdant.demo.common.proxy.jdkway.impl.UserImpl;
 import com.verdant.demo.common.proxy.jdkway.proxy.UserProxy;
 import org.junit.Test;

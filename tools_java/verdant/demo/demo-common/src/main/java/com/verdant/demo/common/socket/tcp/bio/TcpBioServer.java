@@ -6,17 +6,17 @@ import java.net.Socket;
 
 /**
  * Author: verdant
- * Func:   BIO服务端
+ * Desc:   TCP BIO服务端
  */
-public class BioServer {
+public class TcpBioServer {
     private static final Integer PORT = 7888;
 
-    private Integer clientCounter = 0;
+    private volatile Integer clientCounter = 0;
 
     private ServerSocket serverSocket;
     private Socket socket;
 
-    public BioServer() throws IOException {
+    public TcpBioServer() throws IOException {
         serverSocket = new ServerSocket(PORT);
         System.out.println("Server listen on port: " + PORT);
 
@@ -29,7 +29,7 @@ public class BioServer {
 
     public static void main(String[] args) {
         try {
-            new BioServer();
+            new TcpBioServer();
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -7,7 +7,7 @@ import java.nio.charset.Charset;
 
 /**
  * Author: verdant
- * Func:   Socket工具类
+ * Desc:   Socket工具类
  */
 public class SocketUtils2 {
     /**

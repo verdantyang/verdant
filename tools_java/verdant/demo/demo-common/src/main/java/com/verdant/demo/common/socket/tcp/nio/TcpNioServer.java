@@ -5,8 +5,6 @@ import com.verdant.demo.common.socket.SocketUtils2;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
-import java.net.SocketAddress;
-import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
@@ -15,11 +13,11 @@ import java.nio.charset.Charset;
 
 /**
  * Author: verdant
- * Func:   NIO服务端
+ * Desc:   TCP NIO服务端
  */
-public class NioServer {
+public class TcpNioServer {
     private static final Integer PORT = 7889;
-    private static final Integer TIME_OUT = 60;
+    private static final Integer TIME_OUT = 1000;
     private static final String SHUTDOWN = "shutdown";
 
     private volatile boolean flag = true;
@@ -28,7 +26,7 @@ public class NioServer {
     private ServerSocketChannel channel;
     private Selector selector;
 
-    public NioServer() throws IOException {
+    public TcpNioServer() throws IOException {
         selector = Selector.open();
         channel = ServerSocketChannel.open();
         channel.configureBlocking(false);
@@ -41,9 +39,9 @@ public class NioServer {
 
         while (flag) {
             int nKeys = selector.select(TIME_OUT);
-            SocketChannel sc = null;
             //nKeys>0 说明有IO事件发生
             if (nKeys > 0) {
+                SocketChannel sc = null;
                 for (SelectionKey key : selector.selectedKeys()) {
                     if (key.isAcceptable()) {      //发生连接的事件
                         ServerSocketChannel server = (ServerSocketChannel) key.channel();
@@ -62,7 +60,7 @@ public class NioServer {
                             System.out.println("Server shutdown!");
                             break;
                         }
-                        String outMessage = "Get message (" + SocketUtils2.readFromChannel(sc) + ")";
+                        String outMessage = "Get message (" + message + ")";
                         System.out.println(outMessage);
                         if (message.length() > 0)
                             sc.write(Charset.forName("UTF-8").encode(outMessage));
@@ -71,6 +69,8 @@ public class NioServer {
                 }
             }
         }
+        serverSocket.close();
+        channel.close();
         selector.close();
         System.exit(0);
     }
@@ -81,7 +81,7 @@ public class NioServer {
      */
     public static void main(String[] args) throws IOException {
         try {
-            new NioServer();
+            new TcpNioServer();
         } catch (IOException e) {
             e.printStackTrace();
         }
