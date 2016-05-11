@@ -1,14 +1,18 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+            http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.ycy.demo</groupId>
-	<artifactId>hadoop</artifactId>
-	<version>0.0.1</version>
-	<packaging>jar</packaging>
+	<parent>
+		<artifactId>demo</artifactId>
+		<groupId>com.verdant</groupId>
+		<version>0.1-SNAPSHOT</version>
+	</parent>
 
-	<name>hadoop</name>
-	<url>http://maven.apache.org</url>
+	<artifactId>demo-hadoop</artifactId>
+	<packaging>jar</packaging>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -16,48 +20,35 @@
 
 	<dependencies>
 		<dependency>
-	        <groupId>jdk.tools</groupId>
-	        <artifactId>jdk.tools</artifactId>
-	        <version>1.6</version>
-	        <scope>system</scope>
-	        <systemPath>${JAVA_HOME}/lib/tools.jar</systemPath>
-	    </dependency>
-		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.9</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
-		</dependency>	
-		<dependency>
-    		<groupId>net.sf.json-lib</groupId>
-    		<artifactId>json-lib</artifactId>
-    		<version>2.3</version>
-    		<classifier>jdk13</classifier>
 		</dependency>
 		<dependency>
     		<groupId>org.apache.hadoop</groupId>
     		<artifactId>hadoop-yarn-common</artifactId>
-    		<version>2.3.0</version>
+    		<version>${hadoop.version}</version>
 		</dependency>	
 		<dependency>
     		<groupId>org.apache.hadoop</groupId>
     		<artifactId>hadoop-hdfs</artifactId>
-    		<version>2.3.0</version>
+    		<version>${hadoop.version}</version>
 		</dependency>
 		<dependency>
     		<groupId>org.apache.hadoop</groupId>
     		<artifactId>hadoop-mapreduce-client-common</artifactId>
-    		<version>2.3.0</version>
+    		<version>${hadoop.version}</version>
 		</dependency>
 		<dependency>
     		<groupId>org.apache.hadoop</groupId>
     		<artifactId>hadoop-mapreduce-client-core</artifactId>
-    		<version>2.3.0</version>
+    		<version>${hadoop.version}</version>
 		</dependency>
 		<dependency>
     		<groupId>org.apache.hadoop</groupId>
     		<artifactId>hadoop-mapreduce-client-jobclient</artifactId>
-    		<version>2.3.0</version>
+    		<version>${hadoop.version}</version>
 		</dependency>
 		<dependency>
         <groupId>org.apache.hadoop</groupId>

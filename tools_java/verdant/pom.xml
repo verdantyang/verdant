@@ -66,6 +66,8 @@
         <snmp4j.version>1.10.1</snmp4j.version>
         <snmp4j.agent.version>1.3.1</snmp4j.agent.version>
 
+        <hadoop.version>2.3.0</hadoop.version>
+
         <!--9.3.x must need java8,so we use 9.2.x-->
         <jetty.version>9.2.10.v20150310</jetty.version>
         <maven.repository.address>http://maven.oschina.net</maven.repository.address>

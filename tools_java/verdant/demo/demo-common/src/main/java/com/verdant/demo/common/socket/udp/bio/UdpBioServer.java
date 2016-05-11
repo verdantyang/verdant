@@ -12,8 +12,10 @@ public class UdpBioServer {
     private static final Integer PORT_SERVER = 7001;
     private static final Integer BUFFER_SIZE = 1024;
 
+    private DatagramSocket serverSocket;
+
     public UdpBioServer() throws IOException {
-        DatagramSocket serverSocket = new DatagramSocket(PORT_SERVER);
+        serverSocket = new DatagramSocket(PORT_SERVER);
         System.out.println("Server listen on port: " + PORT_SERVER);
 
         while (true) {
