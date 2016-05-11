@@ -10,7 +10,7 @@ import java.net.DatagramSocket;
  */
 public class UdpBioServer {
     private static final Integer PORT_SERVER = 7001;
-    private static final Integer BUFFER_SIZE = 7888;
+    private static final Integer BUFFER_SIZE = 1024;
 
     public UdpBioServer() throws IOException {
         DatagramSocket serverSocket = new DatagramSocket(PORT_SERVER);

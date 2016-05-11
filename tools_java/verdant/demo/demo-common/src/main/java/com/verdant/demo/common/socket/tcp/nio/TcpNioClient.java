@@ -1,6 +1,6 @@
 package com.verdant.demo.common.socket.tcp.nio;
 
-import com.verdant.demo.common.socket.SocketUtils2;
+import com.verdant.demo.common.socket.utils.SocketUtils2;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.BufferedReader;
