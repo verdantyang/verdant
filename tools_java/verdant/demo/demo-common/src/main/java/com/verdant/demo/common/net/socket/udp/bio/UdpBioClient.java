@@ -15,8 +15,10 @@ import java.net.InetAddress;
 public class UdpBioClient {
     private static final Integer PORT_SERVER = 7001;
 
+    private DatagramSocket socket;
+
     public UdpBioClient() throws IOException {
-        DatagramSocket socket = new DatagramSocket();
+        socket = new DatagramSocket();
         BufferedReader systemIn = new BufferedReader(new InputStreamReader(System.in));
         InetAddress host = Inet4Address.getLocalHost();
         while (true) {

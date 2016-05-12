@@ -1,13 +1,17 @@
 package com.verdant.demo.common.net.netty;
 
-import org.jboss.netty.bootstrap.ClientBootstrap;
-import org.jboss.netty.channel.*;
-import org.jboss.netty.channel.socket.nio.NioClientSocketChannelFactory;
-import org.jboss.netty.handler.codec.string.StringDecoder;
-import org.jboss.netty.handler.codec.string.StringEncoder;
+import io.netty.bootstrap.Bootstrap;
+import io.netty.buffer.Unpooled;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.EventLoopGroup;
+import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.SocketChannel;
+import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.http.*;
 
-import java.net.InetSocketAddress;
-import java.util.concurrent.Executors;
+import java.net.URI;
 
 /**
  * Author: verdant
@@ -15,46 +19,49 @@ import java.util.concurrent.Executors;
  */
 public class NettyClient {
 
-    public static void main(String[] args) {
+    public void connect(String host, int port) throws Exception {
+        EventLoopGroup workerGroup = new NioEventLoopGroup();
 
-//        ChannelFactory factory = new NioClientSocketChannelFactory(
-//                Executors.newCachedThreadPool(),
-//                Executors.newCachedThreadPool());
-//        ClientBootstrap bootstrap = new ClientBootstrap(factory);
-//        bootstrap.setPipelineFactory(new ChannelPipelineFactory() {
-//            public ChannelPipeline getPipeline() {
-//                ChannelPipeline pipeline = Channels.pipeline();
-//                pipeline.addLast("encode",new StringEncoder());
-//                pipeline.addLast("decode",new StringDecoder());
-//                pipeline.addLast("handler",new TimeClientHandler());
-//                return pipeline;
-//            }
-//        });
-//        bootstrap.setOption("tcpNoDelay" , true);
-//        bootstrap.setOption("keepAlive", true);
-//        bootstrap.connect (new InetSocketAddress("127.0.0.1", 8080));
+        try {
+            Bootstrap b = new Bootstrap();
+            b.group(workerGroup);
+            b.channel(NioSocketChannel.class);
+            b.option(ChannelOption.SO_KEEPALIVE, true);
+            b.handler(new ChannelInitializer<SocketChannel>() {
+                @Override
+                public void initChannel(SocketChannel ch) throws Exception {
+                    // 客户端接收到的是httpResponse响应，所以要使用HttpResponseDecoder进行解码
+                    ch.pipeline().addLast(new HttpResponseDecoder());
+                    // 客户端发送的是httprequest，所以要使用HttpRequestEncoder进行编码
+                    ch.pipeline().addLast(new HttpRequestEncoder());
+                    ch.pipeline().addLast(new NettyClientHandler());
+                }
+            });
 
-        // Configure the client.
-        ClientBootstrap bootstrap = new ClientBootstrap(
-                new NioClientSocketChannelFactory(Executors.newCachedThreadPool(), Executors.newCachedThreadPool()));
+            // Start the client.
+            ChannelFuture f = b.connect(host, port).sync();
 
-        // Set up the default event pipeline.
-        bootstrap.setPipelineFactory(new ChannelPipelineFactory() {
-            @Override
-            public ChannelPipeline getPipeline() throws Exception {
-                return Channels.pipeline(new StringDecoder(), new StringEncoder(), new NettyClientHandler());
-            }
-        });
+            URI uri = new URI("http://127.0.0.1:8844");
+            String msg = "Are you ok?";
+            DefaultFullHttpRequest request = new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET,
+                    uri.toASCIIString(), Unpooled.wrappedBuffer(msg.getBytes("UTF-8")));
 
-        // Start the connection attempt.
-        ChannelFuture future = bootstrap.connect(new InetSocketAddress("localhost", 8000));
+            // 构建http请求
+            request.headers().set(HttpHeaders.Names.HOST, host);
+            request.headers().set(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.KEEP_ALIVE);
+            request.headers().set(HttpHeaders.Names.CONTENT_LENGTH, request.content().readableBytes());
+            // 发送http请求
+            f.channel().write(request);
+            f.channel().flush();
+            f.channel().closeFuture().sync();
+        } finally {
+            workerGroup.shutdownGracefully();
+        }
 
-        // Wait until the connection is closed or the connection attempt fails.
-        future.getChannel().getCloseFuture().awaitUninterruptibly();
-
-        // Shut down thread pools to exit.
-        bootstrap.releaseExternalResources();
     }
 
-
+    public static void main(String[] args) throws Exception {
+        NettyClient client = new NettyClient();
+        client.connect("127.0.0.1", 8844);
+    }
 }

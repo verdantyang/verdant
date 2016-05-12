@@ -1,62 +1,58 @@
 package com.verdant.demo.common.net.netty;
 
-import org.jboss.netty.bootstrap.ServerBootstrap;
-import org.jboss.netty.channel.*;
-import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
-import org.jboss.netty.handler.codec.string.StringDecoder;
-import org.jboss.netty.handler.codec.string.StringEncoder;
 
-import java.net.InetSocketAddress;
-import java.util.concurrent.Executors;
+import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.EventLoopGroup;
+import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.SocketChannel;
+import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.http.HttpRequestDecoder;
+import io.netty.handler.codec.http.HttpResponseEncoder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Author: verdant
  * Desc:   Netty服务端
  */
 public class NettyServer {
-    public static void main(String[] args) {
-        ServerBootstrap bootstrap = new ServerBootstrap(new NioServerSocketChannelFactory(Executors.newCachedThreadPool(), Executors.newCachedThreadPool()));
 
-        // Set up the default event pipeline.
-        bootstrap.setPipelineFactory(new ChannelPipelineFactory() {
-            @Override
-            public ChannelPipeline getPipeline() throws Exception {
-                return Channels.pipeline(new StringDecoder(), new StringEncoder(), new ServerHandler());
-            }
-        });
+    private static final Integer PORT_SERVER = 6488;
+    private static final Logger log = LoggerFactory.getLogger(NettyServer.class);
 
-        // Bind and start to accept incoming connections.
-        Channel bind = bootstrap.bind(new InetSocketAddress(8000));
-        System.out.println("Server已经启动，监听端口: " + bind.getLocalAddress() + "， 等待客户端注册。。。");
+    public void start(int port) throws Exception {
+        EventLoopGroup bossGroup = new NioEventLoopGroup();
+        EventLoopGroup workerGroup = new NioEventLoopGroup();
+        try {
+            ServerBootstrap b = new ServerBootstrap();
+            b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)
+                    .childHandler(new ChannelInitializer<SocketChannel>() {
+                        @Override
+                        public void initChannel(SocketChannel ch) throws Exception {
+                            // server端发送的是httpResponse，所以要使用HttpResponseEncoder进行编码
+                            ch.pipeline().addLast(new HttpResponseEncoder());
+                            // server端接收到的是httpRequest，所以要使用HttpRequestDecoder进行解码
+                            ch.pipeline().addLast(new HttpRequestDecoder());
+                            ch.pipeline().addLast(new NettyServerHandler());
+                        }
+                    }).option(ChannelOption.SO_BACKLOG, 128)
+                    .childOption(ChannelOption.SO_KEEPALIVE, true);
+
+            ChannelFuture f = b.bind(port).sync();
+
+            f.channel().closeFuture().sync();
+        } finally {
+            workerGroup.shutdownGracefully();
+            bossGroup.shutdownGracefully();
+        }
     }
 
-    private static class ServerHandler extends SimpleChannelHandler {
-        @Override
-        public void messageReceived(ChannelHandlerContext ctx, MessageEvent e) throws Exception {
-            if (e.getMessage() instanceof String) {
-                String message = (String) e.getMessage();
-                System.out.println("Client发来:" + message);
-
-                e.getChannel().write("Server已收到刚发送的:" + message);
-
-                System.out.println("\n等待客户端输入。。。");
-            }
-
-            super.messageReceived(ctx, e);
-        }
-
-        @Override
-        public void exceptionCaught(ChannelHandlerContext ctx, ExceptionEvent e) throws Exception {
-            super.exceptionCaught(ctx, e);
-        }
-
-        @Override
-        public void channelConnected(ChannelHandlerContext ctx, ChannelStateEvent e) throws Exception {
-            System.out.println("有一个客户端注册上来了。。。");
-            System.out.println("Client:" + e.getChannel().getRemoteAddress());
-            System.out.println("Server:" + e.getChannel().getLocalAddress());
-            System.out.println("\n等待客户端输入。。。");
-            super.channelConnected(ctx, e);
-        }
+    public static void main(String[] args) throws Exception {
+        NettyServer server = new NettyServer();
+        log.info("Http Server listening on 8844 ...");
+        server.start(8844);
     }
 }
