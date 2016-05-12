@@ -21,10 +21,9 @@
             <onMismatch>DENY</onMismatch>
         </filter>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-        <!-- daily rollover -->
-        <fileNamePattern>error.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
-        <!-- keep 30 days' worth of history -->
-        <maxHistory>30</maxHistory>
+            <fileNamePattern>error.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
     </appender>
 
     <logger name="org.springframework" level="WARN" />
