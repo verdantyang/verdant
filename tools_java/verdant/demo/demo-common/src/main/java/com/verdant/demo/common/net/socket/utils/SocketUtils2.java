@@ -1,4 +1,4 @@
-package com.verdant.demo.common.socket.utils;
+package com.verdant.demo.common.net.socket.utils;
 
 import java.io.IOException;
 import java.net.SocketAddress;
@@ -13,7 +13,7 @@ import java.nio.charset.Charset;
  */
 public class SocketUtils2 {
 
-    private static final Integer BUFFER_SIZE = 1024;
+    private static final Integer readBufferSize = 1024;
     private static final String FORMAT = "%s/%s send message: %s";
     /**
      * 从SocketChannel中读取数据
@@ -23,7 +23,7 @@ public class SocketUtils2 {
      */
     public static String readFromChannel(SocketChannel sc) throws IOException {
         String message = "";
-        ByteBuffer buffer = ByteBuffer.allocate(BUFFER_SIZE);
+        ByteBuffer buffer = ByteBuffer.allocate(readBufferSize);
         int readBytes = 0;
         try {
             int ret = 0;
@@ -49,7 +49,7 @@ public class SocketUtils2 {
     public static ClientMessage readFromChannel(DatagramChannel sc) throws IOException {
         ClientMessage cm = new ClientMessage();
         String message = "";
-        ByteBuffer bufIn = ByteBuffer.allocate(BUFFER_SIZE);
+        ByteBuffer bufIn = ByteBuffer.allocate(readBufferSize);
         bufIn.clear();
         try {
             SocketAddress socketAddress = sc.receive(bufIn);      // read into buffer

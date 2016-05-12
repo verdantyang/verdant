@@ -1,6 +1,6 @@
-package com.verdant.demo.common.socket.tcp.nio;
+package com.verdant.demo.common.net.socket.tcp.nio;
 
-import com.verdant.demo.common.socket.utils.SocketUtils2;
+import com.verdant.demo.common.net.socket.utils.SocketUtils2;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.BufferedReader;
@@ -18,7 +18,7 @@ import java.nio.charset.Charset;
  */
 public class TcpNioClient {
     private static final String HOST = "127.0.0.1";
-    private static final Integer PORT = 7889;
+    private static final Integer PORT_SERVER = 7889;
     private static final String END = "quit";
     private static final Integer TIME_OUT = 1000;
 
@@ -33,7 +33,7 @@ public class TcpNioClient {
         channel.configureBlocking(false);
         channel.register(selector, SelectionKey.OP_CONNECT);
 
-        channel.connect(new InetSocketAddress(HOST, PORT));
+        channel.connect(new InetSocketAddress(HOST, PORT_SERVER));
 
         BufferedReader systemIn = new BufferedReader(new InputStreamReader(System.in));
 

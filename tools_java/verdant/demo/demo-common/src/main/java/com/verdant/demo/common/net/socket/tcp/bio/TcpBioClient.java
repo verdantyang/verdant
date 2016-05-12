@@ -1,4 +1,4 @@
-package com.verdant.demo.common.socket.tcp.bio;
+package com.verdant.demo.common.net.socket.tcp.bio;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -14,7 +14,7 @@ import java.net.Socket;
  */
 public class TcpBioClient {
     private static final String HOST = "127.0.0.1";
-    private static final Integer PORT = 7888;
+    private static final Integer PORT_SERVER = 7888;
     private static final String END = "quit";
 
     private volatile boolean flag = true;
@@ -22,7 +22,7 @@ public class TcpBioClient {
     private Socket socket;
 
     public TcpBioClient() throws IOException {
-        socket = new Socket(HOST, PORT);
+        socket = new Socket(HOST, PORT_SERVER);
         BufferedReader systemIn = new BufferedReader(new InputStreamReader(System.in));
         PrintWriter clientOut = new PrintWriter(socket.getOutputStream(), true);
         BufferedReader serverIn = new BufferedReader(new InputStreamReader(socket.getInputStream()));

@@ -1,4 +1,4 @@
-package com.verdant.demo.common.socket.tcp.bio;
+package com.verdant.demo.common.net.socket.tcp.bio;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -9,7 +9,7 @@ import java.net.Socket;
  * Desc:   TCP BIO服务端
  */
 public class TcpBioServer {
-    private static final Integer PORT = 7888;
+    private static final Integer PORT_SERVER = 7888;
 
     private volatile Integer clientCounter = 0;
 
@@ -17,8 +17,8 @@ public class TcpBioServer {
     private Socket socket;
 
     public TcpBioServer() throws IOException {
-        serverSocket = new ServerSocket(PORT);
-        System.out.println("Server listen on port: " + PORT);
+        serverSocket = new ServerSocket(PORT_SERVER);
+        System.out.println("Server listen on port: " + PORT_SERVER);
 
         while (true) {
             socket = serverSocket.accept();

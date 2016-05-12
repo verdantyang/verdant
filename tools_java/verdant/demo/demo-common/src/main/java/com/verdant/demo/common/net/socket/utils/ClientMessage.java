@@ -1,7 +1,8 @@
-package com.verdant.demo.common.socket.utils;
+package com.verdant.demo.common.net.socket.utils;
 
 /**
- * Created by Administrator on 2016/5/11.
+ * Author: verdant
+ * Desc:   Client发送信息
  */
 public class ClientMessage {
     private String host;

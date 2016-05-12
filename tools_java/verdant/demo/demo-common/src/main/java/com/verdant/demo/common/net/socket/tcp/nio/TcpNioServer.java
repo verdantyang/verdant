@@ -1,6 +1,6 @@
-package com.verdant.demo.common.socket.tcp.nio;
+package com.verdant.demo.common.net.socket.tcp.nio;
 
-import com.verdant.demo.common.socket.utils.SocketUtils2;
+import com.verdant.demo.common.net.socket.utils.SocketUtils2;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -16,7 +16,7 @@ import java.nio.charset.Charset;
  * Desc:   TCP NIO服务端
  */
 public class TcpNioServer {
-    private static final Integer PORT = 7889;
+    private static final Integer PORT_SERVER = 7889;
     private static final Integer TIME_OUT = 1000;
     private static final String SHUTDOWN = "shutdown";
 
@@ -33,9 +33,9 @@ public class TcpNioServer {
         channel.register(selector, SelectionKey.OP_ACCEPT);
 
         serverSocket = channel.socket();
-        serverSocket.bind(new InetSocketAddress(PORT));
+        serverSocket.bind(new InetSocketAddress(PORT_SERVER));
 
-        System.out.println("Server listen on port: " + PORT);
+        System.out.println("Server listen on port: " + PORT_SERVER);
 
         while (flag) {
             int nKeys = selector.select(TIME_OUT);

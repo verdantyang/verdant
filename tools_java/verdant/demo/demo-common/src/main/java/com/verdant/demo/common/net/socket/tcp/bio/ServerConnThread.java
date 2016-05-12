@@ -1,4 +1,4 @@
-package com.verdant.demo.common.socket.tcp.bio;
+package com.verdant.demo.common.net.socket.tcp.bio;
 
 import org.apache.commons.lang3.StringUtils;
 
