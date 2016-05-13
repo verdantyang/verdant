@@ -17,7 +17,7 @@ public class MinaClient {
     private static final String HOST = "127.0.0.1";
     private static final Integer PORT_SERVER = 6488;
 
-    public static void main(String[] args) {
+    public MinaClient(){
         // 创建客户端连接器.
         NioSocketConnector connector = new NioSocketConnector();
 
@@ -42,5 +42,9 @@ public class MinaClient {
         cf.getSession().getCloseFuture().awaitUninterruptibly();
         // 释放连接
         connector.dispose();
+    }
+
+    public static void main(String[] args) {
+        new MinaClient();
     }
 }

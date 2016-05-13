@@ -19,7 +19,7 @@ public class MinaServer {
     //服务端监听端口
     private static final Integer PORT_SERVER = 6488;
 
-    public static void main(String[] args) throws IOException {
+    public MinaServer() throws IOException {
         // 创建服务端监控线程
         IoAcceptor acceptor = new NioSocketAcceptor();
         acceptor.getSessionConfig().setReadBufferSize(2048);
@@ -36,5 +36,13 @@ public class MinaServer {
         // 监听端口
         acceptor.bind(new InetSocketAddress(PORT_SERVER));
         System.out.println("Server listen on port: " + PORT_SERVER);
+    }
+
+    public static void main(String[] args) throws IOException {
+        try {
+            new MinaServer();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
