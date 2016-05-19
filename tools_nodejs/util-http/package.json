@@ -1,4 +1,4 @@
 {
-	"name": "http-tools",
-	"main": "./main.js"
+	"name": "http-utils",
+	"main": "index.js"
 }

@@ -3,7 +3,7 @@ var http = require('http'),
 
 var requestNatvie = require('../util-http/request_native'),
     requestThird = require('../util-http/request_ext');
-
+  
 describe('util-http', function() {
     var svr;
     before(function() {

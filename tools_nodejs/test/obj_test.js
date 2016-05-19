@@ -1,6 +1,6 @@
 function Foo() {}
 var foo = new Foo();
-console.log(window.JSON)
+// console.log(window.JSON)
 console.log(foo.__proto__) // function Foo(){}
 console.log(foo.constructor) // function Foo(){}
 
