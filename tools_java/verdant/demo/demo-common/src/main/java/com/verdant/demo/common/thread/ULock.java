@@ -8,7 +8,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * Author: verdant
  * Desc:   锁应用
  */
-public class LockExample {
+public class ULock {
     public void ReentrantLockTest() throws InterruptedException {
         Lock lock = new ReentrantLock();
         lock.lock();

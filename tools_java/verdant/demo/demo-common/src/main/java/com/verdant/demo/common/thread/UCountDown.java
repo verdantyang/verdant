@@ -6,7 +6,7 @@ import java.util.concurrent.CountDownLatch;
  * Author: verdant
  * Desc:   CountDown应用
  */
-public class CountDownExample {
+public class UCountDown {
     private static final int COUNT = 10;
 
     //当启动一个线程，需要等它执行结束

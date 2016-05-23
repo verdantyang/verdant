@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 /**
  * Author: verdant
- * Desc:   本地线程应用
+ * Desc:   ThreadLocal应用
  */
 public class ConnectionManager {
 

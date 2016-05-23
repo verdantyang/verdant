@@ -7,7 +7,7 @@ import java.util.Map;
  * Author: verdant
  * Func:   Map操作
  */
-public class MapOperate {
+public class OperateMap {
     /**
      * Map遍历
      *

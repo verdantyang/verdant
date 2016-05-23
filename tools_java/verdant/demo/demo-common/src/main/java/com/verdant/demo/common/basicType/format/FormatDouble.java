@@ -7,7 +7,7 @@ import java.text.NumberFormat;
 /**
  * Created by Administrator on 2016/4/13.
  */
-public class DoubleFormat {
+public class FormatDouble {
     double f = 111231.5585;
     /**
      * 使用String.format打印
@@ -44,7 +44,7 @@ public class DoubleFormat {
 
 
     public static void main(String[] args) {
-        DoubleFormat df = new DoubleFormat();
+        FormatDouble df = new FormatDouble();
         df.accurate1();
         df.accurate2();
         df.accurate3();

@@ -9,7 +9,7 @@ import java.util.List;
  * Author: verdant
  * Func:   List操作
  */
-public class ListOperate {
+public class OperateList {
 
     //线程安全的列表
     private final List<String> list = Collections.synchronizedList(new ArrayList<String>());

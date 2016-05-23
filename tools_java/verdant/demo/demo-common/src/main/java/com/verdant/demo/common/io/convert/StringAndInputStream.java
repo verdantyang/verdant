@@ -1,4 +1,4 @@
-package com.verdant.demo.common.stream.convert;
+package com.verdant.demo.common.io.convert;
 
 import org.apache.commons.lang3.StringUtils;
 

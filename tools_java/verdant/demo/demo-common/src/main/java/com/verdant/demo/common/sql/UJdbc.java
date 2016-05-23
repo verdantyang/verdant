@@ -1,5 +1,6 @@
 package com.verdant.demo.common.sql;
 
+
 import java.sql.*;
 
 /**
@@ -7,7 +8,7 @@ import java.sql.*;
  * Create: 2016/4/19
  * Func:   数据库操作
  */
-public class JdbcWay {
+public class UJdbc {
     private static final String MYSQL_DRIVER = "com.mysql.jdbc.Driver";
     private static final String DB_URL = "jdbc:mysql://10.10.124.10:3306/ems";
     private static final String DB_USERNAME = "ems";

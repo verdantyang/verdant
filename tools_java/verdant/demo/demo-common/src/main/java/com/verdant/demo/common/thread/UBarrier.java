@@ -7,7 +7,7 @@ import java.util.concurrent.CyclicBarrier;
  * Author: verdant
  * Desc:   Barrier应用
  */
-public class BarrierExample {
+public class UBarrier {
     private int threadCount;
     private CyclicBarrier barrier;
     private int loopCount=10;

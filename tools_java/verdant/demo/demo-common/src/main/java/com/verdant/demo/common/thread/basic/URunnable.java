@@ -1,10 +1,10 @@
-package com.verdant.demo.common.thread;
+package com.verdant.demo.common.thread.basic;
 
 /**
  * Author: verdant
  * Desc:   Runnable应用
  */
-public class RunnableExample {
+public class URunnable {
     private static class ExampleRunnable1 implements Runnable{
         @Override
         public void run() {

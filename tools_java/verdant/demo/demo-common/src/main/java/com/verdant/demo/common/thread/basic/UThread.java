@@ -1,10 +1,10 @@
-package com.verdant.demo.common.thread;
+package com.verdant.demo.common.thread.basic;
 
 /**
  * Author: verdant
  * Desc:   Thread应用
  */
-public class ThreadExample {
+public class UThread {
 
     private static class ExampleThread1 extends Thread{
         @Override
