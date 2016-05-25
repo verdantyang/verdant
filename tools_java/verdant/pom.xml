@@ -79,23 +79,24 @@
 
         <flumeng.version>1.6.0</flumeng.version>
         <jetty.version>9.2.10.v20150310</jetty.version>
+        <esotericsoftware.version>3.0.3</esotericsoftware.version>
 
         <maven.repository.address>http://maven.oschina.net</maven.repository.address>
 
     </properties>
 
-    <repositories>
-        <repository>
-            <id>nexus-releases</id>
-            <name>Internal Releases</name>
-            <url>${maven.repository.address}/nexus/content/repositories/releases</url>
-        </repository>
-        <repository>
-            <id>nexus-snapshots</id>
-            <name>Internal Snapshots</name>
-            <url>${maven.repository.address}/nexus/content/repositories/snapshots/</url>
-        </repository>
-    </repositories>
+    <!--<repositories>-->
+        <!--<repository>-->
+            <!--<id>nexus-releases</id>-->
+            <!--<name>Internal Releases</name>-->
+            <!--<url>${maven.repository.address}/nexus/content/repositories/releases</url>-->
+        <!--</repository>-->
+        <!--<repository>-->
+            <!--<id>nexus-snapshots</id>-->
+            <!--<name>Internal Snapshots</name>-->
+            <!--<url>${maven.repository.address}/nexus/content/repositories/snapshots/</url>-->
+        <!--</repository>-->
+    <!--</repositories>-->
 
     <distributionManagement>
         <repository>

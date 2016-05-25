@@ -16,6 +16,8 @@
         <module>jtools-common</module>
         <module>jtools-cache</module>
         <module>jtools-metadata</module>
+        <module>jtools-proxy</module>
+        <module>jtools-sched</module>
     </modules>
 
 </project>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-lazy-init="false">
+    <!--
+    任何注解@Component的类（@Service @Controller等均实现了@Component）
+        其中方法注解@CronJob即可自动代理实现集群定时任务
+    -->
+    <bean class="com.verdant.jtools.sched.quartz.QuartzSchedulerFactoryBean">
+        <property name="configLocation" value="classpath:quartz/quartz.properties"/>
+        <property name="overwriteExistingJobs" value="true"/>
+    </bean>
+
+    <!--&lt;!&ndash; 引入配置文件 &ndash;&gt;-->
+    <!--<context:property-placeholder location="classpath*:/store/jdbc.properties" ignore-unresolvable="true"/>-->
+
+    <!--<bean id="quartzPoolProperties" class="org.apache.tomcat.jdbc.pool.PoolProperties">-->
+        <!--&lt;!&ndash; 基本属性 url、user、password &ndash;&gt;-->
+        <!--<property name="driverClassName" value="${jdbc.driver}"/>-->
+        <!--<property name="url" value="${jdbc.quartz.url}"/>-->
+        <!--<property name="username" value="${jdbc.quartz.username}"/>-->
+        <!--<property name="password" value="${jdbc.quartz.password}"/>-->
+
+        <!--&lt;!&ndash; 配置初始化大小、最小、最大 &ndash;&gt;-->
+        <!--<property name="initialSize" value="${ds.initialSize}"/>-->
+        <!--<property name="minIdle" value="${ds.minIdle}"/>-->
+        <!--<property name="maxIdle" value="${ds.maxIdle}"/>-->
+        <!--<property name="maxActive" value="${ds.maxActive}"/>-->
+
+        <!--&lt;!&ndash; 配置获取连接等待超时的时间 &ndash;&gt;-->
+        <!--<property name="maxWait" value="${ds.maxWait}"/>-->
+
+        <!--&lt;!&ndash; 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 &ndash;&gt;-->
+        <!--<property name="timeBetweenEvictionRunsMillis" value="${ds.timeBetweenEvictionRunsMillis}"/>-->
+
+        <!--&lt;!&ndash; 配置一个连接在池中最小生存的时间，单位是毫秒 &ndash;&gt;-->
+        <!--<property name="minEvictableIdleTimeMillis" value="${ds.minEvictableIdleTimeMillis}"/>-->
+
+        <!--<property name="logAbandoned" value="${ds.logAbandoned}"/>-->
+        <!--<property name="removeAbandoned" value="${ds.removeAbandoned}"/>-->
+        <!--<property name="removeAbandonedTimeout" value="${ds.removeAbandonedTimeout}"/>-->
+
+        <!--<property name="validationQuery" value="${ds.validationQuery}"/>-->
+        <!--<property name="validationInterval" value="${ds.validationInterval}"/>-->
+        <!--<property name="testWhileIdle" value="${ds.testWhileIdle}"/>-->
+        <!--<property name="testOnBorrow" value="${ds.testOnBorrow}"/>-->
+        <!--<property name="testOnReturn" value="${ds.testOnReturn}"/>-->
+        <!--<property name="jmxEnabled" value="${ds.jmxEnabled}"/>-->
+        <!--<property name="jdbcInterceptors" value="${ds.jdbcInterceptors}"/>-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; dataSource 配置 &ndash;&gt;-->
+    <!--<bean id="quartzDataSource" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">-->
+        <!--<property name="poolProperties" ref="quartzPoolProperties"></property>-->
+    <!--</bean>-->
+
+    <!--<bean class="com.commons.scheduling.quartz.QuartzSchedulerFactoryBean">-->
+        <!--<property name="configLocation" value="classpath:quartz/quartz.properties"/>-->
+        <!--<property name="overwriteExistingJobs" value="true"/>-->
+        <!--<property name="taskExecutor" ref="taskExecutor"/>-->
+        <!--<property name="dataSource" ref="quartzDataSource"/>-->
+    <!--</bean>-->
+</beans>
