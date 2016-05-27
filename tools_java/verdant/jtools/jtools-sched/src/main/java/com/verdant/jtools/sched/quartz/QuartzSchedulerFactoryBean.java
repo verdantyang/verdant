@@ -31,6 +31,7 @@ import java.util.regex.Pattern;
 
 /**
  * 定时任务Bean
+ * 一个CronTriggerFactoryBean对应一个SpringMethodInvokingJobDetailFactoryBean
  */
 public class QuartzSchedulerFactoryBean extends SchedulerFactoryBean {
     private static final Logger logger = LoggerFactory.getLogger(QuartzSchedulerFactoryBean.class);
@@ -40,7 +41,9 @@ public class QuartzSchedulerFactoryBean extends SchedulerFactoryBean {
     private DefaultListableBeanFactory acf;
     List<Trigger> triggersList;
 
+    @Override
     public void setApplicationContext(ApplicationContext applicationContext) {
+        super.setApplicationContext(applicationContext);
         this.applicationContext = applicationContext;
     }
 
@@ -51,7 +54,7 @@ public class QuartzSchedulerFactoryBean extends SchedulerFactoryBean {
     }
 
     /**
-     * 设置BeanName ,beanName覆盖 schedulerName，schedulerName为org.quartz.scheduler.instanceName
+     * 设置BeanName ,覆盖 schedulerName（schedulerName为org.quartz.scheduler.instanceName）
      * 运行时通过SCHED_NAME(instanceName)过滤需要执行的Job
      *
      * @param configLocation quartz.properties
@@ -88,6 +91,7 @@ public class QuartzSchedulerFactoryBean extends SchedulerFactoryBean {
             if (!this.nonAnnotatedClasses.contains(targetClass)) {
                 final LinkedHashSet annotatedMethods = new LinkedHashSet(1);
                 ReflectionUtils.doWithMethods(targetClass, new ReflectionUtils.MethodCallback() {
+                    @Override
                     public void doWith(Method method) throws IllegalArgumentException, IllegalAccessException {
                         CronJob jobAnnotation = AnnotationUtils.getAnnotation(method, CronJob.class);
                         if (jobAnnotation != null) {
@@ -122,7 +126,7 @@ public class QuartzSchedulerFactoryBean extends SchedulerFactoryBean {
         String classMethodName = targetClass.getSimpleName() + "_" + method.getName().substring(0, 1).toUpperCase() + method.getName().substring(1);
         String jobBeanName = classMethodName + "Job";
 
-        BeanDefinitionBuilder jobDetailBuilder = BeanDefinitionBuilder.genericBeanDefinition(MethodInvokingJobDetailFactoryBean.class);
+        BeanDefinitionBuilder jobDetailBuilder = BeanDefinitionBuilder.genericBeanDefinition(SpringMethodInvokingJobDetailFactoryBean.class);
         jobDetailBuilder.addPropertyValue("targetBeanName", targetClass.getSimpleName().substring(0, 1).toLowerCase() + targetClass.getSimpleName().substring(1));
         jobDetailBuilder.addPropertyValue("targetMethod", method.getName());
         jobDetailBuilder.addPropertyValue("name", classMethodName);

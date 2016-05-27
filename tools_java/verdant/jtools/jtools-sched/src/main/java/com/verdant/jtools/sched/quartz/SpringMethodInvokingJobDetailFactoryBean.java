@@ -10,8 +10,8 @@ import org.springframework.util.ClassUtils;
 import org.springframework.util.MethodInvoker;
 
 /**
- * 定时任务（可以对应多个Job）
- * 参考org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean（只能包装一个Job）
+ * 定时任务（和MethodInvoker是依赖关系）
+ * 参考org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean（继承自MethodInvoker，只能包装一个Job）
  */
 public class SpringMethodInvokingJobDetailFactoryBean
         implements FactoryBean<JobDetail>, BeanNameAware, BeanClassLoaderAware, BeanFactoryAware, InitializingBean {
@@ -97,13 +97,13 @@ public class SpringMethodInvokingJobDetailFactoryBean
         String name = (this.name != null ? this.name : this.beanName);
 
         // Consider the concurrent flag to choose between stateful and stateless job.
-        Class<?> jobClass = (this.concurrent ? MethodInvokingJob.class : StatefulMethodInvokingJob.class);
+        Class jobClass = (this.concurrent ? MethodInvokingJob.class : StatefulMethodInvokingJob.class);
 
         // Build JobDetail instance.
         JobDetailImpl jdi = new JobDetailImpl();
         jdi.setName(name);
         jdi.setGroup(this.group);
-        jdi.setJobClass((Class) jobClass);
+        jdi.setJobClass(jobClass);
         jdi.setDurability(true);
         jdi.setRequestsRecovery(true);
         jdi.getJobDataMap().put("targetBeanName", targetBeanName);
@@ -145,9 +145,9 @@ public class SpringMethodInvokingJobDetailFactoryBean
                 String targetBeanName = context.getMergedJobDataMap().getString("targetBeanName");
                 String targetMethod = context.getMergedJobDataMap().getString("targetMethod");
                 Object targetBean = beanFactory.getBean(targetBeanName);
-                if(targetBeanName==null || targetBean==null)
+                if (targetBeanName == null || targetBean == null)
                     throw new JobExecutionException("targetBean cannot be null.", false);
-                if(targetMethod==null)
+                if (targetMethod == null)
                     throw new JobExecutionException("targetMethod cannot be null.", false);
 
                 MethodInvoker beanMethod = new MethodInvoker();
@@ -155,8 +155,8 @@ public class SpringMethodInvokingJobDetailFactoryBean
                 beanMethod.setTargetMethod(targetMethod);
                 beanMethod.setArguments(new Object[0]);
                 beanMethod.prepare();
-                logger.info("Schedule Invoking Bean: "+targetBean+"; Method: "+targetMethod+".");
-                context.setResult( beanMethod.invoke());
+                logger.info("Schedule Invoking Bean: " + targetBean + "; Method: " + targetMethod + ".");
+                context.setResult(beanMethod.invoke());
             } catch (JobExecutionException e) {
                 throw e;
             } catch (Exception e) {
