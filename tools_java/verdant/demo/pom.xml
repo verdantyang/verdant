@@ -16,6 +16,7 @@
         <module>demo-common</module>
         <module>demo-spring</module>
         <module>demo-hadoop</module>
+        <module>demo-algo</module>
     </modules>
 
 </project>

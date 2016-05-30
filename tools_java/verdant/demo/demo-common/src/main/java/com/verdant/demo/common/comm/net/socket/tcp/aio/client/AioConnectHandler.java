@@ -19,7 +19,6 @@ public class AioConnectHandler implements CompletionHandler<Void, AsynchronousSo
 
     @Override
     public void completed(Void attachment, AsynchronousSocketChannel connector) {
-        File
         try {
             log.info("建立连接:" + connector.getLocalAddress().toString());
             connector.write(ByteBuffer.wrap(content.getBytes())).get();

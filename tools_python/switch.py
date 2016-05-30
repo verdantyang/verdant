@@ -4,7 +4,7 @@ def switch_dict(x):
         1: "one",
         2: "two"
     }
-    return switcher.get(x, "nothint")
+    return switcher.get(x, "no")
 
 
 def switch_lambda(type, x):
@@ -13,10 +13,10 @@ def switch_lambda(type, x):
         'b': lambda x: x + 7,
         'c': lambda x: x - 2
     }
-    return switcher.get(type, "no")(x)
+    return switcher.get(type, lambda x: x)(x)
     # return switcher[x]();
 
 
 if __name__ == '__main__':
-    print switch_dict(0)
-    print switch_lambda('a', 7)
+    print switch_dict(3)
+    print switch_lambda('d', 7)
