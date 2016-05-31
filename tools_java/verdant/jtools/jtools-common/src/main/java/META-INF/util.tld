@@ -7,13 +7,13 @@
 	<uri>http://java.sun.com/jsp/jstl/util</uri>
 	<tag>
 		<name>paging</name>
-		<tag-class>com.commons.common.tags.PagingTag</tag-class>
+		<tag-class>com.verdant.jtools.common.web.present.PagingTag</tag-class>
 		<body-content>empty</body-content>
 		<attribute>
 			<name>page</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
-			<type>com.commons.metadata.model.Page</type>
+			<type>com.verdant.jtools.metadata.model.Page</type>
 			<description>分页对象</description>
 		</attribute>
 		<attribute>

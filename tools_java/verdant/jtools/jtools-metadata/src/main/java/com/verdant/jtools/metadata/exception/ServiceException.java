@@ -4,9 +4,9 @@ package com.verdant.jtools.metadata.exception;
 import com.verdant.jtools.metadata.code.ResultCode;
 
 /**
- * ResultCode Web接口返回信息
  * Author: verdant
  * Create: 2016/03/14
+ * Desc: 内部服务异常
  */
 public class ServiceException extends Exception {
 

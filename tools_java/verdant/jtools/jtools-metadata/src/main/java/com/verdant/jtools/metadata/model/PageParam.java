@@ -3,9 +3,9 @@ package com.verdant.jtools.metadata.model;
 import java.io.Serializable;
 
 /**
- * PageParam 前端 - 分页对象参数
  * Author: verdant
  * Create: 2016/03/14
+ * Desc: 分页查询参数
  */
 public class PageParam implements Serializable {
     private static final long serialVersionUID = 1L;

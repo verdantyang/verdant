@@ -6,9 +6,8 @@ import java.util.regex.Pattern;
 /**
  * Author: verdant
  * Create: 2016/1/28
- * Func:   IP工具类
- * Desc:   对操作的目标IP进行合法性校验，以及对目标IP进行在用户所属的IP范围内校验
- *
+ * Desc: IP工具类（对操作的目标IP进行合法性校验，以及对目标IP进行在用户所属的IP范围内校验）
+ * <p>
  * Handle two IPRange (public)
  * validateIPEqual             校验两个IP地址段是否一致
  * checkIPRangeIntersected     校验一组IP段之间是否有交集
@@ -16,7 +15,7 @@ import java.util.regex.Pattern;
  * checkIPRangeIncluded        判断一组IP段是否完全包含了另一IP段
  * getIPRangeIntersection      取两个IP段之间的交集
  * getIPRangeDisjoint          求出要校验的IP地址段中不在源IP地址段的部分
- *
+ * <p>
  * Handle one IPRange (public)
  * getNetworkAddress           计算网络地址
  * getBeginAddress             计算第一个ip地址，并将其转换为long型数字
@@ -30,18 +29,18 @@ import java.util.regex.Pattern;
  * getEndSubnetAddress         根据子网地址(十进制)、子网掩码位数计算网段最后的IP地址
  * getIpList                   取出IP地址段中的所有IP
  * getIpListByIpMask           根据Ip地址和子网掩码位数  查询所有该网段的地址
- *
+ * <p>
  * About mask (public)
  * getMask                    根据掩码位数计算掩码
  * getAntiMask                计算反掩码
  * getSubnetSize              根据掩码位数计算子网大小
  * subMaskToSubNum            转换为掩码位数
- *
+ * <p>
  * About long type IP (public)
  * longToIP                   将10进制整数形式转换成127.0.0.1形式的IP地址
  * ipToLong                   将127.0.0.1 形式的IP地址转换成10进制整数
- *
- *
+ * <p>
+ * <p>
  * About long type IP (private)
  * longRangeToIPRange         将一个数值型表示的IP地址段，转换成字符串表示的IP地址段
  * longRangesToIPRanges       将数值表示的IP地址段拼接在一起，并转成字符串表示的IP地址段
@@ -49,16 +48,17 @@ import java.util.regex.Pattern;
  * ipRangesToLongRanges       将一组IP地址段转换成数值型起止IP数组表示的IP地址段
  * concatLongIPRanges         将数值表示的IP地址段拼接在一起。即将无序的、散碎的IP地址或IP地址段连接成从小到大有序的，连续的IP地址段
  * checkLongIPRange           验证long型IP地址段起始IP必需小于等于endIP，如不满足则抛出运行时异常
- *
+ * <p>
  * About mask (private)
  * getSubnetMaskSizeFromIP    根据IP计算子网掩码位数
  * getSubnetMaskSizeFromMask  根据掩码返回掩码位数
  * splitIPAndMask             拆分出IP和子网掩码
  * checkSubnetMaskSize        验证掩码位数有效性，掩码位数>=1 且 <=32 为有效，否则抛异常
  */
-public class IPUtils2 {
+public final class IPUtils2 {
     private static final Pattern IP_ADDRESS = Pattern.compile(
             "^(([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.){3}([01]?\\d\\d?|2[0-4]\\d|25[0-5])$");
+
     /**
      * 检查 IP地址是否是 合法的
      *
@@ -68,6 +68,7 @@ public class IPUtils2 {
     public static boolean checkValid(String ip) {
         return IP_ADDRESS.matcher(ip).matches();
     }
+
     /**
      * 校验两个IP地址段是否一致
      *
@@ -432,7 +433,7 @@ public class IPUtils2 {
      * @param ipRanges 源IP地址段，接受点分十进制IPv4、IPv4 掩码、IPv4/掩码位数、IPv4-IPv4片段四种格式
      * @return 非重复IP记数
      */
-    public static long getRangeIPCount(String... ipRanges){
+    public static long getRangeIPCount(String... ipRanges) {
         //先将字符串表示的IP地址段转换成数值型IP地址段
         List<long[]> longIPRanges = ipRangesToLongRanges(ipRanges);
 
@@ -592,7 +593,7 @@ public class IPUtils2 {
                         .append(i * ss + lastNum).append(" ")
                         .append(getMask(newSubnet));
             }
-            if (buf.length() > 0){
+            if (buf.length() > 0) {
                 return buf.substring(1);
             }
 //            return StringUtils.join(subnets, ",");

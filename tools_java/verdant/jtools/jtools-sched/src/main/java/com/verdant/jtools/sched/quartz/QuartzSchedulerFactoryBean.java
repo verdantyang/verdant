@@ -2,7 +2,7 @@ package com.verdant.jtools.sched.quartz;
 
 
 import com.verdant.jtools.sched.annotation.CronJob;
-import com.verdant.jtools.spring.utils.PropUtils;
+import com.verdant.jtools.common.spring.utils.PropUtils;
 import org.quartz.Trigger;
 import org.quartz.impl.SchedulerRepository;
 import org.quartz.impl.StdSchedulerFactory;
@@ -16,7 +16,6 @@ import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
 import org.springframework.scheduling.quartz.CronTriggerFactoryBean;
-import org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.util.StringUtils;

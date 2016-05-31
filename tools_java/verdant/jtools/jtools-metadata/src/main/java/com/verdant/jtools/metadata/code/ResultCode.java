@@ -1,9 +1,9 @@
 package com.verdant.jtools.metadata.code;
 
 /**
- * ResultCode Web接口返回信息
  * Author: verdant
  * Create: 2016/03/14
+ * Desc: Web接口返回信息
  */
 public class ResultCode {
 

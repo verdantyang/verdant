@@ -1,6 +1,6 @@
 package test;
 
-import com.verdant.jtools.spring.utils.PropUtils;
+import com.verdant.jtools.common.spring.utils.PropUtils;
 import org.junit.Before;
 import org.junit.Test;
 

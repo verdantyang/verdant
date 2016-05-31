@@ -1,5 +1,5 @@
 package com.spring.demo.web;
-import com.verdant.jtools.spring.utils.PropUtils;
+import com.verdant.jtools.common.spring.utils.PropUtils;
 /**
  * Created by verdant on 2016/1/15.
  */

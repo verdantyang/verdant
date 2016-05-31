@@ -1,8 +1,3 @@
-/**
- * Copyright (c) 2005-2012 springside.org.cn
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- */
 package com.verdant.jtools.common.utils.crypto;
 
 import java.net.InetAddress;
@@ -11,16 +6,11 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Random;
-import java.util.UUID;
 
 /**
  * 封装各种生成唯一性ID算法的工具类.
- * 
- * @author calvin
  */
 public class Identities {
-
-	private static SecureRandom random = new SecureRandom();
 
 	public static String valueBeforeMD5 = "";
 	public static String valueAfterMD5 = "";
@@ -28,8 +18,7 @@ public class Identities {
 	private static SecureRandom mySecureRand;
 
 	private static String s_id;
-	private static final int PAD_BELOW = 0x10;
-	private static final int TWO_BYTES = 0xFF;
+
 	static {
 		mySecureRand = new SecureRandom();
 		long secureInitializer = mySecureRand.nextLong();
@@ -39,36 +28,6 @@ public class Identities {
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
-	}
-
-	/**
-	 * 封装JDK自带的UUID, 通过Random数字生成, 中间有-分割.
-	 */
-	public static String uuid() {
-		return UUID.randomUUID().toString();
-	}
-
-	/**
-	 * 封装JDK自带的UUID, 通过Random数字生成, 中间无-分割.
-	 */
-	public static String uuid2() {
-		return UUID.randomUUID().toString().replaceAll("-", "");
-	}
-
-	/**
-	 * 使用SecureRandom随机生成Long.
-	 */
-	public static long randomLong() {
-		return Math.abs(random.nextLong());
-	}
-
-	/**
-	 * 基于Base62编码的SecureRandom随机生成bytes.
-	 */
-	public static String randomBase62(int length) {
-		byte[] randomBytes = new byte[length];
-		random.nextBytes(randomBytes);
-		return EncodesUtils2.encodeBase62(randomBytes);
 	}
 
 	/**
@@ -105,8 +64,8 @@ public class Identities {
 			byte[] array = md5.digest();
 			StringBuffer sb = new StringBuffer(32);
 			for (int j = 0; j < array.length; ++j) {
-				int b = array[j] & TWO_BYTES;
-				if (b < PAD_BELOW)
+				int b = array[j] & 0xFF;
+				if (b < 0x10)
 					sb.append('0');
 				sb.append(Integer.toHexString(b));
 			}

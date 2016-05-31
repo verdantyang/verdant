@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Page 序列化Page - 分页对象参数
  * Author: verdant
  * Create: 2016/03/14
+ * Desc: 分页对象，供前端使用
  */
 public class Page<E> implements Serializable{
 

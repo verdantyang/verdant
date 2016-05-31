@@ -1,6 +1,6 @@
 package common;
 
-import com.verdant.jtools.common.utils.baseType.DateUtils2;
+import com.verdant.jtools.common.utils.base.DateUtils2;
 import org.junit.Test;
 import org.junit.Assert;
 

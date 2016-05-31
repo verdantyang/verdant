@@ -40,7 +40,7 @@
           class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
         <property name="converters">
             <set>
-                <bean class="com.verdant.jtools.spring.converter.DateConverter"/>
+                <bean class="com.verdant.jtools.common.spring.support.DateConverter"/>
             </set>
         </property>
     </bean>

@@ -1,6 +1,6 @@
 package com.verdant.jtools.common.utils;
 
-import com.verdant.jtools.common.utils.baseType.DateUtils2;
+import com.verdant.jtools.common.utils.base.DateUtils2;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.poi.ss.usermodel.*;
