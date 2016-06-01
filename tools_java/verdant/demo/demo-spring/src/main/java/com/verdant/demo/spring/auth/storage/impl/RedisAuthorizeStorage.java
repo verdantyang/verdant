@@ -1,5 +1,7 @@
-package com.spring.demo.web.auth;
+package com.verdant.demo.spring.auth.storage.impl;
 
+import com.verdant.demo.spring.auth.model.AuthToken;
+import com.verdant.demo.spring.auth.storage.IAuthorizeStorage;
 import com.verdant.jtools.cache.util.CacheUtil;
 import com.verdant.jtools.metadata.code.ResultCode;
 import com.verdant.jtools.metadata.exception.ServiceException;

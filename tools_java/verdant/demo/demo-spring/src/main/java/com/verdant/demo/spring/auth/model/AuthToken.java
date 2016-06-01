@@ -1,11 +1,11 @@
-package com.spring.demo.web.auth;
+package com.verdant.demo.spring.auth.model;
 
 import java.io.Serializable;
 
 /**
- * Token 用户认证信息
  * Author: verdant
  * Date: 2016/1/13
+ * Desc: 用户认证信息
  */
 public class AuthToken implements Serializable {
 

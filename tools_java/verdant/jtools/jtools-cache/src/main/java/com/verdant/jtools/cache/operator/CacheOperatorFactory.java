@@ -1,6 +1,7 @@
 package com.verdant.jtools.cache.operator;
 
 import com.verdant.jtools.cache.manager.ICacheManager;
+import com.verdant.jtools.cache.operator.impl.CacheOperatorRedis;
 import org.springframework.data.redis.cache.RedisCacheManager;
 
 public class CacheOperatorFactory {

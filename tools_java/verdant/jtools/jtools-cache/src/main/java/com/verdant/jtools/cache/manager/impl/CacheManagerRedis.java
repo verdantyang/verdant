@@ -1,11 +1,12 @@
-package com.verdant.jtools.cache.manager;
+package com.verdant.jtools.cache.manager.impl;
 
+import com.verdant.jtools.cache.manager.ICacheManager;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.core.RedisOperations;
 
-public class CommonCacheManagerRedis extends RedisCacheManager implements ICacheManager {
+public class CacheManagerRedis extends RedisCacheManager implements ICacheManager {
 
-    public CommonCacheManagerRedis(boolean usePrefix, boolean transactionAware, RedisOperations redisOperations) {
+    public CacheManagerRedis(boolean usePrefix, boolean transactionAware, RedisOperations redisOperations) {
         super(redisOperations);
         this.setUsePrefix(usePrefix);
 

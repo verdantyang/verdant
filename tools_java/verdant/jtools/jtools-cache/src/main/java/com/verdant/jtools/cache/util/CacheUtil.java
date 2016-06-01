@@ -1,7 +1,7 @@
 package com.verdant.jtools.cache.util;
 
 import com.verdant.jtools.cache.operator.ICacheOperator;
-import com.verdant.jtools.cache.manager.CommonCacheManager;
+import com.verdant.jtools.cache.manager.CacheManager;
 import com.verdant.jtools.cache.operator.CacheOperatorFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ApplicationObjectSupport;
@@ -28,7 +28,7 @@ public class CacheUtil extends ApplicationObjectSupport {
      * spring cache管理类
      */
     @Autowired
-    private CommonCacheManager cacheManager;
+    private CacheManager cacheManager;
 
     private CacheUtil() {
     }

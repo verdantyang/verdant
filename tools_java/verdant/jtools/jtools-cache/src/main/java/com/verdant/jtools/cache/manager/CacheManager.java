@@ -2,7 +2,7 @@ package com.verdant.jtools.cache.manager;
 
 import java.util.Map;
 
-public class CommonCacheManager {
+public class CacheManager {
     private ICacheManager defaultManager;           //默认管理器
     private Map<String, ICacheManager> managers;    //用于集成异构系统缓存（暂时没用）
 
@@ -20,5 +20,4 @@ public class CommonCacheManager {
         }
         return managers.get(key);
     }
-
 }

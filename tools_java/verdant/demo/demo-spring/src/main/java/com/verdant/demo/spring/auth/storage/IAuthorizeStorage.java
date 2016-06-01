@@ -1,5 +1,6 @@
-package com.spring.demo.web.auth;
+package com.verdant.demo.spring.auth.storage;
 
+import com.verdant.demo.spring.auth.model.AuthToken;
 import com.verdant.jtools.metadata.exception.ServiceException;
 
 /**
@@ -9,7 +10,7 @@ import com.verdant.jtools.metadata.exception.ServiceException;
  */
 public interface IAuthorizeStorage {
 
-    void put(AuthToken token,Object user)throws ServiceException;
+    void put(AuthToken token, Object user)throws ServiceException;
 
     void remove(String tokenValue)throws ServiceException;
 

@@ -1,4 +1,4 @@
-package com.spring.demo.web.auth;
+package com.verdant.demo.spring.auth.model;
 
 /**
  * CommonEnum Web接口返回信息
@@ -10,6 +10,6 @@ public enum CommonEnum {
     USER,//用户name prefix
     CAPTCHA;//验证码 prefix
 
-    private CommonEnum() {
+    CommonEnum() {
     }
 }

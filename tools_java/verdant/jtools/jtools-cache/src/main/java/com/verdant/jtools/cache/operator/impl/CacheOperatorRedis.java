@@ -1,5 +1,6 @@
-package com.verdant.jtools.cache.operator;
+package com.verdant.jtools.cache.operator.impl;
 
+import com.verdant.jtools.cache.operator.ICacheOperator;
 import com.verdant.jtools.cache.util.CacheHelper;
 import org.springframework.cache.Cache;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -23,6 +24,7 @@ public class CacheOperatorRedis implements ICacheOperator {
         this.prefix = prefix;
     }
 
+    @Override
     public StringRedisTemplate getNativeCache() {
         return (StringRedisTemplate) cache.getNativeCache();
     }
