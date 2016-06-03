@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd"
+       default-lazy-init="false">
+
+    <!-- 引入配置文件 -->
+    <context:property-placeholder location="classpath*:/db/demo.jdbc.properties" ignore-unresolvable="true"/>
+
+    <bean id="poolProperties" class="org.apache.tomcat.jdbc.pool.PoolProperties" >
+        <!-- 基本属性 url、user、password -->
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+
+        <!-- 配置初始化大小、最小、最大 -->
+        <property name="initialSize" value="${ds.initialSize}"/>
+        <property name="minIdle" value="${ds.minIdle}"/>
+        <property name="maxIdle" value="${ds.maxIdle}"/>
+        <property name="maxActive" value="${ds.maxActive}"/>
+
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name="maxWait" value="${ds.maxWait}"/>
+
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value="${ds.timeBetweenEvictionRunsMillis}"/>
+
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name="minEvictableIdleTimeMillis" value="${ds.minEvictableIdleTimeMillis}"/>
+
+        <property name="logAbandoned" value="${ds.logAbandoned}"/>
+        <property name="removeAbandoned" value="${ds.removeAbandoned}"/>
+        <property name="removeAbandonedTimeout" value="${ds.removeAbandonedTimeout}"/>
+
+        <property name="validationQuery" value="${ds.validationQuery}"/>
+        <property name="validationInterval" value="${ds.validationInterval}"/>
+        <property name="testWhileIdle" value="${ds.testWhileIdle}"/>
+        <property name="testOnBorrow" value="${ds.testOnBorrow}"/>
+        <property name="testOnReturn" value="${ds.testOnReturn}"/>
+        <property name="jmxEnabled" value="${ds.jmxEnabled}"/>
+        <property name="jdbcInterceptors" value="${ds.jdbcInterceptors}"/>
+    </bean>
+
+    <!-- dataSource 配置 -->
+    <bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">
+        <property name="poolProperties" ref="poolProperties"></property>
+    </bean>
+
+</beans>

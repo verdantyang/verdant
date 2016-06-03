@@ -8,31 +8,30 @@ import com.esotericsoftware.kryo.io.Output;
 import com.esotericsoftware.kryo.pool.KryoPool;
 import org.apache.commons.lang3.ArrayUtils;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
+import java.io.*;
 
+/**
+ * Kryo序列化实现
+ *
+ * @author verdant
+ * @since 2016/06/02
+ */
 public class KryoSerializer {
 
-    public static final int BUFFER_SIZE = 2 * 1024;
-
-    public static final int MAX_BUFFER_SIZE = 1024 * 1024;
+    public static final int BUFFER_SIZE = 1024 * 1024;
 
     public static <T> byte[] serialize(T object) {
-        return serialize(object, BUFFER_SIZE, MAX_BUFFER_SIZE);
-    }
-
-    public static <T> byte[] serialize(T object, int bufferSize, int maxBufferSize) {
         if (object == null) {
             return null;
         }
 
-        KryoPool pool = KryoSerializerFactory.getDefaultPool();
-
+        KryoPool pool = KryoSerializerPool.getInstance();
         Kryo kryo = null;
+
         byte[] bytes = null;
         try {
             kryo = pool.borrow();
-            bytes = serialize(kryo, object, bufferSize, maxBufferSize);
+            bytes = serialize(kryo, object);
             return bytes;
         } catch (Exception e) {
             throw new SerializerException(e.getMessage(), e);
@@ -45,40 +44,22 @@ public class KryoSerializer {
 
             }
         }
-
     }
 
     public static <T> byte[] serialize(Kryo kryo, T object) {
-        return serialize(kryo, object, BUFFER_SIZE, MAX_BUFFER_SIZE);
-    }
-
-    public static <T> byte[] serialize(Kryo kryo, T object, int bufferSize, int maxBufferSize) {
         if (object == null) {
             return null;
         }
 
-        Output output = null;
         byte[] bytes = null;
-        try {
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            output = new Output(stream);//bufferSize, maxBufferSize
+        try (ByteArrayOutputStream stream = new ByteArrayOutputStream();
+             Output output = new Output(stream)) {
             kryo.writeClassAndObject(output, object);
             output.flush();
             bytes = stream.toByteArray();
         } catch (Exception e) {
             throw new SerializerException(e.getMessage(), e);
-        } finally {
-            try {
-                if (output != null) {
-                    output.close();
-                }
-            } catch (Exception e) {
-
-            } finally {
-                output = null;
-            }
         }
-
         return bytes;
     }
 
@@ -87,7 +68,7 @@ public class KryoSerializer {
             return null;
         }
 
-        KryoPool pool = KryoSerializerFactory.getDefaultPool();
+        KryoPool pool = KryoSerializerPool.getInstance();
         Kryo kryo = null;
         Object object = null;
         try {
@@ -114,11 +95,9 @@ public class KryoSerializer {
             return null;
         }
 
-        Input input = null;
         Object object = null;
-        try {
-            ByteArrayInputStream stream = new ByteArrayInputStream(bytes);
-            input = new Input(stream);
+        try (ByteArrayInputStream stream = new ByteArrayInputStream(bytes);
+             Input input = new Input(stream)) {
             object = kryo.readClassAndObject(input);
             if (object == null) {
                 return null;
@@ -126,17 +105,6 @@ public class KryoSerializer {
             return (T) object;
         } catch (Exception e) {
             throw new SerializerException(e.getMessage(), e);
-        } finally {
-            try {
-                if (input != null) {
-                    input.close();
-                }
-            } catch (Exception e) {
-
-            } finally {
-                input = null;
-            }
         }
-
     }
 }

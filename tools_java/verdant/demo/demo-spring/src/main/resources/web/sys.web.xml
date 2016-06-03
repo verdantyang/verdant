@@ -13,25 +13,25 @@
             http://www.springframework.org/schema/aop
             http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <mvc:annotation-driven />
+    <mvc:annotation-driven/>
     <context:component-scan base-package="com.verdant.demo.spring"/>
 
     <!--<aop:aspectj-autoproxy proxy-target-class="true"/>-->
 
     <!--<mvc:interceptors>-->
-        <!--<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"/>-->
-        <!--<mvc:interceptor>-->
-            <!--<mvc:mapping path="/**"/>-->
-            <!--<mvc:exclude-mapping path="/api/**"/>-->
-            <!--<mvc:exclude-mapping path="/assets/**"/>-->
-            <!--<mvc:exclude-mapping path="/login/**"/>-->
-            <!--<mvc:exclude-mapping path="/authUser/login"/>-->
-            <!--<bean class="com.zyuc.cgpboss.admin.web.security.interceptor.AdminSecurityInterceptor"/>-->
-        <!--</mvc:interceptor>-->
-        <!--<mvc:interceptor>-->
-            <!--<mvc:mapping path="/api/**"/>-->
-            <!--<bean class="com.zyuc.cgpboss.admin.web.security.interceptor.OpenApiSecurityInterceptor"/>-->
-        <!--</mvc:interceptor>-->
+    <!--<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"/>-->
+    <!--<mvc:interceptor>-->
+    <!--<mvc:mapping path="/**"/>-->
+    <!--<mvc:exclude-mapping path="/api/**"/>-->
+    <!--<mvc:exclude-mapping path="/assets/**"/>-->
+    <!--<mvc:exclude-mapping path="/login/**"/>-->
+    <!--<mvc:exclude-mapping path="/authUser/login"/>-->
+    <!--<bean class="com.zyuc.cgpboss.admin.web.security.interceptor.AdminSecurityInterceptor"/>-->
+    <!--</mvc:interceptor>-->
+    <!--<mvc:interceptor>-->
+    <!--<mvc:mapping path="/api/**"/>-->
+    <!--<bean class="com.zyuc.cgpboss.admin.web.security.interceptor.OpenApiSecurityInterceptor"/>-->
+    <!--</mvc:interceptor>-->
     <!--</mvc:interceptors>-->
 
 
@@ -45,6 +45,14 @@
         </property>
     </bean>
 
+    <!--&lt;!&ndash; 启动SpringMVC的注解功能，完成请求和注解POJO的映射 &ndash;&gt;-->
+    <!--<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">-->
+        <!--<property name="messageConverters">-->
+            <!--<list>-->
+                <!--<ref bean="mappingJacksonHttpMessageConverter"/> &lt;!&ndash; JSON转换器 &ndash;&gt;-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
     <!--Support parse request/response and java bean-->
     <mvc:annotation-driven conversion-service="conversionService">
         <mvc:message-converters register-defaults="true">
@@ -104,6 +112,7 @@
         <property name="maxInMemorySize" value="40960"/>
     </bean>
 
+    <!--默认的Servlet来响应静态文件-->
     <mvc:default-servlet-handler/>
 
 </beans>

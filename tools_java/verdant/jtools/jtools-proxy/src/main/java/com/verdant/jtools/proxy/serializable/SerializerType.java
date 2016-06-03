@@ -1,7 +1,8 @@
 package com.verdant.jtools.proxy.serializable;
 
 public enum SerializerType {
-    KRYO("KRYO_SERIALIZER");
+
+    KRYO("KRYO");
 
     private String value;
 

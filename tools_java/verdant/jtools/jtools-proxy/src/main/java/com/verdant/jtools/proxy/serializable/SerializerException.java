@@ -2,7 +2,7 @@ package com.verdant.jtools.proxy.serializable;
 
 
 public class SerializerException extends RuntimeException {
-    private static final long serialVersionUID = -6478265600135929954L;
+    private static final long serialVersionUID = 5334177157885143616L;
 
     public SerializerException() {
         super();

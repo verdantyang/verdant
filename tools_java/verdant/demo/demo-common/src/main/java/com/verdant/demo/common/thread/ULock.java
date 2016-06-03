@@ -9,7 +9,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * Desc:   锁应用
  */
 public class ULock {
-    public void ReentrantLockTest() throws InterruptedException {
+    public void ReentrantLockUsage() throws InterruptedException {
         Lock lock = new ReentrantLock();
         lock.lock();
         try {  //使用共享资源
@@ -20,7 +20,7 @@ public class ULock {
         lock.tryLock();  //相比lock()，在获取锁失败时有超时机制
     }
 
-    public void ConditionTest() throws InterruptedException {
+    public void ConditionUsage() throws InterruptedException {
         ReentrantLock lock = new ReentrantLock();
         Condition condition = lock.newCondition();
         Boolean conditionCase = false;

@@ -12,7 +12,7 @@ public abstract class OutputStreamAndInputStream {
     private static final int PIPE_BUFFER = 2048;
 
     /**
-     * Write data on OutputStream here
+     * Write data into OutputStream
      *
      * @param os
      * @return
@@ -20,7 +20,7 @@ public abstract class OutputStreamAndInputStream {
     public abstract void writeDataToOutputStream(OutputStream os);
 
     /**
-     * Porcess data from InputStrea here
+     * Porcess data from InputStrea
      *
      * @param is
      * @return

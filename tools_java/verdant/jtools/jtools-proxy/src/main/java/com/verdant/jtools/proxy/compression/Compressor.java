@@ -1,16 +1,22 @@
 package com.verdant.jtools.proxy.compression;
 
 
-import com.verdant.jtools.proxy.compression.impl.QuickLz;
+import com.verdant.jtools.proxy.compression.lib.QuickLz;
 
+/**
+ * 数据压缩
+ * @author verdant
+ * @since 2016/06/02
+ */
 public class Compressor {
+    public static CompressorType defaultType = CompressorType.QUICK_LZ;
 
     public static byte[] compress(byte[] bytes) {
-        return compress(bytes, CompressorType.QUICK_LZ);
+        return compress(bytes, defaultType);
     }
 
     public static byte[] decompress(byte[] bytes) {
-        return decompress(bytes, CompressorType.QUICK_LZ);
+        return decompress(bytes, defaultType);
     }
 
     public static byte[] compress(byte[] bytes, CompressorType type) {

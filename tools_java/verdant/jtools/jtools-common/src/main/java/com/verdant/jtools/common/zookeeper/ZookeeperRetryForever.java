@@ -9,8 +9,10 @@ import org.slf4j.LoggerFactory;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Author: verdant
- * Date: 2015/11/12
+ * Zookeeper重试策略
+ *
+ * @author verdant
+ * @since 2016/06/02
  */
 public class ZookeeperRetryForever implements RetryPolicy {
     private static final Logger log = LoggerFactory.getLogger(ZookeeperRetryForever.class);
@@ -21,6 +23,7 @@ public class ZookeeperRetryForever implements RetryPolicy {
         this.retryIntervalMs = retryIntervalMs;
     }
 
+    @Override
     public boolean allowRetry(int retryCount, long elapsedTimeMs, RetrySleeper sleeper) {
         try {
             sleeper.sleepFor((long) this.retryIntervalMs, TimeUnit.MILLISECONDS);
