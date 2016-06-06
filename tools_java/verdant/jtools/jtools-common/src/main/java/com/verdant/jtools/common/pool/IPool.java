@@ -21,7 +21,7 @@ public interface IPool<C extends AbstractClient> {
 
     class Builder<C extends AbstractClient> {
         private final IFactory factory;
-        private Queue<C> queue = new ConcurrentLinkedQueue();  //传给IPool的实现
+        private Queue<C> queue = new ConcurrentLinkedQueue<C>();  //传给IPool的实现
         private boolean softReferences;
 
         public Builder(IFactory factory) {
@@ -32,7 +32,7 @@ public interface IPool<C extends AbstractClient> {
             }
         }
 
-        public IPool.Builder queue(Queue<C> queue) {
+        public IPool.Builder<C> queue(Queue<C> queue) {
             if (queue == null) {
                 throw new IllegalArgumentException("queue must not be null");
             } else {
@@ -41,14 +41,14 @@ public interface IPool<C extends AbstractClient> {
             }
         }
 
-        public IPool.Builder softReferences() {
+        public IPool.Builder<C> softReferences() {
             this.softReferences = true;
             return this;
         }
 
         public IPool<C> build() {
-            Queue q = this.softReferences ? new SoftReferenceQueue<AbstractClient>(this.queue) : this.queue;
-            return new PoolImpl(this.factory, q);
+            Queue<C> q = this.softReferences ? new SoftReferenceQueue<C>(this.queue) : this.queue;
+            return new PoolImpl<C>(this.factory, q);
         }
 
         public String toString() {

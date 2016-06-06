@@ -70,7 +70,7 @@ public class ProxyRegistry {
     }
 
     public void usePool2() {
-        IPool<ZookeeperClient> pool = new IPool.Builder<ZookeeperClient>(new IFactory<ZookeeperClient>() {
+        IPool<ZookeeperClient> pool = new IPool.Builder<ZookeeperClient>(new IFactory() {
             @Override
             public ZookeeperClient create() {
                 ZookeeperClient client = new ZookeeperClient(new ZookeeperConfig());

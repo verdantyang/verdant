@@ -14,10 +14,10 @@ import java.util.Queue;
  * @since 2016/06/06
  */
 class SoftReferenceQueue<T> implements Queue<T> {
-    private Queue<SoftReference<AbstractClient>> delegate;
+    private Queue<SoftReference<T>> delegate;
 
     public SoftReferenceQueue(Queue<?> delegate) {
-        this.delegate = delegate;
+        this.delegate = (Queue<SoftReference<T>>)delegate;
     }
 
     public T poll() {
