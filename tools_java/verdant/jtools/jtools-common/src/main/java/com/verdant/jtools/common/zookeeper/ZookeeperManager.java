@@ -1,5 +1,6 @@
 package com.verdant.jtools.common.zookeeper;
 
+import com.verdant.jtools.common.pool.config.ZookeeperConfig;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 

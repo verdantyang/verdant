@@ -10,7 +10,7 @@
     <!-- zookeeper 配置文件 -->
     <context:property-placeholder location="classpath*:/zk/demo.zookeeper.properties" ignore-unresolvable="true"/>
 
-    <bean id="zookeeperConfig" class="com.verdant.jtools.common.zookeeper.ZookeeperConfig">
+    <bean id="zookeeperConfig" class="com.verdant.jtools.common.pool.config.ZookeeperConfig">
         <!--<property name="ip" value="${proxy.platform.ip}"></property>-->
         <!--<property name="port" value="${proxy.platform.port}"></property>-->
         <!--<property name="contextPath" value="${proxy.platform.contextPath}"></property>-->
@@ -22,7 +22,7 @@
         <property name="connectionTimeoutMs" value="${zk.connectionTimeoutMs}"></property>
     </bean>
 
-    <bean class="com.verdant.jtools.common.zookeeper.AbstractPool">
+    <bean class="com.verdant.jtools.common.pool.AbstractPool">
         <property name="zookeeperConfig" ref="zookeeperConfig" />
     </bean>
 

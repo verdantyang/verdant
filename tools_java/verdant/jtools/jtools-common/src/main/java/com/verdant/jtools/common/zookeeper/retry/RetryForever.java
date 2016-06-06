@@ -1,4 +1,4 @@
-package com.verdant.jtools.common.zookeeper;
+package com.verdant.jtools.common.zookeeper.retry;
 
 import com.google.common.base.Preconditions;
 import org.apache.curator.RetryPolicy;
@@ -14,11 +14,11 @@ import java.util.concurrent.TimeUnit;
  * @author verdant
  * @since 2016/06/02
  */
-public class ZookeeperRetryForever implements RetryPolicy {
-    private static final Logger log = LoggerFactory.getLogger(ZookeeperRetryForever.class);
+public class RetryForever implements RetryPolicy {
+    private static final Logger log = LoggerFactory.getLogger(RetryForever.class);
     private final int retryIntervalMs;
 
-    public ZookeeperRetryForever(int retryIntervalMs) {
+    public RetryForever(int retryIntervalMs) {
         Preconditions.checkArgument(retryIntervalMs > 0);
         this.retryIntervalMs = retryIntervalMs;
     }

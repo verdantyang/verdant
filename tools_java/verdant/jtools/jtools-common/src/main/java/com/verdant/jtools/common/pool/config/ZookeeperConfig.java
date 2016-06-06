@@ -1,5 +1,6 @@
-package com.verdant.jtools.common.zookeeper;
+package com.verdant.jtools.common.pool.config;
 
+import com.verdant.jtools.common.zookeeper.retry.RetryForever;
 import org.apache.curator.RetryPolicy;
 
 import java.io.Serializable;
@@ -14,7 +15,7 @@ public class ZookeeperConfig extends AbstractConfig implements Serializable{
     private String connectString = "192.168.6.207:2181";
     private int sessionTimeoutMs = 20 * 1000;
     private int connectionTimeoutMs = 15 * 1000;
-    private RetryPolicy retryPolicy = new ZookeeperRetryForever(3 * 1000);
+    private RetryPolicy retryPolicy = new RetryForever(3 * 1000);
 
     public String getConnectString() {
         return connectString;
