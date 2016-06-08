@@ -1,6 +1,8 @@
-package com.verdant.jtools.common.pool;
+package com.verdant.jtools.common.pool.way1;
 
-import com.verdant.jtools.common.pool.impl.PoolImpl;
+import com.verdant.jtools.common.pool.client.AbstractClient;
+import com.verdant.jtools.common.pool.ICallback;
+import com.verdant.jtools.common.pool.utils.SoftReferenceQueue;
 
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;

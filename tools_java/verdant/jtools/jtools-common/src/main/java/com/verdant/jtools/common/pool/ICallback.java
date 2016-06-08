@@ -1,5 +1,7 @@
 package com.verdant.jtools.common.pool;
 
+import com.verdant.jtools.common.pool.client.AbstractClient;
+
 /**
  * 连接池-回调接口
  *

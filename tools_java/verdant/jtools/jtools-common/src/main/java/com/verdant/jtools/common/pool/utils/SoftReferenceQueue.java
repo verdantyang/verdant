@@ -1,6 +1,4 @@
-package com.verdant.jtools.common.pool;
-
-import com.verdant.jtools.common.pool.AbstractClient;
+package com.verdant.jtools.common.pool.utils;
 
 import java.lang.ref.SoftReference;
 import java.util.Collection;
@@ -13,7 +11,7 @@ import java.util.Queue;
  * @author verdant
  * @since 2016/06/06
  */
-class SoftReferenceQueue<T> implements Queue<T> {
+public class SoftReferenceQueue<T> implements Queue<T> {
     private Queue<SoftReference<T>> delegate;
 
     public SoftReferenceQueue(Queue<?> delegate) {

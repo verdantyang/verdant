@@ -1,4 +1,4 @@
-package com.verdant.jtools.common.pool;
+package com.verdant.jtools.common.pool.client;
 
 import java.util.Calendar;
 import java.util.UUID;

@@ -1,4 +1,6 @@
-package com.verdant.jtools.common.pool;
+package com.verdant.jtools.common.pool.way1;
+
+import com.verdant.jtools.common.pool.client.AbstractClient;
 
 /**
  * 连接池-新连接构造接口

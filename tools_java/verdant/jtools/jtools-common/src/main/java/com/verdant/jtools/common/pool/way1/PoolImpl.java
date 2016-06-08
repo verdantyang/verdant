@@ -1,9 +1,7 @@
-package com.verdant.jtools.common.pool.impl;
+package com.verdant.jtools.common.pool.way1;
 
-import com.verdant.jtools.common.pool.AbstractClient;
+import com.verdant.jtools.common.pool.client.AbstractClient;
 import com.verdant.jtools.common.pool.ICallback;
-import com.verdant.jtools.common.pool.IFactory;
-import com.verdant.jtools.common.pool.IPool;
 
 import java.util.Queue;
 
@@ -28,8 +26,8 @@ public class PoolImpl<C extends AbstractClient> implements IPool<C> {
     }
 
     public C borrow() {
-        C res;
-        return (res = this.queue.poll()) != null ? res : this.factory.create();
+        C client;
+        return (client = this.queue.poll()) != null ? client : this.factory.create();
     }
 
     public void release(C client) {
@@ -39,14 +37,14 @@ public class PoolImpl<C extends AbstractClient> implements IPool<C> {
     public <T> T run(ICallback<T, C> callback) {
         C client = this.borrow();
 
-        T var3;
+        T var;
         try {
-            var3 = callback.execute(client);
+            var = callback.execute(client);
         } finally {
             this.release(client);
         }
 
-        return var3;
+        return var;
     }
 
     public void clear() {
