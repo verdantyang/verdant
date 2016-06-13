@@ -34,7 +34,7 @@ public class EchoClient {
                     ch.pipeline().addLast(new HttpResponseDecoder());
                     // 客户端发送的是httpRequest，解析要使用HttpRequestEncoder进行编码
                     ch.pipeline().addLast(new HttpRequestEncoder());
-                    ch.pipeline().addLast(new NettyClientHandler());
+                    ch.pipeline().addLast(new EchoClientHandler());
                 }
             });
 

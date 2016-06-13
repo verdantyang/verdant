@@ -12,14 +12,14 @@ import org.slf4j.LoggerFactory;
  * Author: verdant
  * Desc:   服务端业务逻辑
  */
-public class NettyServerHandler extends ChannelInboundHandlerAdapter {
+public class EchoServerHandler extends ChannelInboundHandlerAdapter {
 
-    private static final Logger log = LoggerFactory.getLogger(NettyServerHandler.class);
+    private static final Logger log = LoggerFactory.getLogger(EchoServerHandler.class);
 
     private HttpRequest request;
 
     @Override
-    public void channelRead(ChannelHandlerContext chx, Object msg) throws Exception {
+    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         if (msg instanceof HttpRequest) {
             request = (HttpRequest) msg;
             log.info("Uri: " + request.getUri());
@@ -40,8 +40,8 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
             if (HttpHeaders.isKeepAlive(request)) {
                 response.headers().set(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.KEEP_ALIVE);
             }
-            chx.write(response);
-            chx.flush();
+            ctx.write(response);
+            ctx.flush();
         }
     }
 

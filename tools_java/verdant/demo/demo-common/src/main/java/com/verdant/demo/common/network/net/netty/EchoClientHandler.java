@@ -13,12 +13,12 @@ import org.slf4j.LoggerFactory;
  * Author: verdant
  * Desc:   客户端业务逻辑
  */
-public class NettyClientHandler extends ChannelInboundHandlerAdapter {
+public class EchoClientHandler extends ChannelInboundHandlerAdapter {
 
-    private static final Logger log = LoggerFactory.getLogger(NettyServerHandler.class);
+    private static final Logger log = LoggerFactory.getLogger(EchoServerHandler.class);
 
     @Override
-    public void channelRead(ChannelHandlerContext chx, Object msg) throws Exception {
+    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         if (msg instanceof HttpResponse) {
             HttpResponse response = (HttpResponse) msg;
             log.info("CONTENT_TYPE:" + response.headers().get(HttpHeaders.Names.CONTENT_TYPE));

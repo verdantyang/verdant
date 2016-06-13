@@ -39,7 +39,7 @@ public class EchoServer {
                     sc.pipeline().addLast(new HttpResponseEncoder());
                     // server端接收到的是httpRequest，解析要使用HttpRequestDecoder进行解码
                     sc.pipeline().addLast(new HttpRequestDecoder());
-                    sc.pipeline().addLast(new NettyServerHandler());
+                    sc.pipeline().addLast(new EchoServerHandler());
                 }
             });
 

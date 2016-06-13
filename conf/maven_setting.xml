@@ -50,7 +50,8 @@ under the License.
    | The path to the local repository maven will use to store artifacts.
    |
    | Default: ${user.home}/.m2/repository--> 
-  <localRepository>D:/dev_lib/repository</localRepository>
+  <!-- <localRepository>D:/dev_lib/repository</localRepository> -->
+  <localRepository>E:/lib/repository</localRepository>
   
 
   <!-- interactiveMode
