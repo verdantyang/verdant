@@ -7,9 +7,10 @@ import org.junit.Assert;
 import java.util.Date;
 
 /**
- * Author: verdant
- * Create: 2016/1/22
- * Func:   日期工具测试类
+ * DateUtils2测试用例
+ *
+ * @author verdant
+ * @since 2016/06/15
  */
 public class DateUtils2Test {
     @Test

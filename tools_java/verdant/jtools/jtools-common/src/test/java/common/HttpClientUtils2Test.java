@@ -6,7 +6,10 @@ import org.apache.http.entity.StringEntity;
 import org.junit.Test;
 
 /**
- * Created by Administrator on 2016/4/20.
+ * HttpClientUtils2测试用例
+ *
+ * @author verdant
+ * @since 2016/06/15
  */
 public class HttpClientUtils2Test {
     @Test

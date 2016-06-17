@@ -217,6 +217,7 @@
             <resource>
                 <directory>src/main/resources</directory>
                 <includes>
+                    <include>*.md</include>
                     <include>**/*.properties</include>
                     <include>**/*.xml</include>
                 </includes>
