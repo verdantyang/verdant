@@ -9,7 +9,10 @@ import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.ZooDefs;
 
 /**
- * Created by Administrator on 2016/6/6.
+ * Curator Client操作
+ *
+ * @author verdant
+ * @since 2016/06/02
  */
 public class CuratorClient extends AbstractClient<CuratorFramework> {
 

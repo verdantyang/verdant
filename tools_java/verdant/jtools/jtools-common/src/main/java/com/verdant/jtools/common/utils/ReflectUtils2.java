@@ -24,8 +24,10 @@ public class ReflectUtils2 {
     public static String getClassName(Object o) {
         return o.getClass().getName();
     }
+
     /**
      * 调用Getter方法
+     *
      * @param obj
      * @param propertyName
      * @return
@@ -37,6 +39,7 @@ public class ReflectUtils2 {
 
     /**
      * 调用Setter方法
+     *
      * @param obj
      * @param propertyName
      * @param value
@@ -46,8 +49,28 @@ public class ReflectUtils2 {
         invokeMethodByName(obj, setterMethodName, new Object[]{value});
     }
 
+    public static Class getSuperClassGenricType(final Class clazz, final int index) {
+        //返回表示此 Class 所表示的实体（类、接口、基本类型或 void）的直接超类的 Type。
+        Type genType = clazz.getGenericSuperclass();
+
+        if (!(genType instanceof ParameterizedType)) {
+            return Object.class;
+        }
+        //返回表示此类型实际类型参数的 Type 对象的数组。
+        Type[] params = ((ParameterizedType) genType).getActualTypeArguments();
+
+        if (index >= params.length || index < 0) {
+            return Object.class;
+        }
+        if (!(params[index] instanceof Class)) {
+            return Object.class;
+        }
+        return (Class) params[index];
+    }
+
     /**
      * 直接读取对象属性值, 无视private/protected修饰符, 不经过getter函数
+     *
      * @param obj
      * @param fieldName
      * @return
@@ -70,6 +93,7 @@ public class ReflectUtils2 {
 
     /**
      * 直接设置对象属性值, 无视private/protected修饰符, 不经过setter函数
+     *
      * @param obj
      * @param fieldName
      * @param value
@@ -127,6 +151,7 @@ public class ReflectUtils2 {
 
     /**
      * 循环向上转型, 获取对象的DeclaredField, 并强制设置为可访问.
+     *
      * @param obj
      * @param fieldName
      * @return
@@ -148,6 +173,7 @@ public class ReflectUtils2 {
 
     /**
      * 循环向上转型, 获取对象的DeclaredMethod, 并强制设置为可访问.
+     *
      * @param obj
      * @param methodName
      * @param parameterTypes
@@ -174,7 +200,7 @@ public class ReflectUtils2 {
      * 循环向上转型, 获取对象的DeclaredMethod, 并强制设置为可访问.
      * 如向上转型到Object仍无法找到, 返回null.
      * 只匹配函数名。
-     *
+     * <p>
      * 用于方法需要被多次调用的情况. 先使用本函数先取得Method,然后调用Method.invoke(Object obj, Object... args)
      */
     public static Method getAccessibleMethodByName(final Object obj, final String methodName) {
@@ -195,6 +221,7 @@ public class ReflectUtils2 {
 
     /**
      * 改变private/protected的方法为public，尽量不调用实际改动的语句，避免JDK的SecurityManager抱怨
+     *
      * @param method
      */
     public static void makeAccessible(Method method) {
@@ -206,6 +233,7 @@ public class ReflectUtils2 {
 
     /**
      * 改变private/protected的方法为public，尽量不调用实际改动的语句，避免JDK的SecurityManager抱怨
+     *
      * @param field
      */
     public static void makeAccessible(Field field) {
@@ -217,6 +245,7 @@ public class ReflectUtils2 {
 
     /**
      * 通过反射, 获得Class定义中声明的父类的泛型参数的类型.
+     *
      * @param clazz
      * @param <T>
      * @return
@@ -227,6 +256,7 @@ public class ReflectUtils2 {
 
     /**
      * 通过反射, 获得Class定义中声明的父类的泛型参数的类型.
+     *
      * @param clazz clazz The class to introspect
      * @param index the Index of the generic ddeclaration,start from 0.
      * @return the index generic declaration, or Object.class if cannot be determined
@@ -271,6 +301,7 @@ public class ReflectUtils2 {
 
     /**
      * 将反射时的checked exception转换为unchecked exception.
+     *
      * @param e
      * @return
      */

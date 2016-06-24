@@ -28,8 +28,11 @@
         <plugin.maven.dependency>2.10</plugin.maven.dependency>
 
         <verdant.version>0.1-SNAPSHOT</verdant.version>
+
+        <mysql.connector.version>5.1.36</mysql.connector.version>
         <mybatis.version>3.3.0</mybatis.version>
         <mybatis.spring.version>1.2.3</mybatis.spring.version>
+
         <spring.version>4.1.7.RELEASE</spring.version>
         <spring.data.redis.version>1.6.1.RELEASE</spring.data.redis.version>
 
@@ -57,7 +60,6 @@
         <javax.mail.version>1.5.0-b01</javax.mail.version>
         <apache.poi.version>3.12</apache.poi.version>
         <tomcat.jdbc.version>8.0.23</tomcat.jdbc.version>
-        <mysql.connector.version>5.1.36</mysql.connector.version>
         <jsqlparser.version>0.9.5</jsqlparser.version>
 
         <junit.version>4.12</junit.version>
@@ -81,6 +83,7 @@
         <flumeng.version>1.6.0</flumeng.version>
         <jetty.version>9.2.10.v20150310</jetty.version>
         <kryo.version>3.0.3</kryo.version>
+        <protobuf.version>2.5.0</protobuf.version>
 
         <maven.repository.address>http://maven.oschina.net</maven.repository.address>
 
