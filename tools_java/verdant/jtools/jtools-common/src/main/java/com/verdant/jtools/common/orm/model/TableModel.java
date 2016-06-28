@@ -8,7 +8,7 @@ import java.util.List;
  * Create: 2016/03/14
  * Desc: Model 数据库表映射对象
  */
-public abstract class Table {
+public abstract class TableModel {
     /**
      * 主键集合
      */

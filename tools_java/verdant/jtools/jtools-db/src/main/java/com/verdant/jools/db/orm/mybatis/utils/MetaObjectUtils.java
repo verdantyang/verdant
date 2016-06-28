@@ -11,7 +11,7 @@ import org.apache.ibatis.reflection.wrapper.ObjectWrapperFactory;
 /**
  * 获取反射对象
  *
- * @author gj
+ * @author verdant
  * @version 2015年2月11日
  */
 public class MetaObjectUtils

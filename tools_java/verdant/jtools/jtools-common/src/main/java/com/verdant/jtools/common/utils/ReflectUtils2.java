@@ -49,25 +49,6 @@ public class ReflectUtils2 {
         invokeMethodByName(obj, setterMethodName, new Object[]{value});
     }
 
-    public static Class getSuperClassGenricType(final Class clazz, final int index) {
-        //返回表示此 Class 所表示的实体（类、接口、基本类型或 void）的直接超类的 Type。
-        Type genType = clazz.getGenericSuperclass();
-
-        if (!(genType instanceof ParameterizedType)) {
-            return Object.class;
-        }
-        //返回表示此类型实际类型参数的 Type 对象的数组。
-        Type[] params = ((ParameterizedType) genType).getActualTypeArguments();
-
-        if (index >= params.length || index < 0) {
-            return Object.class;
-        }
-        if (!(params[index] instanceof Class)) {
-            return Object.class;
-        }
-        return (Class) params[index];
-    }
-
     /**
      * 直接读取对象属性值, 无视private/protected修饰符, 不经过getter函数
      *
@@ -117,8 +98,8 @@ public class ReflectUtils2 {
      * 用于一次性调用的情况，否则应使用getAccessibleMethod()函数获得Method后反复调用.
      * 同时匹配方法名+参数类型，
      */
-    public static Object invokeMethod(final Object obj, final String methodName, final Class<?>[] parameterTypes,
-                                      final Object[] args) {
+    public static Object invokeMethod(final Object obj, final String methodName,
+                                      final Class<?>[] parameterTypes, final Object[] args) {
         Method method = getAccessibleMethod(obj, methodName, parameterTypes);
         if (method == null) {
             throw new IllegalArgumentException("Could not find method [" + methodName + "] on target [" + obj + "]");
@@ -136,7 +117,8 @@ public class ReflectUtils2 {
      * 用于一次性调用的情况，否则应使用getAccessibleMethodByName()函数获得Method后反复调用.
      * 只匹配函数名，如果有多个同名函数调用第一个。
      */
-    public static Object invokeMethodByName(final Object obj, final String methodName, final Object[] args) {
+    public static Object invokeMethodByName(final Object obj, final String methodName,
+                                            final Object[] args) {
         Method method = getAccessibleMethodByName(obj, methodName);
         if (method == null) {
             throw new IllegalArgumentException("Could not find method [" + methodName + "] on target [" + obj + "]");
@@ -164,7 +146,7 @@ public class ReflectUtils2 {
                 Field field = superClass.getDeclaredField(fieldName);
                 makeAccessible(field);
                 return field;
-            } catch (NoSuchFieldException e) {//NOSONAR
+            } catch (NoSuchFieldException e) {
                 // Field不在当前类定义,继续向上转型
             }
         }
@@ -220,7 +202,8 @@ public class ReflectUtils2 {
     }
 
     /**
-     * 改变private/protected的方法为public，尽量不调用实际改动的语句，避免JDK的SecurityManager抱怨
+     * 改变private/protected的方法为public
+     * 尽量不调用实际改动的语句，向SecurityManager妥协
      *
      * @param method
      */
@@ -232,13 +215,14 @@ public class ReflectUtils2 {
     }
 
     /**
-     * 改变private/protected的方法为public，尽量不调用实际改动的语句，避免JDK的SecurityManager抱怨
+     * 改变private/protected的方法为public
+     * 尽量不调用实际改动的语句，向SecurityManager妥协
      *
      * @param field
      */
     public static void makeAccessible(Field field) {
-        if ((!Modifier.isPublic(field.getModifiers()) || !Modifier.isPublic(field.getDeclaringClass().getModifiers()) || Modifier
-                .isFinal(field.getModifiers())) && !field.isAccessible()) {
+        if ((!Modifier.isPublic(field.getModifiers()) || !Modifier.isPublic(field.getDeclaringClass().getModifiers()) ||
+                Modifier.isFinal(field.getModifiers())) && !field.isAccessible()) {
             field.setAccessible(true);
         }
     }
@@ -315,5 +299,24 @@ public class ReflectUtils2 {
             return (RuntimeException) e;
         }
         return new RuntimeException("Unexpected Checked Exception.", e);
+    }
+
+    public static Class getSuperClassGenricType(final Class clazz, final int index) {
+        //返回表示此 Class 所表示的实体（类、接口、基本类型或 void）的直接超类的 Type。
+        Type genType = clazz.getGenericSuperclass();
+
+        if (!(genType instanceof ParameterizedType)) {
+            return Object.class;
+        }
+        //返回表示此类型实际类型参数的 Type 对象的数组。
+        Type[] params = ((ParameterizedType) genType).getActualTypeArguments();
+
+        if (index >= params.length || index < 0) {
+            return Object.class;
+        }
+        if (!(params[index] instanceof Class)) {
+            return Object.class;
+        }
+        return (Class) params[index];
     }
 }

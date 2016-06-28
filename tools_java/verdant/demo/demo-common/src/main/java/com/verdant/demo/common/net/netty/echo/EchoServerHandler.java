@@ -53,9 +53,18 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
     }
 
     @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
-        cause.printStackTrace();
-        ctx.close();
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        logger.info("A new client connect：{}", ctx.channel().toString());
     }
 
+    @Override
+    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        logger.info("A client disconnect：{}", ctx.channel().toString());
+    }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        logger.error("Client：{} throws exception：[{}]", ctx.channel().toString(), cause);
+        ctx.close();
+    }
 }

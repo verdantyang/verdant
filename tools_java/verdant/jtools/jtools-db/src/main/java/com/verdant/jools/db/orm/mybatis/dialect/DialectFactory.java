@@ -21,7 +21,7 @@ public class DialectFactory {
             dialect = (Dialect) Class.forName(dialectClass).newInstance();
         } catch (Exception e) {
             e.printStackTrace();
-            System.err.println("请检查 mybatis-config.xml 中  dialectClass 是否配置正确?");
+            System.err.println("请检查 config.mybatis.xml 中  dialectClass 是否配置正确?");
         }
         return dialect;
     }

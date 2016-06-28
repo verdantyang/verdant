@@ -1,14 +1,14 @@
 package com.verdant.demo.spring;
 
 import com.verdant.demo.spring.auth.model.AuthToken;
-import com.verdant.jtools.common.orm.model.Table;
+import com.verdant.jtools.common.orm.model.TableModel;
 
 import java.io.Serializable;
 
 /**
  * Created by Administrator on 2016/6/2.
  */
-public class User extends Table implements Serializable{
+public class User extends TableModel implements Serializable{
     private String userId;
     private String userName;
     private String password;
