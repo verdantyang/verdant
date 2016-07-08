@@ -1,0 +1,3 @@
+test log 1
+test log 2
+test log 3

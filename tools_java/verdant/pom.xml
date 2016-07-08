@@ -89,6 +89,8 @@
         <kryo.version>3.0.3</kryo.version>
         <protobuf.version>2.5.0</protobuf.version>
         <flying.saucer.version>9.0.8</flying.saucer.version>
+        <phantom.js.version>1.3.0</phantom.js.version>
+        <itextpdf.version>5.5.9</itextpdf.version>
 
         <maven.repository.address>http://maven.oschina.net</maven.repository.address>
 

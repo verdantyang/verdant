@@ -8,7 +8,9 @@
 #include <iostream>
 using namespace std;
 
-/* Solution */
+/** Recursion Formula
+ G(n) = G[i&(i-1)] + 1
+*/
 class Solution {
 public:
 	vector<int> countBits(int num) {

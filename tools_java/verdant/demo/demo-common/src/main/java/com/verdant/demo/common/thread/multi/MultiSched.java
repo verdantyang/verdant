@@ -1,6 +1,7 @@
 package com.verdant.demo.common.thread.multi;
 
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ScheduledExecutorService;
 
 /**
  * Author: verdant
@@ -12,7 +13,7 @@ public class MultiSched {
     public static void main(String[] args) {
         ExecutorService fixedThreadPool = ThreadPool.getFixedThreadPool();
         ExecutorService cachedThreadPool= ThreadPool.getCachedThreadPool();
-        ExecutorService scheduledThreadPool= ThreadPool.getScheduledThreadPool();
+        ScheduledExecutorService scheduledThreadPool= ThreadPool.getScheduledThreadPool();
         ExecutorService singleThreadExecutor= ThreadPool.getSingleThreadExecutor();
         run(singleThreadExecutor);
     }

@@ -21,8 +21,7 @@ import java.net.InetSocketAddress;
  */
 public class ChatServer {
 
-    private final ChannelGroup group = new DefaultChannelGroup(
-            ImmediateEventExecutor.INSTANCE);
+    private final ChannelGroup group = new DefaultChannelGroup(ImmediateEventExecutor.INSTANCE);
     private final EventLoopGroup workerGroup = new NioEventLoopGroup();
     private Channel channel;
 
@@ -35,15 +34,15 @@ public class ChatServer {
         return f;
     }
 
+    protected ChannelInitializer<Channel> createInitializer(ChannelGroup group) {
+        return new ChatServerInitializer(group);
+    }
+
     public void destroy() {
         if (channel != null)
             channel.close();
         group.close();
         workerGroup.shutdownGracefully();
-    }
-
-    protected ChannelInitializer<Channel> createInitializer(ChannelGroup group) {
-        return new ChatServerInitializer(group);
     }
 
     public static void main(String[] args) {

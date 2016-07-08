@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- zookeeper 代理配置 -->
+    <context:property-placeholder location="classpath*:/proxy/proxy.demo.properties" ignore-unresolvable="true"/>
+
+
+    <bean id="zookeeperProxyConfig"  class="com.commons.proxy.center.config.ZookeeperProxyConfig">
+        <property name="ip" value="${proxy.platform.ip}"></property>
+        <property name="port" value="${proxy.platform.port}"></property>
+        <property name="contextPath" value="${proxy.platform.contextPath}"></property>
+        <property name="domain" value="${proxy.platform.domain}"></property>
+        <property name="protocol" value="${proxy.platform.protocol}"></property>
+
+        <property name="zkHost" value="${proxy.zk.host}"></property>
+        <property name="zkRoot" value="${proxy.zk.root}"></property>
+    </bean>
+
+    <bean id="zookeeperProxyRegistry" class="com.commons.proxy.center.registy.impl.ZookeeperProxyRegistry" init-method="initialize">
+        <property name="proxyConfig" ref="zookeeperProxyConfig"></property>
+    </bean>
+    <!--  END  -->
+
+</beans>

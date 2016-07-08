@@ -9,7 +9,7 @@
        default-lazy-init="false">
 
     <!-- 引入配置文件 -->
-    <context:property-placeholder location="classpath*:/db/demo.jdbc.properties" ignore-unresolvable="true"/>
+    <context:property-placeholder location="classpath*:/db/jdbc.properties" ignore-unresolvable="true"/>
 
     <bean id="poolProperties" class="org.apache.tomcat.jdbc.pool.PoolProperties" >
         <!-- 基本属性 url、user、password -->
@@ -29,7 +29,6 @@
 
         <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
         <property name="timeBetweenEvictionRunsMillis" value="${ds.timeBetweenEvictionRunsMillis}"/>
-
         <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
         <property name="minEvictableIdleTimeMillis" value="${ds.minEvictableIdleTimeMillis}"/>
 

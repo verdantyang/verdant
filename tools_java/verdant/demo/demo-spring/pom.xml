@@ -41,6 +41,12 @@
         </dependency>
 
         <dependency>
+            <artifactId>jtools-db</artifactId>
+            <groupId>com.verdant</groupId>
+            <version>0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>${servlet.api.version}</version>

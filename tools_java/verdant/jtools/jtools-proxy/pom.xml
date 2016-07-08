@@ -13,6 +13,11 @@
     <artifactId>jtools-proxy</artifactId>
 
     <dependencies>
+        <dependency>
+            <artifactId>jtools-common</artifactId>
+            <groupId>com.verdant</groupId>
+            <version>${verdant.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>junit</groupId>

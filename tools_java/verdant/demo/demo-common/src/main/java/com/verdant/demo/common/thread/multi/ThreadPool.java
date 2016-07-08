@@ -35,7 +35,7 @@ public class ThreadPool {
     public static ExecutorService getSingleThreadExecutor() {
         return singleThreadPool;
     }
-    public static ExecutorService getScheduledThreadPool() {
+    public static ScheduledExecutorService getScheduledThreadPool() {
         return scheduledThreadPool;
     }
 

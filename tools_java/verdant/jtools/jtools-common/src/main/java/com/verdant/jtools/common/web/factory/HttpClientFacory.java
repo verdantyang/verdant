@@ -151,7 +151,6 @@ public class HttpClientFacory {
 //                    .build();
 //            sslSocketFactory = new SSLConnectionSocketFactory(sslContext);
 
-
             sslContext = SSLContext.getInstance("TLS");
             sslContext.init(new KeyManager[0], trustManagers, new SecureRandom());
             sslSocketFactory = new SSLConnectionSocketFactory(sslContext,

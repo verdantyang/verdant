@@ -1,9 +1,11 @@
-package com.verdant.demo.common.net.netty.websocket;
+package com.verdant.demo.common.net.netty.websocket.secure;
 
+import com.verdant.demo.common.net.netty.websocket.ChatServer;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.group.ChannelGroup;
+
 import java.net.InetSocketAddress;
 import javax.net.ssl.SSLContext;
 
@@ -26,12 +28,12 @@ public class SecureChatServer extends ChatServer {
     }
 
     /**
-     * 获取SSLContext需要相关的keystore文件，这里没有 关于HTTPS可以查阅相关资料，这里只介绍在Netty中如何使用
+     * 获取SSLContext需要相关的keystore文件
      *
      * @return
      */
     private static SSLContext getSslContext() {
-        return null;
+        return SecureChatSslContextFactory.getServerContext();
     }
 
     public static void main(String[] args) {

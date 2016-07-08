@@ -8,7 +8,7 @@ import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 
 /**
- * WebSocket，处理消息
+ * WebSocket，消息处理器
  *
  * @author verdant
  * @since 2016/06/22
@@ -21,13 +21,11 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
     }
 
     @Override
-    public void userEventTriggered(ChannelHandlerContext ctx, Object evt)
-            throws Exception {
+    public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
         //如果WebSocket握手完成
         if (evt == WebSocketServerProtocolHandler.ServerHandshakeStateEvent.HANDSHAKE_COMPLETE) {
             //删除ChannelPipeline中的HttpRequestHandler
             ctx.pipeline().remove(HttpRequestHandler.class);
-            ctx.pipeline().remove(HttpObjectAggregator.class);
             //写一个消息到ChannelGroup
             group.writeAndFlush(new TextWebSocketFrame("Client " + ctx.channel() + " joined"));
             //将Channel添加到ChannelGroup

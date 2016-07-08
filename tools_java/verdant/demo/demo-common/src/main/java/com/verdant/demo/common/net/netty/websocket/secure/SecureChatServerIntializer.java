@@ -1,5 +1,6 @@
-package com.verdant.demo.common.net.netty.websocket;
+package com.verdant.demo.common.net.netty.websocket.secure;
 
+import com.verdant.demo.common.net.netty.websocket.ChatServerInitializer;
 import io.netty.channel.Channel;
 import io.netty.channel.group.ChannelGroup;
 import io.netty.handler.ssl.SslHandler;

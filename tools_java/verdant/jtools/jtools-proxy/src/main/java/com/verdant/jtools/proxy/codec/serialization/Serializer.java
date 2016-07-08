@@ -35,7 +35,7 @@ public class Serializer {
         return deserialize(bytes, defaultSerializerType, compress);
     }
 
-    public static <T> byte[] serialize(T object, SerializerType serializerType, boolean compress) throws CompressorException{
+    public static <T> byte[] serialize(T object, SerializerType serializerType, boolean compress) throws CompressorException {
         byte[] bytes = null;
 
         switch (serializerType) {

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 在需要代理接口的Web工程的Root ApplicationContext引用  可实现组合 不同的接口 不同的实现用不同的代理发布-->
+    <!--Proxy-->
+    <bean class="com.commons.proxy.client.ProxyServiceScannerConfigurer">
+        <property name="basePackage" value="com.pss.api.*.service"/>
+        <!--代理类-->
+        <property name="proxyBeanClass" value="com.commons.proxy.client.hessian.DistributeHessianProxyFactoryBean"/>
+        <!--服务器地址  useZookeeper=true时无效 -->
+        <property name="defaultUrlPrefix" value="http://localhost:8080/pss-service/"/>
+
+        <!--
+        <property name="excludes">
+            <list>
+                <value>正则表达式排除</value>
+            </list>
+        </property>
+        -->
+
+        <!--  删除此部分 则手动使用nginx代理方式  -->
+        <property name="proxyRegistry" ref="zookeeperProxyRegistry"></property>
+        <property name="maxVersion" value="2.0"></property>
+        <!--  删除此部分 则手动使用nginx代理方式  -->
+    </bean>
+
+</beans>

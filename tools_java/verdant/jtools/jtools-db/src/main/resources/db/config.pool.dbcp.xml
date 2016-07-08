@@ -9,8 +9,9 @@
        default-lazy-init="false">
 
     <!-- 引入配置文件 -->
-    <context:property-placeholder location="classpath*:/db/demo.jdbc.properties" ignore-unresolvable="true"/>
+    <context:property-placeholder location="classpath*:/db/jdbc.properties" ignore-unresolvable="true"/>
 
+    <!-- 数据库配置(时间以毫秒为单位) -->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${jdbc.driver}"/>
         <property name="url" value="${jdbc.url}"/>
@@ -23,23 +24,24 @@
         <property name="minIdle" value="${ds.minIdle}"/>
         <!--最大空闲连接-->
         <property name="maxIdle" value="${ds.maxIdle}"/>
-        <!--初始化连接-->
+        <!--初始化连接数-->
         <property name="initialSize" value="${ds.initialSize}"/>
 
-        <!--连接被泄露时是否打印 -->
-        <property name="logAbandoned" value="${ds.logAbandoned}"/>
         <!--是否自动回收超时连接-->
         <property name="removeAbandoned" value="${ds.removeAbandoned}"/>
         <!--超时时间(以秒为单位)-->
         <property name="removeAbandonedTimeout" value="${ds.removeAbandonedTimeout}"/>
-
         <!--超时等待时间(以毫秒为单位)-->
         <property name="maxWait" value="${ds.maxWait}"/>
-        <!--在空闲连接回收器线程运行期间休眠的时间(以毫秒为单位) -->
+
+        <!--空闲连接回收器运行间隔 -->
         <property name="timeBetweenEvictionRunsMillis" value="${ds.timeBetweenEvictionRunsMillis}"/>
-        <!--连接在池中保持空闲而不被空闲连接回收器线程-->
+        <!--空闲连接回收器回收链接的最小时间-->
         <property name="minEvictableIdleTimeMillis" value="${ds.minEvictableIdleTimeMillis}"/>
 
+        <!--连接被泄露时是否打印 -->
+        <property name="logAbandoned" value="${ds.logAbandoned}"/>
+        <!--空闲期查询语句 -->
         <property name="validationQuery" value="${ds.validationQuery}"/>
     </bean>
 
