@@ -1,7 +1,7 @@
-package com.verdant.demo.common.dataStructure.list.sort;
+package com.verdant.demo.common.structure.list.sort;
 
-import com.verdant.demo.common.dataStructure.list.sort.model.PersonWay1;
-import com.verdant.demo.common.dataStructure.list.sort.model.PersonWay2;
+import com.verdant.demo.common.structure.list.sort.model.PersonWay1;
+import com.verdant.demo.common.structure.list.sort.model.PersonWay2;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,9 +1,8 @@
-package creational.factory;
+package creational.factory.uml;
 
-import creational.factory.factory.AbstractFactory;
-import creational.factory.factory.ConcreteFactoryA;
-import creational.factory.factory.ConcreteFactoryB;
-import creational.factory.product.AbstractProduct;
+import creational.factory.uml.factory.AbstractFactory;
+import creational.factory.uml.factory.ConcreteFactoryA;
+import creational.factory.uml.factory.ConcreteFactoryB;
 
 /**
  * Author: verdant

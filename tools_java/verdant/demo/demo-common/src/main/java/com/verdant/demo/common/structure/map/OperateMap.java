@@ -1,4 +1,4 @@
-package com.verdant.demo.common.dataStructure.map;
+package com.verdant.demo.common.structure.map;
 
 import java.util.Iterator;
 import java.util.Map;

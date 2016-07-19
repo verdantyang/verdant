@@ -1,4 +1,4 @@
-package com.verdant.demo.common.dataStructure.list;
+package com.verdant.demo.common.structure.list;
 
 import java.util.ArrayList;
 import java.util.Collections;

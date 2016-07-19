@@ -1,10 +1,8 @@
-package creational.factory.product;
+package creational.factory.uml.product;
 
 import utils.DebugLog;
 import utils.DebugLogFactory;
 import utils.DesignPatternEnum;
-
-import java.util.logging.Logger;
 
 /**
  * Author: verdant

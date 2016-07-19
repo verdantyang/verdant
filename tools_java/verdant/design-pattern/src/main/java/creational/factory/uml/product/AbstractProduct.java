@@ -1,4 +1,4 @@
-package creational.factory.product;
+package creational.factory.uml.product;
 
 /**
  * Author: verdant

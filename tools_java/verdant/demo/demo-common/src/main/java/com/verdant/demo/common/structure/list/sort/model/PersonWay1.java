@@ -1,12 +1,12 @@
-package com.verdant.demo.common.dataStructure.list.sort.model;
+package com.verdant.demo.common.structure.list.sort.model;
 
 /**
  * Author: verdant
  * Create: 2016/1/28
  * Func:   列表排序
- * Desc：  方法二（重载Collections.sort方法）
+ * Desc:   方法一（实现Comparable接口的compareTo方法）
  */
-public class PersonWay2 {
+public class PersonWay1 implements Comparable<PersonWay1> {
     private String name;
     private Integer order;
 
@@ -25,4 +25,10 @@ public class PersonWay2 {
     public void setOrder(Integer order) {
         this.order = order;
     }
+
+    @Override
+    public int compareTo(PersonWay1 arg0) {
+        return this.getOrder().compareTo(arg0.getOrder());
+    }
+
 }

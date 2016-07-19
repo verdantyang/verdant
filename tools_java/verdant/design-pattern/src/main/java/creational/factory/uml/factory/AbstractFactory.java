@@ -1,6 +1,6 @@
-package creational.factory.factory;
+package creational.factory.uml.factory;
 
-import creational.factory.product.AbstractProduct;
+import creational.factory.uml.product.AbstractProduct;
 
 /**
  * Author: verdant
