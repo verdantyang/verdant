@@ -1,6 +1,6 @@
-package com.verdant.demo.common.proxy.jdkway.impl;
+package com.verdant.demo.common.proxy.jdkway.primary;
 
-import com.verdant.demo.common.proxy.jdkway.interf.User;
+import com.verdant.demo.common.proxy.jdkway.primary.User;
 
 /**
  * Author: verdant

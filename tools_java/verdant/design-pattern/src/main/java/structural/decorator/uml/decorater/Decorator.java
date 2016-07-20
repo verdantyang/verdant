@@ -1,6 +1,6 @@
-package structural.decorator.decorater;
+package structural.decorator.uml.decorater;
 
-import structural.decorator.component.Component;
+import structural.decorator.uml.component.Component;
 
 /**
  * Author: verdant

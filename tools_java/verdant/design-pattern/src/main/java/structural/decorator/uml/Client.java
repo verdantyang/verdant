@@ -1,10 +1,10 @@
-package structural.decorator;
+package structural.decorator.uml;
 
-import structural.decorator.component.Component;
-import structural.decorator.component.ConcreteComponent;
-import structural.decorator.decorater.ConcreteDecoratorA;
-import structural.decorator.decorater.ConcreteDecoratorB;
-import structural.decorator.decorater.Decorator;
+import structural.decorator.uml.component.Component;
+import structural.decorator.uml.component.ConcreteComponent;
+import structural.decorator.uml.decorater.ConcreteDecoratorA;
+import structural.decorator.uml.decorater.ConcreteDecoratorB;
+import structural.decorator.uml.decorater.Decorator;
 
 /**
  * Author: verdant

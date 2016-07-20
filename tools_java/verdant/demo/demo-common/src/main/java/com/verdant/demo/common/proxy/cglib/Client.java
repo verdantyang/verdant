@@ -1,6 +1,6 @@
 package com.verdant.demo.common.proxy.cglib;
 
-import com.verdant.demo.common.proxy.cglib.impl.UserImpl;
+import com.verdant.demo.common.proxy.cglib.primary.UserImpl;
 import com.verdant.demo.common.proxy.cglib.proxy.UserCglib;
 
 /**

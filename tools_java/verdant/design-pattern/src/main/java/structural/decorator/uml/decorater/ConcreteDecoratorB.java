@@ -1,6 +1,6 @@
-package structural.decorator.decorater;
+package structural.decorator.uml.decorater;
 
-import structural.decorator.component.Component;
+import structural.decorator.uml.component.Component;
 import utils.DebugLog;
 import utils.DebugLogFactory;
 import utils.DesignPatternEnum;
@@ -8,13 +8,13 @@ import utils.DesignPatternEnum;
 /**
  * Author: verdant
  * Create: 2016/4/12
- * Desc:   实例化装饰者A
+ * Desc:   实例化装饰者B
  */
-public class ConcreteDecoratorA extends Decorator {
+public class ConcreteDecoratorB extends Decorator {
 
-    private static final DebugLog logger = DebugLogFactory.getLogger(ConcreteDecoratorA.class, DesignPatternEnum.Decorator);
+    private static final DebugLog logger = DebugLogFactory.getLogger(ConcreteDecoratorB.class, DesignPatternEnum.Decorator);
 
-    public ConcreteDecoratorA(Component component) {
+    public ConcreteDecoratorB(Component component) {
         super(component);
     }
 

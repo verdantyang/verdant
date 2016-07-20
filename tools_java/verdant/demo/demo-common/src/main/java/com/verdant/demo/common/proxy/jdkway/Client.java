@@ -1,7 +1,7 @@
 package com.verdant.demo.common.proxy.jdkway;
 
-import com.verdant.demo.common.proxy.jdkway.interf.User;
-import com.verdant.demo.common.proxy.jdkway.impl.UserImpl;
+import com.verdant.demo.common.proxy.jdkway.primary.User;
+import com.verdant.demo.common.proxy.jdkway.primary.UserImpl;
 import com.verdant.demo.common.proxy.jdkway.proxy.UserProxy;
 import org.junit.Test;
 
@@ -15,7 +15,7 @@ public class Client {
     public void testProxy() {
         User user = new UserImpl();
         UserProxy poxy = new UserProxy();
-        User userProxy = (User)poxy.bind(user);
+        User userProxy = poxy.bind(user);
         userProxy.save();
     }
 }

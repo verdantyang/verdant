@@ -1,4 +1,4 @@
-package structural.decorator.component;
+package structural.decorator.uml.component;
 
 import utils.DebugLog;
 import utils.DebugLogFactory;

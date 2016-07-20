@@ -1,5 +1,7 @@
 package com.verdant.demo.common.proxy.jdkway.proxy;
 
+import com.verdant.demo.common.proxy.jdkway.primary.User;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -19,15 +21,16 @@ public class UserProxy implements InvocationHandler {
     private void beforMethod(Method method) {
         System.out.println(method.getName() + " begin " + new Date());
     }
+
     private void afterMethod(Method method) {
         System.out.println(method.getName() + " end " + new Date());
     }
 
-    public Object bind(Object target) {
+    public User bind(Object target) {
         this.target = target;
 
         //要绑定接口(这是一个缺陷，cglib弥补了这一缺陷)
-        return Proxy.newProxyInstance(
+        return (User) Proxy.newProxyInstance(
                 target.getClass().getClassLoader(),
                 target.getClass().getInterfaces(),
                 this);

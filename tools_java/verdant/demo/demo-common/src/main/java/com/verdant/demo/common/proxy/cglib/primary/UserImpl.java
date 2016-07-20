@@ -1,4 +1,4 @@
-package com.verdant.demo.common.proxy.cglib.impl;
+package com.verdant.demo.common.proxy.cglib.primary;
 
 /**
  * Author: verdant
