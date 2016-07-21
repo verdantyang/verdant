@@ -11,37 +11,34 @@ import java.nio.charset.CharacterCodingException;
 import java.nio.charset.Charset;
 import java.nio.charset.CharsetDecoder;
 
-public class AioReadHandler implements CompletionHandler<Integer,ByteBuffer> {
-    private static final Logger log = LoggerFactory.getLogger(AioReadHandler.class);
+public class AioReadHandler implements CompletionHandler<Integer, ByteBuffer> {
+    private static final Logger logger = LoggerFactory.getLogger(AioReadHandler.class);
 
     private CharsetDecoder decoder = Charset.forName("UTF-8").newDecoder();
 
-    private AsynchronousSocketChannel socket;
+    private AsynchronousSocketChannel channel;
 
     public AioReadHandler(AsynchronousSocketChannel socket) {
-        this.socket = socket;
+        this.channel = socket;
     }
 
-    public void cancelled(ByteBuffer attachment) {
-        log.info("cancelled");
-    }
-
-    public void completed(Integer i, ByteBuffer buf) {
+    public void completed(Integer i, ByteBuffer attachment) {
         if (i > 0) {
-            buf.flip();
+            attachment.flip();
             try {
-                log.info("客户端收到" + socket.getRemoteAddress().toString() + "的消息: " + decoder.decode(buf));
-                buf.compact();
+                logger.info("Client received {} 'message: {}",
+                        channel.getRemoteAddress().toString(), decoder.decode(attachment));
+                attachment.compact();
             } catch (CharacterCodingException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            socket.read(buf, buf, this);
+            channel.read(attachment, attachment, this);
         } else if (i == -1) {
             try {
-                System.out.println("对端断线:" + socket.getRemoteAddress().toString());
-                buf = null;
+                logger.info("Server disconnected:" + channel.getRemoteAddress().toString());
+                attachment.clear();
             } catch (IOException e) {
                 e.printStackTrace();
             }

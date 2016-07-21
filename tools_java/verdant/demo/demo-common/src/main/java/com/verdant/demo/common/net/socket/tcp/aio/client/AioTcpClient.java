@@ -1,9 +1,6 @@
 package com.verdant.demo.common.net.socket.tcp.aio.client;
 
-/**
- * Created by Administrator on 2016/5/27.
- */
-
+import com.verdant.demo.common.net.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,17 +9,20 @@ import java.net.InetSocketAddress;
 import java.net.StandardSocketOptions;
 import java.nio.channels.AsynchronousChannelGroup;
 import java.nio.channels.AsynchronousSocketChannel;
-import java.nio.charset.Charset;
-import java.nio.charset.CharsetDecoder;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * TCP AIO客户端
+ *
+ * @author verdant
+ * @since 2016/06/20
+ */
 public class AioTcpClient {
-    private static final Logger log = LoggerFactory.getLogger(AioTcpClient.class);
+    private static final Logger logger = LoggerFactory.getLogger(AioTcpClient.class);
 
     private static final Integer NUM_THREADS = 20;
     private static final Integer NUM_CONNECT = 200;
-    private final CharsetDecoder decoder = Charset.forName("UTF-8").newDecoder();
 
     private AsynchronousChannelGroup asyncChannelGroup;
 
@@ -40,7 +40,8 @@ public class AioTcpClient {
                     connector.setOption(StandardSocketOptions.TCP_NODELAY, true);
                     connector.setOption(StandardSocketOptions.SO_REUSEADDR, true);
                     connector.setOption(StandardSocketOptions.SO_KEEPALIVE, true);
-                    connector.connect(new InetSocketAddress(ip, port), connector, new AioConnectHandler(String.valueOf(i)));
+                    connector.connect(new InetSocketAddress(ip, port), connector,
+                            new AioConnectHandler(String.valueOf(i)));
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -49,7 +50,9 @@ public class AioTcpClient {
     }
 
     public static void main(String... args) throws Exception {
+        String serverHost = System.getProperty("host", "127.0.0.1");
+        Integer serverPort = Constants.PORT_TCP_AIO_SERVER;
         AioTcpClient client = new AioTcpClient();
-        client.start("localhost", 9008);
+        client.start(serverHost, serverPort);
     }
 }

@@ -4,22 +4,26 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.charset.Charset;
 
+import com.verdant.demo.common.net.Constants;
 import org.apache.mina.core.service.IoAcceptor;
 import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.filter.codec.ProtocolCodecFilter;
 import org.apache.mina.filter.codec.textline.TextLineCodecFactory;
 import org.apache.mina.filter.logging.LoggingFilter;
 import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
- * Author: verdant
- * Desc:   Mina服务端
+ * Mina服务端
+ *
+ * @author verdant
+ * @since 2016/06/15
  */
 public class MinaServer {
-    //服务端监听端口
-    private static final Integer PORT_SERVER = 6488;
+    private static final Logger logger = LoggerFactory.getLogger(MinaServerHandler.class);
 
-    public MinaServer() throws IOException {
+    public MinaServer(int port) throws IOException {
         // 创建服务端监控线程
         IoAcceptor acceptor = new NioSocketAcceptor();
         acceptor.getSessionConfig().setReadBufferSize(2048);
@@ -34,13 +38,14 @@ public class MinaServer {
         // 指定业务逻辑处理器
         acceptor.setHandler(new MinaServerHandler());
         // 监听端口
-        acceptor.bind(new InetSocketAddress(PORT_SERVER));
-        System.out.println("Server listen on port: " + PORT_SERVER);
+        acceptor.bind(new InetSocketAddress(port));
+        logger.info("Server listen on port: " + port);
     }
 
     public static void main(String[] args) throws IOException {
         try {
-            new MinaServer();
+            Integer serverPort = Constants.PORT_MINA_SERVER;
+            new MinaServer(serverPort);
         } catch (IOException e) {
             e.printStackTrace();
         }

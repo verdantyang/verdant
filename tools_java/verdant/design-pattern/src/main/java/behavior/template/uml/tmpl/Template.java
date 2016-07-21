@@ -1,9 +1,10 @@
-package behavior.template.template;
+package behavior.template.uml.tmpl;
 
 /**
- * Author: verdant
- * Create: 2016/3/30
- * Desc:   抽象模板
+ * 抽象模板
+ *
+ * @author verdant
+ * @since 2016/03/30
  */
 public abstract class Template {
 
@@ -15,5 +16,4 @@ public abstract class Template {
     protected abstract void produce1();
 
     protected abstract void produce2();
-
 }

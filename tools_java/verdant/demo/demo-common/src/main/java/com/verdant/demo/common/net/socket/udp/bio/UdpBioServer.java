@@ -1,35 +1,43 @@
 package com.verdant.demo.common.net.socket.udp.bio;
 
+import com.verdant.demo.common.net.Constants;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 
 /**
- * Author: verdant
- * Desc:   UDP BIO服务端
+ * UDP BIO服务端
+ *
+ * @author verdant
+ * @since 2016/06/20
  */
 public class UdpBioServer {
-    private static final Integer PORT_SERVER = 7001;
+    private static final Logger logger = LoggerFactory.getLogger(UdpBioServer.class);
+
     private static final Integer readBufferSize = 1024;
 
     private DatagramSocket serverSocket;
 
-    public UdpBioServer() throws IOException {
-        serverSocket = new DatagramSocket(PORT_SERVER);
-        System.out.println("Server listen on port: " + PORT_SERVER);
+    public UdpBioServer(int port) throws IOException {
+        serverSocket = new DatagramSocket(port);
+        logger.info("Server listen on port: " + port);
 
         while (true) {
             byte[] buffer = new byte[readBufferSize];
             DatagramPacket receivePacket = new DatagramPacket(buffer, buffer.length);
             serverSocket.receive(receivePacket);
             if (buffer.length > 0)
-                System.out.println("Get message (" + new String(buffer, "UTF-8") + ")");
+                logger.info("Get message (" + new String(buffer, "UTF-8") + ")");
         }
     }
 
     public static void main(String[] args) {
         try {
-            new UdpBioServer();
+            final Integer port = Constants.PORT_UDP_BIO_SERVER;
+            new UdpBioServer(port);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -7,42 +7,41 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.AsynchronousSocketChannel;
 import java.nio.channels.CompletionHandler;
-import java.nio.charset.CharacterCodingException;
 import java.nio.charset.Charset;
 import java.nio.charset.CharsetDecoder;
 
-public class AioReadHandler implements CompletionHandler<Integer,ByteBuffer> {
-    private static final Logger log = LoggerFactory.getLogger(AioReadHandler.class);
+/**
+ * TCP AIO服务端读处理器
+ *
+ * @author verdant
+ * @since 2016/06/20
+ */
+public class AioReadHandler implements CompletionHandler<Integer, ByteBuffer> {
+    private static final Logger logger = LoggerFactory.getLogger(AioReadHandler.class);
 
+    private AsynchronousSocketChannel channel;
     private CharsetDecoder decoder = Charset.forName("UTF-8").newDecoder();
 
-    private AsynchronousSocketChannel socket;
-
     public AioReadHandler(AsynchronousSocketChannel socket) {
-        this.socket = socket;
-    }
-
-    public void cancelled(ByteBuffer attachment) {
-        log.info("cancelled");
+        this.channel = socket;
     }
 
     @Override
-    public void completed(Integer i, ByteBuffer buf) {
+    public void completed(Integer i, ByteBuffer attachment) {
         if (i > 0) {
-            buf.flip();
+            attachment.flip();
             try {
-                log.info("服务端收到" + socket.getRemoteAddress().toString() + "的消息: " + decoder.decode(buf));
-                buf.compact();
-            } catch (CharacterCodingException e) {
-                e.printStackTrace();
+                logger.info("Server received {} message: {}",
+                        channel.getRemoteAddress().toString(), decoder.decode(attachment));
+                attachment.compact();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            socket.read(buf, buf, this);
+            channel.read(attachment, attachment, this);
         } else if (i == -1) {
             try {
-                log.info("客户端断线:" + socket.getRemoteAddress().toString());
-                buf = null;
+                logger.info("Client disconnected:" + channel.getRemoteAddress().toString());
+                attachment.clear();
             } catch (IOException e) {
                 e.printStackTrace();
             }

@@ -6,7 +6,7 @@ package com.verdant.demo.common.generic;
  * @author verdant
  * @since 2016/07/04
  */
-public class BaseImpl extends Base<String> {
+public class BaseImplA extends Base<String> {
     private String id;
 
     public String getId() {

@@ -11,6 +11,8 @@ import java.sql.SQLException;
 
 /**
  * Mybatis枚举类型转换
+ *    自定义TypeHandler处理器
+ *    BaseTypeHandler已完成了null值判断
  *
  * @author verdant
  * @since 2016/07/06
@@ -18,13 +20,52 @@ import java.sql.SQLException;
 public class FieldTypeEnumHandler extends BaseTypeHandler<FieldTypeEnum> {
 
     private Class<FieldTypeEnum> type;
-
     private final FieldTypeEnum[] enums;
 
+    // 根据数据库查询结果的列名获取其值，并转化成Enum
+    @Override
+    public FieldTypeEnum getNullableResult(ResultSet rs, String columnName) throws SQLException {
+        int i = rs.getInt(columnName);
+        if (rs.wasNull()) {
+            return null;
+        } else {
+            return this.locateEnum(i);
+        }
+    }
+
+    // 根据数据库查询结果的列序号获取其值，并转化成Enum
+    @Override
+    public FieldTypeEnum getNullableResult(ResultSet rs, int columnIndex) throws SQLException {
+        int i = rs.getInt(columnIndex);
+        if (rs.wasNull()) {
+            return null;
+        } else {
+            return this.locateEnum(i);
+        }
+    }
+
+    // 根据返回结果的列序号获取其值，并转化成Enum
+    @Override
+    public FieldTypeEnum getNullableResult(CallableStatement cs, int columnIndex) throws SQLException {
+        int i = cs.getInt(columnIndex);
+        if (cs.wasNull()) {
+            return null;
+        } else {
+            return this.locateEnum(i);
+        }
+    }
+
+    //将Enum类型转成要存入数据库的类型
+    @Override
+    public void setNonNullParameter(PreparedStatement ps, int i, FieldTypeEnum parameter, JdbcType jdbcType)
+            throws SQLException {
+        ps.setInt(i, parameter.getId());
+    }
+
     /**
-     * 设置配置文件设置的转换类以及枚举类内容，供其他方法更便捷高效的实现
+     * 获取枚举的类型
      *
-     * @param type 配置文件中设置的转换类
+     * @param type Handle需处理的Enum类型
      */
     public FieldTypeEnumHandler(Class<FieldTypeEnum> type) {
         if (type == null)
@@ -35,62 +76,17 @@ public class FieldTypeEnumHandler extends BaseTypeHandler<FieldTypeEnum> {
             throw new IllegalArgumentException(type.getSimpleName() + " does not represent an enum type.");
     }
 
-    @Override
-    public FieldTypeEnum getNullableResult(ResultSet rs, String columnName) throws SQLException {
-        // 根据数据库存储类型决定获取类型，本handler中数据库中存放INT类型
-        int i = rs.getInt(columnName);
-
-        if (rs.wasNull()) {
-            return null;
-        } else {
-            // 根据数据库中的id值，定位EnumStatus子类
-            return locateEnumStatus(i);
-        }
-    }
-
-    @Override
-    public FieldTypeEnum getNullableResult(ResultSet rs, int columnIndex) throws SQLException {
-        // 根据数据库存储类型决定获取类型，本handler中数据库中存放INT类型
-        int i = rs.getInt(columnIndex);
-        if (rs.wasNull()) {
-            return null;
-        } else {
-            // 根据数据库中的code值，定位FieldTypeEnum子类
-            return locateEnumStatus(i);
-        }
-    }
-
-    @Override
-    public FieldTypeEnum getNullableResult(CallableStatement cs, int columnIndex) throws SQLException {
-        // 根据数据库存储类型决定获取类型，本handler中数据库中存放INT类型
-        int i = cs.getInt(columnIndex);
-        if (cs.wasNull()) {
-            return null;
-        } else {
-            // 根据数据库中的code值，定位FieldTypeEnum子类
-            return locateEnumStatus(i);
-        }
-    }
-
-    @Override
-    public void setNonNullParameter(PreparedStatement ps, int i, FieldTypeEnum parameter, JdbcType jdbcType)
-            throws SQLException {
-        // baseTypeHandler已经帮我们做了parameter的null判断
-        ps.setInt(i, parameter.getId());
-    }
-
     /**
-     * 枚举类型转换，由于构造函数获取了枚举的子类enums，让遍历更加高效快捷
-     *
-     * @param code 数据库中存储的自定义code属性
-     * @return code对应的枚举类
+     * 根据枚举某个字段的值返回枚举类型
+     * @param code
+     * @return
      */
-    private FieldTypeEnum locateEnumStatus(int code) {
+    private FieldTypeEnum locateEnum(int code) {
         for (FieldTypeEnum fieldType : enums) {
             if (fieldType.getId() == code) {
                 return fieldType;
             }
         }
-        throw new IllegalArgumentException("未知的枚举类型：" + code + ",请核对" + type.getSimpleName());
+        throw new IllegalArgumentException("Unknown Enum field: " + code + ",please check" + type.getSimpleName());
     }
 }

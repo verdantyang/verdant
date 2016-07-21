@@ -7,11 +7,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;
 
 import java.lang.reflect.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
- * Author: verdant
- * Create: 2016/1/22
- * Func:   反射工具类
+ * 反射工具类
+ *
+ * @author verdant
+ * @since 2016/01/22
  */
 public class ReflectUtils2 {
     private static Logger logger = LoggerFactory.getLogger(ReflectUtils2.class);
@@ -26,6 +29,42 @@ public class ReflectUtils2 {
     }
 
     /**
+     * 将POJO对象转成Map
+     *
+     * @param obj
+     * @param <T>
+     * @return
+     * @throws Exception
+     */
+    public static <T> Map<String, Object> generateMap(T obj) throws Exception {
+        Map<String, Object> map = new HashMap<>();
+        Field[] fields = obj.getClass().getDeclaredFields();
+        for (Field field : fields) {
+            String name = field.getName();
+            Object value = invokeGetter(obj, name);
+            map.put(name, value);
+        }
+        return map;
+    }
+
+    /**
+     * 将Map转成POJO对象
+     *
+     * @param map
+     * @param clazz
+     * @param <T>
+     * @return
+     * @throws Exception
+     */
+    public static <T> T generateObj(Map<String, Object> map, Class<T> clazz) throws Exception {
+        T obj = clazz.newInstance();
+        for (String property : map.keySet()) {
+            invokeSetter(obj, property, map.get(property));
+        }
+        return obj;
+    }
+
+    /**
      * 调用Getter方法
      *
      * @param obj
@@ -34,7 +73,7 @@ public class ReflectUtils2 {
      */
     public static Object invokeGetter(Object obj, String propertyName) {
         String getterMethodName = GETTER_PREFIX + StringUtils.capitalize(propertyName);
-        return invokeMethod(obj, getterMethodName, new Class[]{}, new Object[]{});
+        return invokeMethodMatched(obj, getterMethodName, new Class[]{}, new Object[]{});
     }
 
     /**
@@ -89,50 +128,63 @@ public class ReflectUtils2 {
         try {
             field.set(obj, value);
         } catch (IllegalAccessException e) {
-            logger.error("不可能抛出的异常:{}", e.getMessage());
+            logger.error("Throw exception {}", e.getMessage());
         }
     }
 
     /**
-     * 直接调用对象方法, 无视private/protected修饰符.
-     * 用于一次性调用的情况，否则应使用getAccessibleMethod()函数获得Method后反复调用.
-     * 同时匹配方法名+参数类型，
+     * 匹配方法名和参数类型调用方法（适用于一次性调用的情况）
+     *
+     * @param obj
+     * @param methodName
+     * @param parameterTypes
+     * @param args
+     * @return
      */
-    public static Object invokeMethod(final Object obj, final String methodName,
-                                      final Class<?>[] parameterTypes, final Object[] args) {
-        Method method = getAccessibleMethod(obj, methodName, parameterTypes);
-        if (method == null) {
-            throw new IllegalArgumentException("Could not find method [" + methodName + "] on target [" + obj + "]");
-        }
-
-        try {
-            return method.invoke(obj, args);
-        } catch (Exception e) {
-            throw convertReflectionExceptionToUnchecked(e);
-        }
+    public static Object invokeMethodMatched(final Object obj, final String methodName,
+                                             final Class<?>[] parameterTypes, final Object[] args) {
+        Method method = getAccessibleMethodMatched(obj, methodName, parameterTypes);
+        return invokeMethod(method, obj, methodName, args);
     }
 
     /**
-     * 直接调用对象方法, 无视private/protected修饰符，
-     * 用于一次性调用的情况，否则应使用getAccessibleMethodByName()函数获得Method后反复调用.
-     * 只匹配函数名，如果有多个同名函数调用第一个。
+     * 只匹配方法名调用方法，如果有多个同名函数调用第一个
+     *
+     * @param obj
+     * @param methodName
+     * @param args
+     * @return
      */
-    public static Object invokeMethodByName(final Object obj, final String methodName,
-                                            final Object[] args) {
+    public static Object invokeMethodByName(final Object obj, final String methodName, final Object[] args) {
         Method method = getAccessibleMethodByName(obj, methodName);
+        return invokeMethod(method, obj, methodName, args);
+    }
+
+    /**
+     * 实际调用方法
+     *
+     * @param method
+     * @param obj
+     * @param methodName
+     * @param args
+     * @return
+     */
+    private static Object invokeMethod(Method method, final Object obj, String methodName, final Object[] args) {
         if (method == null) {
+            logger.error("Class don't have method {}", methodName);
             throw new IllegalArgumentException("Could not find method [" + methodName + "] on target [" + obj + "]");
         }
 
         try {
             return method.invoke(obj, args);
         } catch (Exception e) {
+            logger.error("Call method {} failed", methodName);
             throw convertReflectionExceptionToUnchecked(e);
         }
     }
 
     /**
-     * 循环向上转型, 获取对象的DeclaredField, 并强制设置为可访问.
+     * 循环向上转型, 获取对象的DeclaredField, 获取同名属性
      *
      * @param obj
      * @param fieldName
@@ -141,9 +193,10 @@ public class ReflectUtils2 {
     public static Field getAccessibleField(final Object obj, final String fieldName) {
         Validate.notNull(obj, "object can't be null");
         Validate.notBlank(fieldName, "fieldName can't be blank");
-        for (Class<?> superClass = obj.getClass(); superClass != Object.class; superClass = superClass.getSuperclass()) {
+
+        for (Class<?> clazz = obj.getClass(); clazz != Object.class; clazz = clazz.getSuperclass()) {
             try {
-                Field field = superClass.getDeclaredField(fieldName);
+                Field field = clazz.getDeclaredField(fieldName);
                 makeAccessible(field);
                 return field;
             } catch (NoSuchFieldException e) {
@@ -154,21 +207,21 @@ public class ReflectUtils2 {
     }
 
     /**
-     * 循环向上转型, 获取对象的DeclaredMethod, 并强制设置为可访问.
+     * 循环向上转型, 获取对象的DeclaredMethod, 匹配方法名和参数类型
      *
      * @param obj
      * @param methodName
      * @param parameterTypes
      * @return
      */
-    public static Method getAccessibleMethod(final Object obj, final String methodName,
-                                             final Class<?>... parameterTypes) {
+    public static Method getAccessibleMethodMatched(final Object obj, final String methodName,
+                                                    final Class<?>... parameterTypes) {
         Validate.notNull(obj, "object can't be null");
         Validate.notBlank(methodName, "methodName can't be blank");
 
-        for (Class<?> searchType = obj.getClass(); searchType != Object.class; searchType = searchType.getSuperclass()) {
+        for (Class<?> clazz = obj.getClass(); clazz != Object.class; clazz = clazz.getSuperclass()) {
             try {
-                Method method = searchType.getDeclaredMethod(methodName, parameterTypes);
+                Method method = clazz.getDeclaredMethod(methodName, parameterTypes);
                 makeAccessible(method);
                 return method;
             } catch (NoSuchMethodException e) {
@@ -179,18 +232,18 @@ public class ReflectUtils2 {
     }
 
     /**
-     * 循环向上转型, 获取对象的DeclaredMethod, 并强制设置为可访问.
-     * 如向上转型到Object仍无法找到, 返回null.
-     * 只匹配函数名。
-     * <p>
-     * 用于方法需要被多次调用的情况. 先使用本函数先取得Method,然后调用Method.invoke(Object obj, Object... args)
+     * 循环向上转型, 获取对象的DeclaredMethod, 只匹配方法名
+     *
+     * @param obj
+     * @param methodName
+     * @return
      */
     public static Method getAccessibleMethodByName(final Object obj, final String methodName) {
         Validate.notNull(obj, "object can't be null");
         Validate.notBlank(methodName, "methodName can't be blank");
 
-        for (Class<?> searchType = obj.getClass(); searchType != Object.class; searchType = searchType.getSuperclass()) {
-            Method[] methods = searchType.getDeclaredMethods();
+        for (Class<?> clazz = obj.getClass(); clazz != Object.class; clazz = clazz.getSuperclass()) {
+            Method[] methods = clazz.getDeclaredMethods();
             for (Method method : methods) {
                 if (method.getName().equals(methodName)) {
                     makeAccessible(method);
@@ -202,73 +255,31 @@ public class ReflectUtils2 {
     }
 
     /**
-     * 改变private/protected的方法为public
-     * 尽量不调用实际改动的语句，向SecurityManager妥协
-     *
-     * @param method
-     */
-    public static void makeAccessible(Method method) {
-        if ((!Modifier.isPublic(method.getModifiers()) || !Modifier.isPublic(method.getDeclaringClass().getModifiers()))
-                && !method.isAccessible()) {
-            method.setAccessible(true);
-        }
-    }
-
-    /**
-     * 改变private/protected的方法为public
-     * 尽量不调用实际改动的语句，向SecurityManager妥协
+     * 设置为Accessible，跳过安全检查
      *
      * @param field
      */
     public static void makeAccessible(Field field) {
-        if ((!Modifier.isPublic(field.getModifiers()) || !Modifier.isPublic(field.getDeclaringClass().getModifiers()) ||
-                Modifier.isFinal(field.getModifiers())) && !field.isAccessible()) {
+        if ((!Modifier.isPublic(field.getModifiers())
+                || !Modifier.isPublic(field.getDeclaringClass().getModifiers())
+                || Modifier.isFinal(field.getModifiers()))
+                && !field.isAccessible()) {
             field.setAccessible(true);
         }
     }
 
     /**
-     * 通过反射, 获得Class定义中声明的父类的泛型参数的类型.
+     * 设置为Accessible，跳过安全检查
      *
-     * @param clazz
-     * @param <T>
-     * @return
+     * @param method
      */
-    public static <T> Class<T> getClassGenricType(final Class clazz) {
-        return getClassGenricType(clazz, 0);
+    public static void makeAccessible(Method method) {
+        if ((!Modifier.isPublic(method.getModifiers())
+                || !Modifier.isPublic(method.getDeclaringClass().getModifiers()))
+                && !method.isAccessible()) {
+            method.setAccessible(true);
+        }
     }
-
-    /**
-     * 通过反射, 获得Class定义中声明的父类的泛型参数的类型.
-     *
-     * @param clazz clazz The class to introspect
-     * @param index the Index of the generic ddeclaration,start from 0.
-     * @return the index generic declaration, or Object.class if cannot be determined
-     */
-    public static Class getClassGenricType(final Class clazz, final int index) {
-
-        Type genType = clazz.getGenericSuperclass();
-
-        if (!(genType instanceof ParameterizedType)) {
-            logger.warn(clazz.getSimpleName() + "'s superclass not ParameterizedType");
-            return Object.class;
-        }
-
-        Type[] params = ((ParameterizedType) genType).getActualTypeArguments();
-
-        if (index >= params.length || index < 0) {
-            logger.warn("Index: " + index + ", Size of " + clazz.getSimpleName() + "'s Parameterized Type: "
-                    + params.length);
-            return Object.class;
-        }
-        if (!(params[index] instanceof Class)) {
-            logger.warn(clazz.getSimpleName() + " not set the actual class on superclass generic parameter");
-            return Object.class;
-        }
-
-        return (Class) params[index];
-    }
-
 
     public static Class<?> getUserClass(Object instance) {
         Assert.notNull(instance, "Instance must not be null");
@@ -301,28 +312,46 @@ public class ReflectUtils2 {
         return new RuntimeException("Unexpected Checked Exception.", e);
     }
 
+
     /**
-     * 获取泛型父类类型
+     * 通过反射, 获得Class定义中声明的父类的泛型参数的类型.
+     *
      * @param clazz
-     * @param index
+     * @param <T>
      * @return
      */
-    public static Class getSuperClassGenricType(final Class clazz, final int index) {
+    public static <T> Class<T> getClassGenericType(final Class clazz) {
+        return getClassGenericType(clazz, 0);
+    }
+
+    /**
+     * 通过反射, 获得Class其父类的泛型参数类型.
+     *
+     * @param clazz clazz The class to introspect
+     * @param index the Index of the generic declaration, start from 0.
+     * @return the index generic declaration, or Object.class if cannot be determined
+     */
+    public static Class getClassGenericType(final Class clazz, final int index) {
 
         Type genType = clazz.getGenericSuperclass();
 
         if (!(genType instanceof ParameterizedType)) {
+            logger.warn(clazz.getSimpleName() + "'s superclass not ParameterizedType");
             return Object.class;
         }
 
         Type[] params = ((ParameterizedType) genType).getActualTypeArguments();
 
         if (index >= params.length || index < 0) {
+            logger.warn(clazz.getSimpleName() + "'s ParameterizedType size " + params.length);
             return Object.class;
         }
         if (!(params[index] instanceof Class)) {
+            logger.warn(clazz.getSimpleName() + " not set the actual class on superclass generic parameter");
             return Object.class;
         }
+
         return (Class) params[index];
     }
+
 }

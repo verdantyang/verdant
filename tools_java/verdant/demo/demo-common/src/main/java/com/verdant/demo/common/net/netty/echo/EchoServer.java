@@ -1,6 +1,7 @@
 package com.verdant.demo.common.net.netty.echo;
 
 
+import com.verdant.demo.common.net.Constants;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -31,6 +32,7 @@ public class EchoServer {
                     .channel(NioServerSocketChannel.class)
                     .option(ChannelOption.SO_BACKLOG, 128)
                     .childOption(ChannelOption.SO_KEEPALIVE, true)
+                    .childOption(ChannelOption.RCVBUF_ALLOCATOR, new AdaptiveRecvByteBufAllocator(64, 1024, 65536))
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         public void initChannel(SocketChannel ch) throws Exception {
@@ -56,7 +58,8 @@ public class EchoServer {
 
     public static void main(String[] args) {
         EchoServer server = new EchoServer();
-        logger.info("Http Server listening on " + PORT_SERVER);
-        server.start(PORT_SERVER);
+        Integer serverPort = Constants.PORT_NETTY_ECHO_SERVER;
+        logger.info("Http Server listening on " + serverPort);
+        server.start(serverPort);
     }
 }

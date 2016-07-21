@@ -1,12 +1,14 @@
-package behavior.template;
+package behavior.template.uml;
 
-import behavior.template.template.ConcreteTemplate1;
-import behavior.template.template.ConcreteTemplate2;
+
+import behavior.template.uml.tmpl.ConcreteTemplate1;
+import behavior.template.uml.tmpl.ConcreteTemplate2;
 
 /**
- * Author: verdant
- * Create: 2016/3/30
- * Func:   模板模式
+ * 模板模式
+ *
+ * @author verdant
+ * @since 2016/04/12
  */
 public class Client {
     public static void main(String[] args) {

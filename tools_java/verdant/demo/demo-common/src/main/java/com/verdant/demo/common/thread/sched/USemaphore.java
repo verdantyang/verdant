@@ -5,7 +5,8 @@ import java.util.concurrent.*;
 /**
  * Semaphore用例
  *
- * @author: verdant
+ * @author verdant
+ * @since 2016/07/14
  */
 public class USemaphore {
     private static int SEMAPHORE_SIZE = 5;

@@ -1,16 +1,19 @@
-package behavior.template.template;
+package behavior.template.uml.tmpl;
+
 
 import utils.DebugLog;
 import utils.DebugLogFactory;
 import utils.DesignPatternEnum;
 
 /**
- * Author: verdant
- * Create: 2016/3/30
- * Desc:   实例化模板2
+ * 实例化模板2
+ *
+ * @author verdant
+ * @since 2016/03/30
  */
-public class ConcreteTemplate2 extends Template{
+public class ConcreteTemplate2 extends Template {
     private static final DebugLog logger = DebugLogFactory.getLogger(ConcreteTemplate2.class, DesignPatternEnum.Template);
+
     public ConcreteTemplate2() {
         super();
     }

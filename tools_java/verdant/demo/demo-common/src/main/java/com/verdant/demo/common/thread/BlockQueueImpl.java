@@ -10,7 +10,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * Author: verdant
  * Desc:   阻塞队列简单实现
  */
-public class BlockQ {
+public class BlockQueueImpl {
     private Lock lock = new ReentrantLock();
     private Condition notEmpty = lock.newCondition();
     private Condition notFull = lock.newCondition();

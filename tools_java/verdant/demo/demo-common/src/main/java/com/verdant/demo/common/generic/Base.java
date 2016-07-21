@@ -8,5 +8,4 @@ package com.verdant.demo.common.generic;
  */
 public abstract class Base<T> {
     public static int flag = 1;
-
 }

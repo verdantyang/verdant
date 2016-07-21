@@ -6,5 +6,5 @@ package com.verdant.demo.common.generic;
  * @author verdant
  * @since 2016/07/04
  */
-public class BaseImpl2 extends Base<Integer> {
+public class BaseImplB extends Base<Integer> {
 }

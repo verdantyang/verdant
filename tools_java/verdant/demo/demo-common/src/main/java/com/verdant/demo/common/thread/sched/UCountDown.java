@@ -5,7 +5,8 @@ import java.util.concurrent.CountDownLatch;
 /**
  * CountDown用例
  *
- * @author: verdant
+ * @author verdant
+ * @since 2016/07/14
  */
 public class UCountDown {
     private static final int COUNT = 10;
@@ -14,7 +15,7 @@ public class UCountDown {
     public void waitOther() throws InterruptedException{
         final CountDownLatch completeLatch = new CountDownLatch(COUNT);
         for (int i = 0; i < COUNT; ++i) {
-            Thread thread = new Thread("worker thread " + i) {
+            Thread thread = new Thread("Worker thread " + i) {
                 @Override
                 public void run() {
                     // do xxxx
@@ -31,7 +32,7 @@ public class UCountDown {
         final CountDownLatch startLatch = new CountDownLatch(COUNT);
 
         for (int i = 0; i < 10; ++i) {
-            Thread thread = new Thread("worker thread " + i) {
+            Thread thread = new Thread("Worker thread " + i) {
                 @Override
                 public void run() {
                     try {

@@ -7,15 +7,16 @@ import structural.decorator.uml.decorater.ConcreteDecoratorB;
 import structural.decorator.uml.decorater.Decorator;
 
 /**
- * Author: verdant
- * Create: 2016/4/12
- * Func:   装饰者模式
+ * 装饰者模式
+ *
+ * @author verdant
+ * @since 2016/04/12
  */
 public class Client {
     public static void main(String[] args) {
         Component component = new ConcreteComponent();
-        Decorator cda = new ConcreteDecoratorA(component);
-        Decorator cdb = new ConcreteDecoratorB(cda);
-        cdb.operation();
+        component = new ConcreteDecoratorA(component);
+        component = new ConcreteDecoratorB(component);
+        component.operation();
     }
 }

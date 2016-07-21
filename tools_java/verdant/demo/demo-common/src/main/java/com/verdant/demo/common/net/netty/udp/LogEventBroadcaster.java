@@ -1,7 +1,7 @@
 package com.verdant.demo.common.net.netty.udp;
 
 
-import com.verdant.demo.common.net.netty.Constants;
+import com.verdant.demo.common.net.Constants;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelOption;
@@ -61,7 +61,7 @@ public class LogEventBroadcaster {
     }
 
     public static void main(String[] args) throws Exception {
-        int port = Constants.UDP_PORT;
+        int port = Constants.PORT_UDP;
         String path = LogEventBroadcaster.class.getResource("/").getPath() + "log.txt";
         LogEventBroadcaster broadcaster = new LogEventBroadcaster(
                 new InetSocketAddress("255.255.255.255", port), new File(path));

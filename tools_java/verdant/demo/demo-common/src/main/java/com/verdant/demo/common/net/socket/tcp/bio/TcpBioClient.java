@@ -1,6 +1,9 @@
 package com.verdant.demo.common.net.socket.tcp.bio;
 
+import com.verdant.demo.common.net.Constants;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,47 +12,48 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 /**
- * Author: verdant
- * Desc:   TCP BIO客户端
+ * TCP BIO客户端
+ *
+ * @author verdant
+ * @since 2016/06/20
  */
 public class TcpBioClient {
-    private static final String HOST = "127.0.0.1";
-    private static final Integer PORT_SERVER = 7888;
-    private static final String END = "quit";
+    private static final Logger logger = LoggerFactory.getLogger(TcpBioClient.class);
 
-    private volatile boolean flag = true;
+    volatile boolean flag = true;
 
     private Socket socket;
 
-    public TcpBioClient() throws IOException {
-        socket = new Socket(HOST, PORT_SERVER);
+    public TcpBioClient(String host, int port) throws IOException {
+        socket = new Socket(host, port);
         BufferedReader systemIn = new BufferedReader(new InputStreamReader(System.in));
-        PrintWriter clientOut = new PrintWriter(socket.getOutputStream(), true);
         BufferedReader serverIn = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        PrintWriter clientOut = new PrintWriter(socket.getOutputStream(), true);
 
         while (flag) {
-            System.out.println("Please enter the send message:");
+            logger.info("Please enter the send message:");
             String clientSay = systemIn.readLine();
             if (StringUtils.isEmpty(clientSay)) {
                 continue;
-            } else if (END.equalsIgnoreCase(clientSay)) {
+            } else if (Constants.COMMAND_END.equalsIgnoreCase(clientSay)) {
                 flag = false;
                 break;
             }
             clientOut.println(clientSay);
-            System.out.println("Server reply：" + serverIn.readLine());
+            logger.info("Server reply：" + serverIn.readLine());
         }
-        System.out.println("Client quit !");
-        serverIn.close();
+        logger.info("Client quit !");
         clientOut.close();
+        serverIn.close();
         systemIn.close();
         socket.close();
-        System.exit(0);
     }
 
     public static void main(String[] args) {
         try {
-            new TcpBioClient();
+            String serverHost = System.getProperty("host", "127.0.0.1");
+            Integer serverPort = Constants.PORT_TCP_BIO_SERVER;
+            new TcpBioClient(serverHost, serverPort);
         } catch (IOException e) {
             e.printStackTrace();
         }

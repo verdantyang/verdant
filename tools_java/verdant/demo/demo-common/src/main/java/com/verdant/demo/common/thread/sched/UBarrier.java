@@ -6,7 +6,8 @@ import java.util.concurrent.CyclicBarrier;
 /**
  * Barrier用例
  *
- * @author: verdant
+ * @author verdant
+ * @since 2016/07/14
  */
 public class UBarrier {
     private static int threadCount = 10;

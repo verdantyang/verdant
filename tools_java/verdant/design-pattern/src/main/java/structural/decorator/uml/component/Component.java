@@ -1,9 +1,10 @@
 package structural.decorator.uml.component;
 
 /**
- * Author: verdant
- * Create: 2016/4/12
- * Desc:   抽象组件
+ * 抽象组件
+ *
+ * @author verdant
+ * @since 2016/04/12
  */
 public interface Component {
     void operation();

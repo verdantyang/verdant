@@ -15,11 +15,12 @@ import java.util.concurrent.Semaphore;
 
 /**
  * 抽象连接池
+ * <p>
+ * 提供无大小限制的borrowPool
+ * 提供有大小限制、超时时间的idlePool
  *
  * @author verdant
  * @since 2016/06/02
- * 提供无大小限制的borrowPool
- * 提供有大小限制、超时时间的idlePool
  */
 public class AbstractPool<C extends AbstractClient> {
     private static Logger logger = LoggerFactory.getLogger(AbstractPool.class);
@@ -65,7 +66,7 @@ public class AbstractPool<C extends AbstractClient> {
             public T run(C client) {
                 T res = null;
                 try {
-                    res = (T)method.invoke(client, args);
+                    res = (T) method.invoke(client, args);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -109,6 +110,7 @@ public class AbstractPool<C extends AbstractClient> {
 
     /**
      * 获取一个Client实例
+     *
      * @param clazz
      * @param queue
      * @return

@@ -1,5 +1,6 @@
 package com.verdant.demo.common.net.netty.echo;
 
+import com.verdant.demo.common.net.Constants;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.*;
@@ -40,16 +41,17 @@ public class EchoClient {
 
             // Start the client.
             ChannelFuture cf = b.connect(host, port).sync();
-            sendMessage(cf,host);
+            sendMessage(cf, host, port);
             cf.channel().closeFuture().sync();
         } finally {
             workerGroup.shutdownGracefully();
         }
     }
 
-    private void sendMessage(ChannelFuture cf, String host) {
+    private void sendMessage(ChannelFuture cf, String host, int port) {
         try {
-            URI uri = new URI("http://127.0.0.1:8844");
+            String uriFormat = "http://%s:%s";
+            URI uri = new URI(String.format(uriFormat, host, port));
             String msg = "Are you ok?";
             DefaultFullHttpRequest request = new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET,
                     uri.toASCIIString(), Unpooled.wrappedBuffer(msg.getBytes("UTF-8")));
@@ -67,7 +69,9 @@ public class EchoClient {
     }
 
     public static void main(String[] args) throws Exception {
+        String serverHost = System.getProperty("host", "127.0.0.1");
+        Integer serverPort = Constants.PORT_NETTY_ECHO_SERVER;
         EchoClient client = new EchoClient();
-        client.connect("127.0.0.1", 8844);
+        client.connect(serverHost, serverPort);
     }
 }

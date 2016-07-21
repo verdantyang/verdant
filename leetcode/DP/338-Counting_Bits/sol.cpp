@@ -9,7 +9,7 @@
 using namespace std;
 
 /** Recursion Formula
- G(n) = G[i&(i-1)] + 1
+ G(n) = G[n&(n-1)] + 1
 */
 class Solution {
 public:

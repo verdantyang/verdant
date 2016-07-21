@@ -1,7 +1,7 @@
 package com.verdant.demo.common.net.netty.udp;
 
 
-import com.verdant.demo.common.net.netty.Constants;
+import com.verdant.demo.common.net.Constants;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
@@ -47,7 +47,7 @@ public class LogEventMonitor {
 
     public static void main(String[] args) throws InterruptedException {
 
-        LogEventMonitor monitor = new LogEventMonitor(new InetSocketAddress(Constants.UDP_PORT));
+        LogEventMonitor monitor = new LogEventMonitor(new InetSocketAddress(Constants.PORT_UDP));
         try {
             Channel channel = monitor.bind();
             logger.info("LogEventMonitor running");

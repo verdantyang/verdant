@@ -4,7 +4,10 @@ import java.util.Comparator;
 import java.util.Map;
 
 /**
- * Created by Administrator on 2016/5/30.
+ * 红黑树
+ *
+ * @author verdant
+ * @since 2016/07/18
  */
 public class RBT<K,V> {
     private transient Entry<K,V> root;
