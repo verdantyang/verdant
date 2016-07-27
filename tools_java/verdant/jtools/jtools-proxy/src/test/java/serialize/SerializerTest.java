@@ -1,3 +1,5 @@
+package serialize;
+
 import com.verdant.jtools.proxy.codec.serialization.Serializer;
 import org.junit.Assert;
 import org.junit.Test;

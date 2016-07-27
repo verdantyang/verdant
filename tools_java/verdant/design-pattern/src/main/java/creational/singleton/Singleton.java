@@ -5,10 +5,11 @@ import utils.DebugLogFactory;
 import utils.DesignPatternEnum;
 
 /**
- * Author: verdant
- * Create: 2016/1/13
- * Func:   单例模式
- * Desc:   线程安全通过静态内部类（保证只在加载的时候执行一次）
+ * 单例模式
+ * 线程安全通过静态内部类（保证只在加载的时候执行一次）
+ *
+ * @author verdant
+ * @since 2016/07/27
  */
 public class Singleton {
 

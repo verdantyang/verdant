@@ -7,8 +7,10 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * Author: verdant
- * Desc:   阻塞队列简单实现
+ * 阻塞队列简单实现
+ *
+ * @author verdant
+ * @since 2016/07/14
  */
 public class BlockQueueImpl {
     private Lock lock = new ReentrantLock();

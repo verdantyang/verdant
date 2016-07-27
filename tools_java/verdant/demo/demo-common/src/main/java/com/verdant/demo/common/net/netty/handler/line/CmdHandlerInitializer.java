@@ -1,4 +1,4 @@
-package com.verdant.demo.common.net.netty.handler;
+package com.verdant.demo.common.net.netty.handler.line;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;

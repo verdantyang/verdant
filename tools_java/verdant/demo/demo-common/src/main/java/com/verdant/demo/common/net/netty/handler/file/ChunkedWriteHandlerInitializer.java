@@ -1,4 +1,4 @@
-package com.verdant.demo.common.net.netty.handler;
+package com.verdant.demo.common.net.netty.handler.file;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;

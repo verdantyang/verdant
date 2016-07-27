@@ -1,4 +1,4 @@
-package com.verdant.demo.common.thread;
+package com.verdant.demo.common.thread.lock;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;

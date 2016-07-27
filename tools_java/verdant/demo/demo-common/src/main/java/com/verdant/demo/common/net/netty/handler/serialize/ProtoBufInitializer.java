@@ -1,4 +1,4 @@
-package com.verdant.demo.common.net.netty.handler;
+package com.verdant.demo.common.net.netty.handler.serialize;
 
 /**
  * Created by Administrator on 2016/6/23.
