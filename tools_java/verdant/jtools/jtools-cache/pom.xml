@@ -7,7 +7,7 @@
     <parent>
         <artifactId>jtools</artifactId>
         <groupId>com.verdant</groupId>
-        <version>0.1-SNAPSHOT</version>
+        <version>${verdant.version}</version>
     </parent>
 
     <artifactId>jtools-cache</artifactId>

@@ -48,7 +48,7 @@ public class HttpRequestHandler extends SimpleChannelInboundHandler<FullHttpRequ
             }
             //获取index.html的内容响应给客户端
             RandomAccessFile file = new RandomAccessFile(
-                    HttpRequestHandler.class.getResource("/").getPath() + "index.html", "r");
+                    HttpRequestHandler.class.getResource("/").getPath() + "websocket.html", "r");
 
             HttpResponse response = new DefaultHttpResponse(
                     msg.getProtocolVersion(), HttpResponseStatus.OK);

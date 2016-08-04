@@ -7,15 +7,16 @@
     <parent>
         <groupId>com.verdant</groupId>
         <artifactId>verdant</artifactId>
-        <version>0.1-SNAPSHOT</version>
+        <version>${verdant.version}</version>
     </parent>
+    <packaging>pom</packaging>
 
     <artifactId>demo</artifactId>
-    <packaging>pom</packaging>
+    <version>${verdant.version}</version>
+
     <modules>
         <module>demo-common</module>
         <module>demo-spring</module>
-        <module>demo-hadoop</module>
         <module>demo-algo</module>
     </modules>
 

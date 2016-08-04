@@ -6,20 +6,24 @@
 
     <groupId>com.verdant</groupId>
     <artifactId>verdant</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>${verdant.version}</version>
+    <packaging>pom</packaging>
 
     <modules>
         <module>jtools</module>
         <module>demo</module>
+        <module>demo-bigdata</module>
         <module>design-pattern</module>
     </modules>
-    <packaging>pom</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.jdk>1.7</project.build.jdk>
+        <verdant.version>0.1</verdant.version>
 
+        <!-- plugin -->
         <plugin.maven.compiler>3.3</plugin.maven.compiler>
+        <plugin.maven.assembly>2.4.1</plugin.maven.assembly>
         <plugin.maven.source>2.4</plugin.maven.source>
         <plugin.maven.surefire>2.10</plugin.maven.surefire>
         <plugin.maven.war>2.6</plugin.maven.war>
@@ -27,15 +31,11 @@
         <plugin.maven.jetty>6.1.26</plugin.maven.jetty>
         <plugin.maven.dependency>2.10</plugin.maven.dependency>
 
-        <verdant.version>0.1-SNAPSHOT</verdant.version>
+        <!-- log -->
+        <slf4j.version>1.7.12</slf4j.version>
+        <logback.version>1.1.3</logback.version>
 
-        <mysql.connector.version>5.1.36</mysql.connector.version>
-        <mybatis.version>3.3.0</mybatis.version>
-        <mybatis.spring.version>1.2.3</mybatis.spring.version>
-
-        <spring.version>4.1.7.RELEASE</spring.version>
-        <spring.data.redis.version>1.6.1.RELEASE</spring.data.redis.version>
-
+        <!-- commons -->
         <commons.lang3.version>3.4</commons.lang3.version>
         <commons.logging.version>1.2</commons.logging.version>
         <commons.collections.version>3.1</commons.collections.version>
@@ -47,14 +47,55 @@
         <commons.pool2.version>2.4.1</commons.pool2.version>
         <commons.dbcp.version>1.4</commons.dbcp.version>
 
-        <slf4j.version>1.7.12</slf4j.version>
-        <logback.version>1.1.3</logback.version>
+        <!-- test -->
+        <junit.version>4.12</junit.version>
+        <mockito.version>1.9.5</mockito.version>
+        <hamcrest.version>1.3</hamcrest.version>
+
+        <!-- mysql -->
+        <mysql.connector.version>5.1.36</mysql.connector.version>
+        <jsqlparser.version>0.9.5</jsqlparser.version>
+
+        <!-- mybatis -->
+        <mybatis.version>3.3.0</mybatis.version>
+        <mybatis.spring.version>1.2.3</mybatis.spring.version>
+
+        <!-- spring -->
+        <spring.version>4.1.7.RELEASE</spring.version>
+        <spring.data.redis.version>1.6.1.RELEASE</spring.data.redis.version>
+
+        <!-- json -->
+        <fastjson.version>1.2.6</fastjson.version>
+        <jackson.version>2.6.3</jackson.version>
+
+        <!-- serialize -->
+        <kryo.version>3.0.3</kryo.version>
+        <hessian.version>4.0.38</hessian.version>
+        <protobuf.version>2.5.0</protobuf.version>
+
+        <!-- scala -->
+        <scala.version>2.11.8</scala.version>
+        <scala.unittest.version>2.2.1</scala.unittest.version>
+
+        <!-- hadoop -->
+        <hadoop.version>2.6.4</hadoop.version>
+        <hadoop.client.version>2.7.2</hadoop.client.version>
+
+        <!-- spark -->
+        <spark.version>2.0.0</spark.version>
+        <spark.scala.version>2.11</spark.scala.version>
+
+        <!-- storm -->
+        <storm.version>1.0.1</storm.version>
+
+        <!-- snmp -->
+        <snmp4j.version>1.10.1</snmp4j.version>
+        <snmp4j.agent.version>1.3.1</snmp4j.agent.version>
 
         <servlet.api.version>3.1.0</servlet.api.version>
         <jsp.api.version>2.0</jsp.api.version>
         <jstl.version>1.2</jstl.version>
         <standard.version>1.1.2</standard.version>
-
         <freemarker.version>2.3.23</freemarker.version>
 
         <guava.version>18.0</guava.version>
@@ -64,10 +105,6 @@
         <javax.mail.version>1.5.0-b01</javax.mail.version>
         <apache.poi.version>3.12</apache.poi.version>
         <tomcat.jdbc.version>8.0.23</tomcat.jdbc.version>
-        <jsqlparser.version>0.9.5</jsqlparser.version>
-
-        <junit.version>4.12</junit.version>
-        <fastjson.version>1.2.6</fastjson.version>
 
         <cglib.version>3.2.2</cglib.version>
         <mina.version>2.0.13</mina.version>
@@ -78,49 +115,57 @@
         <curator.version>2.8.0</curator.version>
         <zookeeper.version>3.4.6</zookeeper.version>
         <elasticsearch.version>2.1.0</elasticsearch.version>
-        <hessian.version>4.0.38</hessian.version>
-        <hadoop.version>2.6.4</hadoop.version>
-
-        <snmp4j.version>1.10.1</snmp4j.version>
-        <snmp4j.agent.version>1.3.1</snmp4j.agent.version>
 
         <flumeng.version>1.6.0</flumeng.version>
         <jetty.version>9.2.10.v20150310</jetty.version>
-        <kryo.version>3.0.3</kryo.version>
-        <protobuf.version>2.5.0</protobuf.version>
+
         <flying.saucer.version>9.0.8</flying.saucer.version>
         <phantom.js.version>1.3.0</phantom.js.version>
         <itextpdf.version>5.5.9</itextpdf.version>
+
+        <breeze.version>0.10</breeze.version>
+        <joda.time.version>2.8.2</joda.time.version>
 
         <maven.repository.address>http://maven.oschina.net</maven.repository.address>
 
     </properties>
 
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>Maven Repository Switchboard</name>
+            <layout>default</layout>
+            <url>http://repo1.maven.org/maven2</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
     <!--<repositories>-->
+    <!--<repository>-->
+    <!--<id>nexus-releases</id>-->
+    <!--<name>Internal Releases</name>-->
+    <!--<url>${maven.repository.address}/nexus/content/repositories/releases</url>-->
+    <!--</repository>-->
+    <!--<repository>-->
+    <!--<id>nexus-snapshots</id>-->
+    <!--<name>Internal Snapshots</name>-->
+    <!--<url>${maven.repository.address}/nexus/content/repositories/snapshots/</url>-->
+    <!--</repository>-->
+    <!--</repositories>-->
+
+    <!--<distributionManagement>-->
         <!--<repository>-->
             <!--<id>nexus-releases</id>-->
             <!--<name>Internal Releases</name>-->
             <!--<url>${maven.repository.address}/nexus/content/repositories/releases</url>-->
         <!--</repository>-->
-        <!--<repository>-->
+        <!--<snapshotRepository>-->
             <!--<id>nexus-snapshots</id>-->
             <!--<name>Internal Snapshots</name>-->
             <!--<url>${maven.repository.address}/nexus/content/repositories/snapshots/</url>-->
-        <!--</repository>-->
-    <!--</repositories>-->
-
-    <distributionManagement>
-        <repository>
-            <id>nexus-releases</id>
-            <name>Internal Releases</name>
-            <url>${maven.repository.address}/nexus/content/repositories/releases</url>
-        </repository>
-        <snapshotRepository>
-            <id>nexus-snapshots</id>
-            <name>Internal Snapshots</name>
-            <url>${maven.repository.address}/nexus/content/repositories/snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
+        <!--</snapshotRepository>-->
+    <!--</distributionManagement>-->
 
     <profiles>
         <profile>

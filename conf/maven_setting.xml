@@ -168,10 +168,16 @@ under the License.
      -->  
 <!--     <mirror>
       <id>CN</id>
+      <mirrorOf>central</mirrorOf>
       <name>OSChina Central</name>
       <url>http://maven.oschina.net/content/groups/public/</url>
-      <mirrorOf>central</mirrorOf>
     </mirror>  -->
+<!--     <mirror>    
+      <id>repo2</id>    
+      <mirrorOf>central</mirrorOf>    
+      <name>repo2</name>    
+      <url>http://repo2.maven.org/maven2/</url>    
+    </mirror> -->
   </mirrors>
 
   

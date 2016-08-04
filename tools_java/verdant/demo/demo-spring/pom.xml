@@ -8,7 +8,7 @@
     <parent>
         <artifactId>demo</artifactId>
         <groupId>com.verdant</groupId>
-        <version>0.1-SNAPSHOT</version>
+        <version>${verdant.version}</version>
     </parent>
 
     <artifactId>demo-spring</artifactId>
@@ -25,7 +25,7 @@
         <dependency>
             <artifactId>jtools-common</artifactId>
             <groupId>com.verdant</groupId>
-            <version>0.1-SNAPSHOT</version>
+            <version>${verdant.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>log4j</groupId>
@@ -37,13 +37,13 @@
         <dependency>
             <artifactId>jtools-cache</artifactId>
             <groupId>com.verdant</groupId>
-            <version>0.1-SNAPSHOT</version>
+            <version>${verdant.version}</version>
         </dependency>
 
         <dependency>
             <artifactId>jtools-db</artifactId>
             <groupId>com.verdant</groupId>
-            <version>0.1-SNAPSHOT</version>
+            <version>${verdant.version}</version>
         </dependency>
 
         <dependency>
@@ -183,6 +183,26 @@
                 <configuration>
                     <skipTests>true</skipTests>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>${plugin.maven.assembly}</version>
+                <configuration>
+                    <descriptors>
+                        <descriptor>src/main/assembly/assembly.xml</descriptor>
+                    </descriptors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>

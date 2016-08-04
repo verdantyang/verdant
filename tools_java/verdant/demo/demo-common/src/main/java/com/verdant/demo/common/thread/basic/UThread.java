@@ -1,15 +1,38 @@
 package com.verdant.demo.common.thread.basic;
 
 /**
- * Author: verdant
- * Desc:   Thread应用
+ * Thread应用
+ *
+ * @author verdant
+ * @since 2016/07/14
  */
 public class UThread {
 
-    private static class ExampleThread1 extends Thread{
+    private static class ExampleThread1 extends Thread {
         @Override
         public void run() {
             System.out.println("Execute ExampleThread1");
+        }
+    }
+
+    /**
+     * 安全终止的线程
+     */
+    class SafeStopThread extends Thread {
+        //此变量必须加上volatile
+        private volatile boolean stop = false;
+
+        @Override
+        public void run() {
+            //判断线程体是否运行
+            while (stop) {
+                // Do Something
+            }
+        }
+
+        //线程终止
+        public void terminate() {
+            stop = true;
         }
     }
 
