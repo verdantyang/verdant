@@ -16,25 +16,19 @@ import org.slf4j.LoggerFactory;
 public class WordCount implements IRichBolt {
 
     private static final Logger logger = LoggerFactory.getLogger(WordCount.class);
-
     private static final long serialVersionUID = -3748016050169786320L;
-    Integer id = 0;
-    String name = "";
+
+    private Integer id = 0;
+    private String name = "";
     private OutputCollector collector;
     Map<String, Integer> counts = new HashMap<String, Integer>();
 
-    @SuppressWarnings("rawtypes")
     @Override
     public void prepare(Map stormConf, TopologyContext context,
                         OutputCollector collector) {
         this.collector = collector;
-        this.name = context.getThisComponentId();
         this.id = context.getThisTaskId();
-    }
-
-    @Override
-    public void declareOutputFields(OutputFieldsDeclarer declarer) {
-        declarer.declare(new Fields("word", "count"));
+        this.name = context.getThisComponentId();
     }
 
     @Override
@@ -53,6 +47,11 @@ public class WordCount implements IRichBolt {
         for (Map.Entry<String, Integer> entry : counts.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
+    }
+
+    @Override
+    public void declareOutputFields(OutputFieldsDeclarer declarer) {
+        declarer.declare(new Fields("word", "count"));
     }
 
     @Override

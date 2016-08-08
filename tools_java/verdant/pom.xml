@@ -125,6 +125,7 @@
 
         <breeze.version>0.10</breeze.version>
         <joda.time.version>2.8.2</joda.time.version>
+        <disruptor.version>3.3.5</disruptor.version>
 
         <maven.repository.address>http://maven.oschina.net</maven.repository.address>
 
@@ -155,16 +156,16 @@
     <!--</repositories>-->
 
     <!--<distributionManagement>-->
-        <!--<repository>-->
-            <!--<id>nexus-releases</id>-->
-            <!--<name>Internal Releases</name>-->
-            <!--<url>${maven.repository.address}/nexus/content/repositories/releases</url>-->
-        <!--</repository>-->
-        <!--<snapshotRepository>-->
-            <!--<id>nexus-snapshots</id>-->
-            <!--<name>Internal Snapshots</name>-->
-            <!--<url>${maven.repository.address}/nexus/content/repositories/snapshots/</url>-->
-        <!--</snapshotRepository>-->
+    <!--<repository>-->
+    <!--<id>nexus-releases</id>-->
+    <!--<name>Internal Releases</name>-->
+    <!--<url>${maven.repository.address}/nexus/content/repositories/releases</url>-->
+    <!--</repository>-->
+    <!--<snapshotRepository>-->
+    <!--<id>nexus-snapshots</id>-->
+    <!--<name>Internal Snapshots</name>-->
+    <!--<url>${maven.repository.address}/nexus/content/repositories/snapshots/</url>-->
+    <!--</snapshotRepository>-->
     <!--</distributionManagement>-->
 
     <profiles>
