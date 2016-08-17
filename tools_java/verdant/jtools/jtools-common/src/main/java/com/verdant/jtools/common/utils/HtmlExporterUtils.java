@@ -14,12 +14,10 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 
 /**
- * Copyright @ 2015 yuzhouwan.com
- * All right reserved.
- * Function: Html Exporter
+ * Html Exporter
  *
- * @author Benedict Jin
- * @since 2016/6/20
+ * @author verdant
+ * @since 2016/08/05
  */
 public class HtmlExporterUtils {
 
