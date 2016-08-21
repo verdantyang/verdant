@@ -19,5 +19,8 @@ out/
 node_modules/
 npm-debug.log
 
+# Leetcode
+leetcode/out
+
 # Work
 work

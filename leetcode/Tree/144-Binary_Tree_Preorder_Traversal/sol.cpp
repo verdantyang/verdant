@@ -21,8 +21,8 @@ struct TreeNode {
 class Solution {
 public:
 	vector<int> preorderTraversal(TreeNode* root) {
-		std::stack<TreeNode*> cache;
-		std::vector<int> rets;
+		stack<TreeNode*> cache;
+		vector<int> rets;
 		while (NULL != root || !cache.empty()) {
 			if (NULL != root) {
 				rets.push_back(root->val);

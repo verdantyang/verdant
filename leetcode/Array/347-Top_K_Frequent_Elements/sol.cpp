@@ -26,7 +26,6 @@ public:
         while (k-- > 0) {
             ret.push_back(pq.top().second);
             pq.pop();
-
         }
         return ret;
     }
