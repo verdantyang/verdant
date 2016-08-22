@@ -31,7 +31,6 @@ public:
 			quickSort(unsorted, low, loc);
 			quickSort(unsorted, loc + 1, high);
 		}
-
 	}
 };
 

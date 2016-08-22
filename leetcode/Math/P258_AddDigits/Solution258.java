@@ -1,5 +1,11 @@
-package Math.P258_AdDigits;
+package Math.P258_AddDigits;
 
+/**
+ * @Data Structures:
+ * @Algorithms used:
+ * @Time Complexity:   O(n)
+ * @Space Complexity:  O(1)
+ */
 public class Solution258 {
     public static int addDigits(int num) {
         int dig = 0;

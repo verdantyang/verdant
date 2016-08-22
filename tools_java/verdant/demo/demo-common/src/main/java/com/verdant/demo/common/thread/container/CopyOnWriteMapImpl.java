@@ -1,4 +1,4 @@
-package com.verdant.demo.common.thread;
+package com.verdant.demo.common.thread.container;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,12 +14,12 @@ public class CopyOnWriteMapImpl<K, V> extends HashMap<K, V> implements Cloneable
     private volatile Map<K, V> internalMap;
 
     public CopyOnWriteMapImpl() {
-        internalMap = new HashMap<K, V>();
+        internalMap = new HashMap<>();
     }
 
     public V put(K key, V value) {
         synchronized (this) {
-            Map<K, V> newMap = new HashMap<K, V>(internalMap);
+            Map<K, V> newMap = new HashMap<>(internalMap);
             V val = newMap.put(key, value);
             internalMap = newMap;
             return val;
@@ -32,7 +32,7 @@ public class CopyOnWriteMapImpl<K, V> extends HashMap<K, V> implements Cloneable
 
     public void putAll(Map<? extends K, ? extends V> newData) {
         synchronized (this) {
-            Map<K, V> newMap = new HashMap<K, V>(internalMap);
+            Map<K, V> newMap = new HashMap<>(internalMap);
             newMap.putAll(newData);
             internalMap = newMap;
         }

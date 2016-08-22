@@ -1,6 +1,11 @@
 package Bit.P136_SingleNumber;
 
-
+/**
+ * @Data Structures:
+ * @Algorithms used:  xor
+ * @Time Complexity:   O(n)
+ * @Space Complexity:  O(1)
+ */
 public class Solution136 {
     public static int singleNumber(int[] nums) {
         int ret = 0;

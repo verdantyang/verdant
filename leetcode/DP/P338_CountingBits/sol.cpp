@@ -1,6 +1,6 @@
 /**
  * @Time Complexity:	O(n)
- * @Space Complexity:	O(1)
+ * @Space Complexity:	O(n)
  */
 
 #include <stdio.h>

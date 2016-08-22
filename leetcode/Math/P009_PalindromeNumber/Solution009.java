@@ -1,8 +1,10 @@
 package Math.P009_PalindromeNumber;
 
 /**
- * @Time Complexity:    O(n)
- * @Space Complexity:   O(1)
+ * @Data Structures:
+ * @Algorithms used:
+ * @Time Complexity:   O(n)
+ * @Space Complexity:  O(1)
  */
 public class Solution009 {
     public static boolean isPalindrome(int x) {

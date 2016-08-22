@@ -4,8 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @Time Complexity:    O(n)
- * @Space Complexity:   O(n)
+ * @Data Structures:   Map
+ * @Algorithms used:
+ * @Time Complexity:   O(n)
+ * @Space Complexity:  O(n)
  */
 public class Solution003 {
     public static int lengthOfLongestSubstring(String s) {

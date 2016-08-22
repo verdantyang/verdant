@@ -6,8 +6,10 @@ import java.util.Map;
 import java.util.Queue;
 
 /**
- * @Time Complexity:    O(n)
- * @Space Complexity:   O(n)
+ * @Data Structures:   Queue
+ * @Algorithms used:
+ * @Time Complexity:   O(n)
+ * @Space Complexity:  O(m)
  */
 public class Solution006 {
     public static String convert(String s, int numRows) {

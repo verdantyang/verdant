@@ -3,6 +3,12 @@ package Array.P349_IntersectionOfTwoArrays;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * @Data Structures:   Set
+ * @Algorithms used:
+ * @Time Complexity:   O(n)
+ * @Space Complexity:  O(1)
+ */
 public class Solution349 {
     public static int[] intersection(int[] nums1, int[] nums2) {
         Set<Integer> cache = new HashSet<>();

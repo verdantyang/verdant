@@ -1,5 +1,11 @@
 package Tree.P226_InvertBinaryTree;
 
+/**
+ * @Data Structures:
+ * @Algorithms used:  Recursion
+ * @Time Complexity:   O(n)
+ * @Space Complexity:  O(n)
+ */
 public class Solution226 {
     static class TreeNode {
         int val;

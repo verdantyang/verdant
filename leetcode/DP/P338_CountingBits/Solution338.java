@@ -1,5 +1,11 @@
 package DP.P338_CountingBits;
 
+/**
+ * @Data Structures:
+ * @Algorithms used:  DP
+ * @Time Complexity:   O(n)
+ * @Space Complexity:  O(n)
+ */
 public class Solution338 {
     public static int[] countBits(int num) {
         int[] rets = new int[num + 1];

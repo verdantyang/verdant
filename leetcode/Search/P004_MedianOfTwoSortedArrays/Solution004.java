@@ -1,8 +1,10 @@
 package Search.P004_MedianOfTwoSortedArrays;
 
 /**
- * @Time Complexity:    O(logn)
- * @Space Complexity:   O(1)
+ * @Data Structures:
+ * @Algorithms used:  BinarySearch
+ * @Time Complexity:   O(logn)
+ * @Space Complexity:  O(1)
  */
 public class Solution004 {
     private static int findKth(int[] A, int aStart, int[] B, int bStart, int k) {

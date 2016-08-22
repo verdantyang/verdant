@@ -1,11 +1,10 @@
 package String.P383_RansomNote;
 
 /**
- * @Data Structures:    hashmap
- * @Algorithms:
- *
- * @Time Complexity:    O(n^2)
- * @Space Complexity:   O(1)
+ * @Data Structures:  HashMap
+ * @Algorithms used:
+ * @Time Complexity:   O(m+n)
+ * @Space Complexity:  O(1)
  */
 public class Solution383 {
     public static boolean canConstruct(String ransomNote, String magazine) {

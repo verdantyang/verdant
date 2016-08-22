@@ -1,5 +1,11 @@
 package Tree.P100_SameTree;
 
+/**
+ * @Data Structures:
+ * @Algorithms used:  Recursion
+ * @Time Complexity:   O(n)
+ * @Space Complexity:  O(n)
+ */
 public class Solution100 {
     public class TreeNode {
         int val;

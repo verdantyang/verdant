@@ -2,10 +2,9 @@ package String.P344_ReverseString;
 
 /**
  * @Data Structures:
- * @Algorithms:        two pointers
- *
- * @Time Complexity:    O(n^2)
- * @Space Complexity:   O(1)
+ * @Algorithms used:  TwoPointer
+ * @Time Complexity:   O(n)
+ * @Space Complexity:  O(1)
  */
 public class Solution344 {
     public static String reverseString(String s) {

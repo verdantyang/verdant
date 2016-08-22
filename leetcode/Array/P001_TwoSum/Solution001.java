@@ -4,11 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @Data Structures:    hashmap
- * @Algorithms:
- *
- * @Time Complexity:    O(n^2)
- * @Space Complexity:   O(1)
+ * @Data Structures:   Map
+ * @Algorithms used:
+ * @Time Complexity:   O(n)
+ * @Space Complexity:  O(n)
  */
 public class Solution001 {
     public static int[] twoSum(int[] nums, int target) {

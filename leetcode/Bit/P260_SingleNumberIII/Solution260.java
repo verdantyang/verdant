@@ -1,8 +1,12 @@
 package Bit.P260_SingleNumberIII;
 
-
+/**
+ * @Data Structures:
+ * @Algorithms used:  xor
+ * @Time Complexity:   O(n)
+ * @Space Complexity:  O(1)
+ */
 public class Solution260 {
-
     public static int[] singleNumber(int[] nums) {
         int xor = 0;
         int a = 0, b = 0;

@@ -1,5 +1,11 @@
 package Array.P167_TwoSumII_InputArrayIsSorted;
 
+/**
+ * @Data Structures:
+ * @Algorithms used:  TwoPointer
+ * @Time Complexity:   O(n)
+ * @Space Complexity:  O(1)
+ */
 public class Solution167 {
     public static int[] twoSum(int[] numbers, int target) {
         int lo = 0;

@@ -1,8 +1,10 @@
 package String.P005_LongestPalindromicSubstring;
 
 /**
- * @Time Complexity:    O(n^2)
- * @Space Complexity:   O(1)
+ * @Data Structures:
+ * @Algorithms used:  TwoPointer
+ * @Time Complexity:   O(n^2)
+ * @Space Complexity:  O(1)
  */
 public class Solution005 {
     private static int lo = 0;

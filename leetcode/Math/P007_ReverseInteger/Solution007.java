@@ -1,8 +1,10 @@
 package Math.P007_ReverseInteger;
 
 /**
- * @Time Complexity:    O(n)
- * @Space Complexity:   O(1)
+ * @Data Structures:
+ * @Algorithms used:
+ * @Time Complexity:   O(n)
+ * @Space Complexity:  O(1)
  */
 public class Solution007 {
     public static int reverse(int x) {

@@ -1,5 +1,11 @@
 package Array.P283_MoveZeroes;
 
+/**
+ * @Data Structures:
+ * @Algorithms used:
+ * @Time Complexity:   O(n)
+ * @Space Complexity:  O(1)
+ */
 public class Solution283 {
     public static void moveZeroes(int[] nums) {
         int cur = 0;

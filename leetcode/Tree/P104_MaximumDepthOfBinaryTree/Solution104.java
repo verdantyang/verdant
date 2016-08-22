@@ -1,9 +1,12 @@
 package Tree.P104_MaximumDepthOfBinaryTree;
 
+/**
+ * @Data Structures:
+ * @Algorithms used:  Recursion
+ * @Time Complexity:   O(n)
+ * @Space Complexity:  O(n)
+ */
 public class Solution104 {
-    /**
-     * Definition for a binary tree node.
-     */
     public class TreeNode {
         int val;
         TreeNode left;
