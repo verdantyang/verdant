@@ -19,8 +19,8 @@ public class Solution206 {
     public ListNode reverseList(ListNode head) {
         if (head == null)
             return null;
-        ListNode pnext = head.next;
         ListNode pnow = head;
+        ListNode pnext = head.next;
         head.next = null;
         while (pnext != null) {
             ListNode temp = pnext.next;
