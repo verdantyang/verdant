@@ -9,7 +9,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * 锁应用
+ * ReentrantLock锁应用
  *
  * @author verdant
  * @since 2016/07/27
@@ -75,7 +75,6 @@ public class UReentrantLock {
         }
     }
 
-
     private static class ReentrantLock2 extends ReentrantLock {
 
         // Constructor Override
@@ -90,8 +89,7 @@ public class UReentrantLock {
         }
     }
 
-
-    public void ReentrantLockUsage() throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException {
         Lock lock = new ReentrantLock();
         if (lock.tryLock(5, TimeUnit.SECONDS)) {  //可以设定获取锁的超时时间
             try {
@@ -101,9 +99,5 @@ public class UReentrantLock {
             }
         }
         lock.lockInterruptibly();  //获取可被中断的锁
-    }
-
-    public static void main(String[] args) throws InterruptedException {
-
     }
 }
