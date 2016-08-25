@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 约瑟夫环
+ *
  * @Data Structures:   List
  * @Algorithms:
  * @Time Complexity:   O(n)
