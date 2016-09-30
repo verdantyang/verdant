@@ -1,0 +1,8 @@
+{
+  "name": "work",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "request": "^2.67.0"
+  }
+}

@@ -6,6 +6,7 @@ var request = require('request'),
 
 
 function callback(error, response, data) {
+	console.log(data)
 	if (error)
 		console.log('error|request_ext|', error)
 

@@ -7,6 +7,8 @@
   },
   "private": true,
   "dependencies": {
+    "jsdom": "^9.5.0",
+    "mocha": "^2.5.3",
     "request": "^2.67.0"
   },
   "devDependencies": {
