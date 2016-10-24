@@ -79,8 +79,8 @@
 	<aop:aspectj-autoproxy proxy-target-class="true"/>
 		
 	<!--×¢ÈëBean-->
-	<bean class="com.jsptpd.jdm.tools.ApplicationContextUtil"></bean>
-	<bean id="serviceMananger" class="com.jsptpd.jdm.ServiceMananger">
+	<bean class="com.verdant.jdm.tools.ApplicationContextUtil"></bean>
+	<bean id="serviceMananger" class="com.verdant.jdm.ServiceMananger">
 		<lookup-method name="getFuncTestService" bean="funcTestService" />
 		<lookup-method name="getBuildRegressionService" bean="buildRegressionService" />
 		<lookup-method name="getUpdateRegressionService" bean="updateRegressionService" />

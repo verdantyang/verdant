@@ -19,6 +19,7 @@ public class WordCountTopology {
         
         builder.setBolt("split", new SplitSentenceBolt(), 8)
                  .shuffleGrouping("spout");
+
         builder.setBolt("count", new WordCount(), 12)
                  .fieldsGrouping("split", new Fields("word"));
 
@@ -33,8 +34,8 @@ public class WordCountTopology {
             LocalCluster cluster = new LocalCluster();
             cluster.submitTopology("word-count", conf, builder.createTopology());     
             Thread.sleep(10000);
-            cluster.shutdown();
-            System.exit(0);
+//            cluster.shutdown();
+//            System.exit(0);
         }
     }
 }

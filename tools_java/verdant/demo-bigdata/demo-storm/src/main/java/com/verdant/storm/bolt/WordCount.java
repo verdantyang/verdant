@@ -21,7 +21,7 @@ public class WordCount implements IRichBolt {
     private Integer id = 0;
     private String name = "";
     private OutputCollector collector;
-    Map<String, Integer> counts = new HashMap<String, Integer>();
+    Map<String, Integer> counts = new HashMap<>();
 
     @Override
     public void prepare(Map stormConf, TopologyContext context,
@@ -38,12 +38,13 @@ public class WordCount implements IRichBolt {
         if (count == null) count = 0;
         count++;
         counts.put(word, count);
+        logger.info("Word Counter [" + word + ": " + count + "]");
         collector.emit(new Values(word, count));
     }
 
     @Override
     public void cleanup() {
-        System.out.println("-- Word Counter [" + name + "-" + id + "] --");
+        logger.info("-- Word Counter [" + name + "-" + id + "] --");
         for (Map.Entry<String, Integer> entry : counts.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }

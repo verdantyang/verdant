@@ -14,6 +14,7 @@
         <module>demo</module>
         <module>demo-bigdata</module>
         <module>design-pattern</module>
+        <module>data-mining</module>
     </modules>
 
     <properties>

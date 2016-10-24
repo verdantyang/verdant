@@ -30,12 +30,12 @@ public class SplitSentenceBolt implements IRichBolt {
     @Override
     public void execute(Tuple input) {
         String sentence = input.getString(0);
+//        logger.info("Split sentence {}", sentence);
         String[] words = sentence.split(" ");
         for (String word : words) {
             word = word.trim();
             if (!word.isEmpty()) {
                 word = word.toLowerCase();
-                //Emit the word
                 collector.emit(new Values(word));
             }
         }
