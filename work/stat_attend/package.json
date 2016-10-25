@@ -1,8 +1,11 @@
 {
-  "name": "work",
+  "name": "stat_attend",
   "version": "0.0.1",
+  "main": "",
   "private": true,
   "dependencies": {
+    "async": "^2.0.1",
+    "jsdom": "^9.5.0",
     "request": "^2.67.0"
   }
 }
