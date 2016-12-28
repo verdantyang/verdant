@@ -1,6 +1,6 @@
 package common;
 
-import com.verdant.jtools.common.web.utils.http.HttpClientUtils2;
+import com.verdant.jtools.common.web.utils.HttpClientUtils2;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.junit.Test;

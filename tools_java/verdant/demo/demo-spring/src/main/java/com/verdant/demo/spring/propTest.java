@@ -1,5 +1,5 @@
 package com.verdant.demo.spring;
-import com.verdant.jtools.common.spring.utils.PropUtils;
+import com.verdant.jtools.common.spring.utils.SpringPropUtils;
 /**
  * Created by verdant on 2016/1/15.
  */
@@ -9,7 +9,7 @@ public class propTest {
 //        (T) AuthorizeStorageUtil.get(prefix + ":" + tokenValue, clazz);
 //        InfoCustomer user = UserUtil.getUser(TokenConst.INFO, InfoCustomer.class);
 //        AuthorizeStorageUtil.remove(prefix + ":" + tokenValue);
-//        System.out.println(PropUtils.get("mysql.client"));
-        System.out.println(PropUtils.getPattern("mysql.*"));
+//        System.out.println(SpringPropUtils.get("mysql.client"));
+        System.out.println(SpringPropUtils.getPattern("mysql.*"));
     }
 }

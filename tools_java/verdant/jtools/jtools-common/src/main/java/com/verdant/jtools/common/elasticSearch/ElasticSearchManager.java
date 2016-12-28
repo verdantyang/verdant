@@ -10,10 +10,11 @@ import java.util.Map;
 
 /**
  * EsManager
- * Author: verdant
- * Date: 2015/12/3
+ *
+ * @author verdant
+ * @since 2015/12/3
  */
-public class ElasticSearchManager extends AbstractManager{
+public class ElasticSearchManager extends AbstractManager {
     Map<String, ElasticSearchConfiguration> resources = new HashMap<>();
     Map<String, Client> clients = new HashMap<>();
 
@@ -70,6 +71,6 @@ public class ElasticSearchManager extends AbstractManager{
      */
     @Override
     public void close() {
-        clients=null;
+        clients = null;
     }
 }

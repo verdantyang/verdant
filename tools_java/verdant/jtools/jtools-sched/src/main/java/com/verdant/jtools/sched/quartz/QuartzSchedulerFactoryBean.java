@@ -2,7 +2,7 @@ package com.verdant.jtools.sched.quartz;
 
 
 import com.verdant.jtools.sched.annotation.CronJob;
-import com.verdant.jtools.common.spring.utils.PropUtils;
+import com.verdant.jtools.common.spring.utils.SpringPropUtils;
 import org.quartz.Trigger;
 import org.quartz.impl.SchedulerRepository;
 import org.quartz.impl.StdSchedulerFactory;
@@ -139,7 +139,7 @@ public class QuartzSchedulerFactoryBean extends SchedulerFactoryBean {
         Matcher m = p.matcher(jobAnnotation.cron());
         String cron = "";
         if (m.find()) {
-            cron = PropUtils.get(m.group(1).trim());
+            cron = SpringPropUtils.get(m.group(1).trim());
         } else {
             cron = jobAnnotation.cron();
         }

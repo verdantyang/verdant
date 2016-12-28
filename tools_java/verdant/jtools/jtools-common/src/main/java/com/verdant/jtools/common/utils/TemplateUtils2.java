@@ -1,12 +1,10 @@
 package com.verdant.jtools.common.utils;
 
-import com.verdant.jtools.common.utils.base.Collections3;
-import com.verdant.jtools.common.utils.base.DateUtils2;
-import com.verdant.jtools.common.utils.base.StringUtils2;
-import com.verdant.jtools.common.utils.other.IPUtils2;
-import com.verdant.jtools.common.spring.utils.PropUtils;
 import freemarker.cache.StringTemplateLoader;
-import freemarker.template.*;
+import freemarker.template.Configuration;
+import freemarker.template.DefaultObjectWrapper;
+import freemarker.template.Template;
+import freemarker.template.TemplateExceptionHandler;
 
 import java.io.StringWriter;
 import java.util.Locale;
@@ -32,11 +30,6 @@ public class TemplateUtils2 {
      * 默认可用静态方法
      */
     private static Class[] defaultStaticClasses = {
-            IPUtils2.class,
-            StringUtils2.class,
-            DateUtils2.class,
-            Collections3.class,
-            PropUtils.class,
             String.class,
             Integer.class,
             Boolean.class,

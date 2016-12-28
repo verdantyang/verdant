@@ -7,9 +7,10 @@ import utils.DebugLogFactory;
 import utils.DesignPatternEnum;
 
 /**
- * Author: verdant
- * Create: 2016/3/29
- * Desc:   执行环境
+ * 执行环境
+ *
+ * @author verdant
+ * @since 2016/03/29
  */
 public class Context {
 

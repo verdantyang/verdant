@@ -1,6 +1,6 @@
 package test;
 
-import com.verdant.jtools.common.spring.utils.PropUtils;
+import com.verdant.jtools.common.spring.utils.SpringPropUtils;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,7 +14,7 @@ public class PropUtilsTest {
     }
     @Test
     public void testProp() {
-        PropUtils.getPattern("mysql.*");
-        System.out.println(PropUtils.getPattern("mysql.*"));
+        SpringPropUtils.getPattern("mysql.*");
+        System.out.println(SpringPropUtils.getPattern("mysql.*"));
     }
 }

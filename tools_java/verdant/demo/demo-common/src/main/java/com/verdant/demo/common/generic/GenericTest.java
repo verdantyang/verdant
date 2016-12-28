@@ -1,6 +1,6 @@
 package com.verdant.demo.common.generic;
 
-import com.verdant.jtools.common.utils.ReflectUtils2;
+import com.verdant.jtools.common.utils.base.ReflectUtils2;
 
 import java.util.List;
 

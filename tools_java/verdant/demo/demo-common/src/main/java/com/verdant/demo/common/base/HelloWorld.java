@@ -1,5 +1,9 @@
 package com.verdant.demo.common.base;
 
+import com.verdant.demo.common.net.socket.tcp.aio.client.AioConnectHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Random;
 
 /**
@@ -9,6 +13,7 @@ import java.util.Random;
  * @since 2016/08/05
  */
 public class HelloWorld {
+    private static final Logger logger = LoggerFactory.getLogger(HelloWorld.class);
 
     public static String randomString(int i) {
         Random ran = new Random(i);
@@ -24,6 +29,7 @@ public class HelloWorld {
     }
 
     public static void main(String[] args) {
-        System.out.println(randomString(-229985452) + " " + randomString(-147909649));
+//        logger.info("3##{timestamp}##{field1}##{field2}");
+        logger.info(randomString(-229985452) + " " + randomString(-147909649));
     }
 }

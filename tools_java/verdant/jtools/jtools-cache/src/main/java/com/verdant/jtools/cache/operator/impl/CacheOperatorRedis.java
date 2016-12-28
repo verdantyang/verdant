@@ -12,7 +12,11 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * Redis缓存处理器
  * Cache structure:  prefix:key
+ *
+ * @author verdant
+ * @since 2016/11/29
  */
 public class CacheOperatorRedis implements ICacheOperator {
 
@@ -30,10 +34,33 @@ public class CacheOperatorRedis implements ICacheOperator {
     }
 
     @Override
+    public Boolean exist(String key) {
+        return getNativeCache().hasKey(key);
+    }
+
+    @Override
+    public void expire(String key, Integer seconds) {
+        if (seconds != null && seconds > 0) {
+            getNativeCache().expire(CacheHelper.getKey(prefix, key), seconds, TimeUnit.SECONDS);
+        }
+    }
+
+    @Override
+    public void del(String key) {
+        getNativeCache().delete(CacheHelper.getKey(prefix, key));
+    }
+
+    @Override
+    public void delAll() {
+        getNativeCache().delete(getNativeCache().keys(CacheHelper.getKey(prefix, "*")));
+    }
+
+    @Override
     public String get(String key) {
         return get(key, String.class);
     }
 
+    //String
     @Override
     public <T> T get(String key, Class<T> clazz) {
         return (T) CacheHelper.deserialize(getNativeCache().opsForValue().get(CacheHelper.getKey(prefix, key)), clazz);
@@ -70,20 +97,29 @@ public class CacheOperatorRedis implements ICacheOperator {
         }
     }
 
+    //Hash
     @Override
-    public void expire(String key, Integer seconds) {
-        if (seconds != null && seconds > 0) {
-            getNativeCache().expire(CacheHelper.getKey(prefix, key), seconds, TimeUnit.SECONDS);
-        }
+    public Boolean hexists(String key, Object hk) {
+        return getNativeCache().opsForHash().hasKey(CacheHelper.getKey(prefix, key), hk);
     }
 
     @Override
-    public void del(String key) {
-        getNativeCache().delete(CacheHelper.getKey(prefix, key));
+    public Object hget(String key, Object hk) {
+        return getNativeCache().opsForHash().get(CacheHelper.getKey(prefix, key), hk);
     }
 
     @Override
-    public void delAll() {
-        getNativeCache().delete(getNativeCache().keys(CacheHelper.getKey(prefix, "*")));
+    public Map<Object, Object> hgetall(String key) {
+        return getNativeCache().opsForHash().entries(CacheHelper.getKey(prefix, key));
+    }
+
+    @Override
+    public void hset(String key, Object hk, Object hv) {
+        getNativeCache().opsForHash().put(CacheHelper.getKey(prefix, key), hk, hv);
+    }
+
+    @Override
+    public void hmset(String key, Map<Object, Object> map) {
+        getNativeCache().opsForHash().putAll(CacheHelper.getKey(prefix, key), map);
     }
 }

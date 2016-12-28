@@ -3,55 +3,45 @@ package com.verdant.jtools.cache.operator;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 缓存操作接口
+ *
+ * @author verdant
+ * @since 2016/11/29
+ */
 public interface ICacheOperator {
 
     public <T> T getNativeCache();
 
-    /**
-     * 按key取string
-     *
-     * @param key
-     * @return
-     */
-    public String get(String key);
+    public Boolean exist(String key);
 
-    /**
-     * 按key取对象
-     */
-    public <T> T get(String key, Class<T> clazz);
-
-    /**
-     * 按key取 List
-     */
-    public <T> List<T> getList(String key, Class<T> clazz);
-
-    /**
-     * 按key正则取Map
-     */
-    public <T> Map<String, T> keys(String patten, Class<T> clazz);
-
-    /**
-     * 按key set对象
-     */
-    public void set(String key, Object value);
-
-    /**
-     * 按key set对象 and 超时时间
-     */
-    public void set(String key, Object value, Integer seconds);
-
-    /**
-     * 按key设置过期
-     */
     public void expire(String key, Integer seconds);
 
-    /**
-     * 按key删除
-     */
+    public void delAll();
+
+    //String
+    public String get(String key);
+
+    public <T> T get(String key, Class<T> clazz);
+
+    public <T> List<T> getList(String key, Class<T> clazz);
+
+    public <T> Map<String, T> keys(String patten, Class<T> clazz);
+
+    public void set(String key, Object value);
+
+    public void set(String key, Object value, Integer seconds);
+
     public void del(String key);
 
-    /**
-     * 删除所有key
-     */
-    public void delAll();
+    //Hash
+    public Boolean hexists(String key, Object hk);
+
+    public Object hget(String key, Object hk);
+
+    public Map<Object, Object> hgetall(String key);
+
+    public void hset(String key, Object hk, Object hv);
+
+    public void hmset(String key, Map<Object, Object> map);
 }

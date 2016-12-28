@@ -1,6 +1,6 @@
 package common;
 
-import com.verdant.jtools.common.utils.FileUtils2;
+import com.verdant.jtools.common.file.FileUtils2;
 import org.junit.Test;
 
 /**

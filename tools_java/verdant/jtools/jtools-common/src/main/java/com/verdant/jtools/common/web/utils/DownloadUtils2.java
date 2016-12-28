@@ -1,6 +1,5 @@
 package com.verdant.jtools.common.web.utils;
 
-import com.verdant.jtools.common.web.utils.WebUtils2;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.ArrayUtils;
 

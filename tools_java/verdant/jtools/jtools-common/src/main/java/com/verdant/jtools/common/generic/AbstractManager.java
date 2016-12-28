@@ -3,9 +3,10 @@ package com.verdant.jtools.common.generic;
 import java.io.Closeable;
 
 /**
- * Author: verdant
- * Create: 2016/5/31
- * Desc:   第三方工具管理
+ * 第三方工具管理
+ *
+ * @author verdant
+ * @since 2016/5/31
  */
 public abstract class AbstractManager implements Closeable {
 

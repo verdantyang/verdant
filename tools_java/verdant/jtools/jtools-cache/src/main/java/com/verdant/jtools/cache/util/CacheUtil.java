@@ -1,26 +1,27 @@
 package com.verdant.jtools.cache.util;
 
-import com.verdant.jtools.cache.operator.ICacheOperator;
 import com.verdant.jtools.cache.manager.CacheManager;
 import com.verdant.jtools.cache.operator.CacheOperatorFactory;
+import com.verdant.jtools.cache.operator.ICacheOperator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ApplicationObjectSupport;
 
 import javax.annotation.PostConstruct;
 
+
 /**
- * Author: verdant
- * Create: 2016/1/22
  * 缓存工具
- * cacheManager管理缓存平台，目前仅实现了Redis
  * Useage: CacheUtil.getInstance().getCache().xx
+ *
+ * @author verdant
+ * @since 2016/11/29
  */
 public class CacheUtil extends ApplicationObjectSupport {
 
     /**
      * 默认存储前缀
      */
-    private String defaultPrefix = "Default";
+    private static final String DEFAULT_PREFIX = "Default";
 
     private static CacheUtil INSTANCE;
 
@@ -41,10 +42,7 @@ public class CacheUtil extends ApplicationObjectSupport {
         INSTANCE = getApplicationContext().getBean(CacheUtil.class);
     }
 
-    /**
-     * 单例
-     */
-    public static CacheUtil getInstance() {
+    public CacheUtil getInstance() {
         return INSTANCE;
     }
 
@@ -52,7 +50,7 @@ public class CacheUtil extends ApplicationObjectSupport {
      * 取默认Cache
      */
     public ICacheOperator getCache() {
-        return getCache(defaultPrefix);
+        return getCache(DEFAULT_PREFIX);
     }
 
     public ICacheOperator getCache(String prefixKey) {
@@ -70,3 +68,4 @@ public class CacheUtil extends ApplicationObjectSupport {
         return CacheOperatorFactory.create(cacheManager.getManager(managerKey), prefixKey);
     }
 }
+

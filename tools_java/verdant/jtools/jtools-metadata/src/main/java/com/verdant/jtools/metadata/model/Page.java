@@ -91,6 +91,9 @@ public class Page<E> implements Serializable{
     }
 
     public int getPageSize() {
+        if (pageSize <= 0) {
+            return 15;
+        }
         return pageSize;
     }
 
@@ -107,7 +110,17 @@ public class Page<E> implements Serializable{
     }
 
     public int getTotalPage() {
-        return totalPage;
+        int count = 0;
+        if (totalCount < 0) {
+            return -1;
+        }
+        if (pageSize != 0) {
+            count = totalCount / pageSize;
+            if (totalCount % pageSize > 0) {
+                count++;
+            }
+        }
+        return count;
     }
 
     public void setTotalPage(int totalPage) {
@@ -115,6 +128,9 @@ public class Page<E> implements Serializable{
     }
 
     public int getStartRow() {
+        if (startRow < 0) {
+            return 0;
+        }
         return startRow;
     }
 

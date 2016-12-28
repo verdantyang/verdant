@@ -53,7 +53,7 @@ public abstract class OutputStreamAndInputStream {
      *
      * @throws IOException
      */
-    public void OutputStreamToInputStream2(OutputStream os) throws IOException {
+    public void OutputStreamToInputStream2() throws IOException {
         PipedInputStream pis = new PipedInputStream(PIPE_BUFFER);
         final PipedOutputStream pos = new PipedOutputStream(pis);
         // 启动线程，让数据产生者单独运行

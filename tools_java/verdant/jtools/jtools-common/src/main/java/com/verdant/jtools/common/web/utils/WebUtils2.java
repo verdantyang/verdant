@@ -1,7 +1,6 @@
 package com.verdant.jtools.common.web.utils;
 
 import com.alibaba.fastjson.JSON;
-import com.verdant.jtools.common.web.utils.CookieUtils2;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -14,8 +13,10 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * @Author: verdant
- * @Desc: Web工具类
+ * Web工具类.
+ *
+ * @author verdant
+ * @since 2016/09/27
  */
 public class WebUtils2 {
     public static ServletRequestAttributes getServletRequestAttributes() {

@@ -10,8 +10,10 @@ import java.net.UnknownHostException;
 import java.util.Map;
 
 /**
- * Author: verdant
- * Date: 2015/12/3
+ * ElasticSearchConfiguration
+ *
+ * @author verdant
+ * @since 2015/12/3
  */
 public class ElasticSearchConfiguration implements Serializable {
 

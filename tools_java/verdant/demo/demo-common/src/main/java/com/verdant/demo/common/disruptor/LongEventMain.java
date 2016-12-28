@@ -33,9 +33,9 @@ public class LongEventMain {
         ThreadFactory threadFactory = Executors.defaultThreadFactory();
 
         // Construct the Disruptor
-        Disruptor<LongEvent> disruptor = new Disruptor<LongEvent>(factory, bufferSize, threadFactory);
+        Disruptor<LongEvent> disruptor = new Disruptor<>(factory, bufferSize, threadFactory);
 
-        Disruptor<LongEvent> disruptorSingle = new Disruptor<LongEvent>(factory, bufferSize,
+        Disruptor<LongEvent> disruptorSingle = new Disruptor<>(factory, bufferSize,
                 threadFactory, ProducerType.SINGLE, new BlockingWaitStrategy());
 
         Disruptor<LongEvent> disruptorMulti = new Disruptor<>(factory, bufferSize,

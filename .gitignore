@@ -22,4 +22,7 @@ npm-debug.log
 # Leetcode
 leetcode/out
 
+# TensorFlow
+data_MNIST
+
 # Work

@@ -1,7 +1,7 @@
 package com.verdant.jtools.common.web.model;
 
 
-import com.verdant.jtools.common.spring.utils.ContextUtils2;
+import com.verdant.jtools.common.spring.utils.ContextUtils;
 import com.verdant.jtools.metadata.code.ResultCode;
 import com.verdant.jtools.metadata.exception.ServiceException;
 import com.verdant.jtools.metadata.model.Page;
@@ -136,7 +136,7 @@ public class ResponseMessage {
 
     private void processCode() {
         if (!StringUtils.isEmpty(this.code) && this.code.matches(CODE_PATTERN)) {
-            String message[] = ContextUtils2.getMessage(this.code).split("\\|");
+            String message[] = ContextUtils.getMessage(this.code).split("\\|");
             this.message = message[0];
             this.code = message[1];
         } else {

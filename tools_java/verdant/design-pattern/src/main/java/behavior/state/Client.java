@@ -5,9 +5,10 @@ import behavior.state.context.Context;
 import behavior.state.state.ConcreteState1;
 
 /**
- * Author: verdant
- * Create: 2016/3/23
- * Func:   状态模式
+ * 状态模式
+ *
+ * @author verdant
+ * @since 2016/03/29
  */
 public class Client {
     public static void main(String[] args) {

@@ -3,9 +3,10 @@ package behavior.state.state;
 import behavior.state.context.Context;
 
 /**
- * Author: verdant
- * Create: 2016/3/29
- * Desc:   状态3
+ * 状态3
+ *
+ * @author verdant
+ * @since 2016/03/29
  */
 public class ConcreteState3 extends State {
 

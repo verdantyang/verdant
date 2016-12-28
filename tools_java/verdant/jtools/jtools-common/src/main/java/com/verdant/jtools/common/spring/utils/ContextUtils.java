@@ -9,11 +9,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import javax.annotation.PostConstruct;
 
-/**
- * 配置文件初始化存取bean
- */
 public class ContextUtils extends ApplicationObjectSupport {
-
 
     private static ApplicationContext applicationContext;
 
@@ -22,14 +18,12 @@ public class ContextUtils extends ApplicationObjectSupport {
         applicationContext = getApplicationContext();
     }
 
-    /**
-     * 获取对象
-     */
     public static <T> T getBean(Class<T> clazz) {
         return applicationContext.getBean(clazz);
     }
-    public static <T> T getBean(String name,Class<T> clazz) {
-        return applicationContext.getBean(name,clazz);
+
+    public static <T> T getBean(String name, Class<T> clazz) {
+        return applicationContext.getBean(name, clazz);
     }
 
     public static WebApplicationContext getWebAppContext() {
@@ -41,8 +35,6 @@ public class ContextUtils extends ApplicationObjectSupport {
     }
 
     public static String getMessage(String code) {
-        return getMessageSource().getMessage(code, (Object[]) null, code + " is undefined|999", LocaleContextHolder.getLocale());
+        return getMessageSource().getMessage(code, null, code + " is undefined|999", LocaleContextHolder.getLocale());
     }
-
-
 }

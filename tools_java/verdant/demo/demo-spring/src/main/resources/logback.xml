@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- %p级别 %m消息 %c.%M包+方法 %F:%L文件+行 -->
+    <!--<property name="pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} | %p | %m | %c.%M | %F:%L %n"/>-->
+    <property name="pattern" value="%d{mm:ss} %-5level %logger{36} >>> %msg%n"/>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 控制台输出 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder charset="UTF-8">
+            <pattern>${pattern}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{yyyy/MM/dd-HH:mm:ss.SSS} %level [%thread]
+                %class: %line >>
+                %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="infofile"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>/home/admin/clog/logs/info.log</File>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/home/admin/clog/logs/info.log.%d{yyyy-MM-dd}
+            </fileNamePattern>
+        </rollingPolicy>
+    </appender>
+    <appender name="errorfile"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>/home/admin/clog/logs/error.log</File>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>WARN</level>
+            <onMatch>DENY</onMatch>
+            <onMismatch>ACCEPT</onMismatch>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/home/admin/clog/logs/error.log.%d{yyyy-MM-dd}
+            </fileNamePattern>
+        </rollingPolicy>
+    </appender>
+    <appender name="warnfile"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>/home/admin/clog/logs/warn.log</File>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level>
+        </filter>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>DENY</onMatch>
+            <onMismatch>ACCEPT</onMismatch>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/home/admin/clog/logs/warn.log.%d{yyyy-MM-dd}
+            </fileNamePattern>
+        </rollingPolicy>
+    </appender>
+
+    <!--<logger name="java.sql.Connection" level="DEBUG" />-->
+    <!--<logger name="java.sql.Statement" level="DEBUG" />-->
+    <!--<logger name="java.sql.PreparedStatement" level="DEBUG" />-->
+    <!--<logger name="java.sql.ResultSet" level="DEBUG" />-->
+    <logger name="com.caocao.calarm.web.repository.mapper" level="DEBUG"/>
+
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT"/>
+    </root>
+    <root level="info">
+        <appender-ref ref="infofile" />
+        <appender-ref ref="errorfile" />
+        <appender-ref ref="warnfile" />
+    </root>
+
+</configuration>
