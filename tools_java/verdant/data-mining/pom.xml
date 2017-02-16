@@ -13,14 +13,13 @@
 
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.10</version>
+            <artifactId>jtools-common</artifactId>
+            <groupId>com.verdant</groupId>
         </dependency>
+
         <dependency>
             <groupId>gov.nist.math</groupId>
             <artifactId>jama</artifactId>
-            <version>1.0.3</version>
         </dependency>
     </dependencies>
 </project>
