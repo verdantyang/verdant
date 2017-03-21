@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath*:/cache/redis.properties" ignore-unresolvable="true"/>
+
+    <!-- Jedis pool-->
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="${redis.pool.maxTotal}"/>
+        <property name="maxIdle" value="${redis.pool.maxIdle}"/>
+        <property name="minIdle" value="${redis.pool.minIdle}"/>
+        <property name="maxWaitMillis" value="${redis.pool.maxWaitMillis}"/>
+        <property name="testOnBorrow" value="${redis.pool.testOnBorrow}"/>
+        <property name="testOnReturn" value="${redis.pool.testOnReturn}"/>
+        <property name="testWhileIdle" value="${redis.pool.testWhileIdle}"/>
+    </bean>
+
+    <!-- Jedis sentinel-->
+    <bean id="jedisSentinelConfig" class="org.springframework.data.redis.connection.RedisSentinelConfiguration">
+        <constructor-arg>
+            <bean class="org.springframework.core.env.MapPropertySource">
+                <constructor-arg value="RedisSentinelConfiguration"/>
+                <constructor-arg>
+                    <map>
+                        <entry key="spring.redis.sentinel.master" value="${redis.master}"/>
+                        <entry key="spring.redis.sentinel.nodes" value="${redis.sentinel}"/>
+                    </map>
+                </constructor-arg>
+            </bean>
+        </constructor-arg>
+    </bean>
+
+    <!-- Jedis connect-->
+    <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+        <constructor-arg index="0" ref="jedisSentinelConfig"/>
+        <constructor-arg index="1" ref="jedisPoolConfig"/>
+    </bean>
+
+    <bean id="stringRedisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate">
+        <property name="connectionFactory" ref="jedisConnectionFactory"/>
+        <property name="enableTransactionSupport" value="false"/>
+    </bean>
+
+    <bean id="cacheManager" class="com.verdant.jtools.cache.manager.impl.CacheManagerRedis">
+        <constructor-arg index="0" value="true"/>
+        <constructor-arg index="1" value="false"/>
+        <constructor-arg index="2" ref="stringRedisTemplate"/>
+    </bean>
+
+    <bean class="com.verdant.jtools.cache.manager.CacheManager">
+        <property name="defaultManager" ref="cacheManager"/>
+    </bean>
+
+    <bean class="com.verdant.jtools.cache.util.CacheUtil"/>
+
+</beans>

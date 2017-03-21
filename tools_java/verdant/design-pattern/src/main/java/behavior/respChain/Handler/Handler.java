@@ -7,6 +7,7 @@ package behavior.respChain.Handler;
  */
 public abstract class Handler {
 
+
     /**
      * 持有后继的责任对象
      */

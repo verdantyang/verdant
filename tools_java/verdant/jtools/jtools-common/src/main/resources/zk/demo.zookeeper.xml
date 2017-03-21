@@ -10,7 +10,7 @@
     <!-- zookeeper 配置文件 -->
     <context:property-placeholder location="classpath*:/zk/demo.zookeeper.properties" ignore-unresolvable="true"/>
 
-    <bean id="zookeeperConfig" class="com.verdant.jtools.common.zookeeper.config.CuratorConfig">
+    <bean id="zookeeperConfig" class="com.verdant.jtools.integration.zookeeper.config.CuratorConfig">
         <!--<property name="ip" value="${proxy.platform.ip}"></property>-->
         <!--<property name="port" value="${proxy.platform.port}"></property>-->
         <!--<property name="contextPath" value="${proxy.platform.contextPath}"></property>-->

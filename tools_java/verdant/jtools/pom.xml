@@ -20,6 +20,7 @@
         <module>jtools-metadata</module>
         <module>jtools-proxy</module>
         <module>jtools-sched</module>
+        <module>jtools-integration</module>
     </modules>
 
 </project>

@@ -1,5 +1,7 @@
 package Tree.P226_InvertBinaryTree;
 
+import Tree.TreeNode;
+
 /**
  * @Data Structures:
  * @Algorithms used:  Recursion
@@ -7,15 +9,6 @@ package Tree.P226_InvertBinaryTree;
  * @Space Complexity:  O(n)
  */
 public class Solution226 {
-    static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 
     public TreeNode invertTree(TreeNode root) {
         if (root == null)

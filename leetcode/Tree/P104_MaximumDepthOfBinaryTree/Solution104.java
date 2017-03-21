@@ -1,5 +1,7 @@
 package Tree.P104_MaximumDepthOfBinaryTree;
 
+import Tree.TreeNode;
+
 /**
  * @Data Structures:
  * @Algorithms used:  Recursion
@@ -7,15 +9,6 @@ package Tree.P104_MaximumDepthOfBinaryTree;
  * @Space Complexity:  O(n)
  */
 public class Solution104 {
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 
     public int maxDepth(TreeNode root) {
         if (root == null)

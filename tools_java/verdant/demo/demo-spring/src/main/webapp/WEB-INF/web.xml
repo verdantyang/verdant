@@ -10,7 +10,7 @@
         <param-value>
             classpath:/web/sys.spring.xml
             <!--classpath:/proxy/sys.proxy.xml-->
-            <!--classpath:/cache/sys.cache.xml-->
+            <!--classpath:/cache/sys.redis.xml-->
         </param-value>
     </context-param>
 

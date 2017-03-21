@@ -28,7 +28,7 @@ W = tf.Variable(tf.zeros([784,10]))
 # 偏移量
 b = tf.Variable(tf.zeros([10]))
 
-# 使用softmax算法
+# 使用softmax回归算法
 y = tf.nn.softmax(tf.matmul(x,W) + b)
 
 # 评价指标：交叉熵

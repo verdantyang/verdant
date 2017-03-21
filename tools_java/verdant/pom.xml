@@ -15,6 +15,7 @@
         <module>demo-bigdata</module>
         <module>design-pattern</module>
         <module>data-mining</module>
+        <module>bom</module>
     </modules>
 
     <properties>
@@ -31,7 +32,6 @@
         <plugin.maven.surefire>2.10</plugin.maven.surefire>
         <plugin.maven.war>2.6</plugin.maven.war>
         <plugin.maven.jar>2.3</plugin.maven.jar>
-        <plugin.maven.jetty>6.1.26</plugin.maven.jetty>
         <plugin.maven.dependency>2.10</plugin.maven.dependency>
 
         <!-- commons -->
@@ -72,7 +72,7 @@
         <mybatis.spring.version>1.2.3</mybatis.spring.version>
 
         <!-- spring -->
-        <spring.version>4.1.7.RELEASE</spring.version>
+        <spring.version>4.2.8.RELEASE</spring.version>
         <spring.data.redis.version>1.6.1.RELEASE</spring.data.redis.version>
 
         <!-- json -->
@@ -219,10 +219,10 @@
                 <artifactId>logback-classic</artifactId>
                 <version>${logback.version}</version>
                 <exclusions>
-                    <exclusion>
-                        <groupId>ch.qos.logback</groupId>
-                        <artifactId>logback-core</artifactId>
-                    </exclusion>
+                    <!--<exclusion>-->
+                        <!--<groupId>ch.qos.logback</groupId>-->
+                        <!--<artifactId>logback-core</artifactId>-->
+                    <!--</exclusion>-->
                     <exclusion>
                         <groupId>org.slf4j</groupId>
                         <artifactId>slf4j-api</artifactId>
@@ -308,58 +308,15 @@
             <!-- Spring start -->
             <dependency>
                 <groupId>org.springframework</groupId>
-                <artifactId>spring-core</artifactId>
+                <artifactId>spring-framework-bom</artifactId>
                 <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-beans</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-aop</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-aspects</artifactId>
-                <version>${spring.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.aspectj</groupId>
                 <artifactId>aspectjweaver</artifactId>
                 <version>${aspectjweaver.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-web</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-webmvc</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-oxm</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-tx</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-jdbc</artifactId>
-                <version>${spring.version}</version>
             </dependency>
             <!-- Spring end -->
 
@@ -536,6 +493,11 @@
                 <groupId>org.quartz-scheduler</groupId>
                 <artifactId>quartz</artifactId>
                 <version>${quartz.scheduler.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.javassist</groupId>
+                <artifactId>javassist</artifactId>
+                <version>3.20.0-GA</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
