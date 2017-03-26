@@ -1,5 +1,7 @@
 package LinkedList.P024_SwapNodesInPairs;
 
+import LinkedList.ListNode;
+
 /**
  * @Data Structures:
  * @Algorithms used:  TwoPointers
@@ -7,29 +9,20 @@ package LinkedList.P024_SwapNodesInPairs;
  * @Space Complexity:  O(1)
  */
 public class Solution024 {
-    static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
-    }
 
     public ListNode swapPairs(ListNode head) {
         ListNode start = new ListNode(0);
         start.next = head;
-        ListNode first = start;
-        ListNode second = start.next;
-        while (second != null && second.next != null) {
-            ListNode third = second.next;
-            first.next = third;
-            second.next = third.next;
-            third.next = second;
+        ListNode prev = start;
+        ListNode first = start.next;
+        while (first != null && first.next != null) {
+            ListNode second = first.next;
+            prev.next = second;
+            first.next = second.next;
+            second.next = first;
 
-            first = second;
-            second = first.next;
+            prev = first;
+            first = prev.next;
         }
         return start.next;
     }

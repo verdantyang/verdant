@@ -1,7 +1,5 @@
 package Tree;
 
-import Tree.P226_InvertBinaryTree.Solution226;
-
 /**
  * <p>文件名称：TreeNode.java</p>
  * <p>文件描述：</p>

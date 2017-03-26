@@ -1,4 +1,4 @@
-package com.verdant.demo.common.thread.multi;
+package com.verdant.demo.common.thread.comm;
 
 import java.util.concurrent.Exchanger;
 import java.util.concurrent.ExecutorService;

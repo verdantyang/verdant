@@ -1,5 +1,7 @@
 package LinkedList.P021_MergeTwoSortedList;
 
+import LinkedList.ListNode;
+
 /**
  * @Data Structures:
  * @Algorithms used:
@@ -7,15 +9,6 @@ package LinkedList.P021_MergeTwoSortedList;
  * @Space Complexity:  O(1)
  */
 public class Solution021 {
-    static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
-    }
 
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         if (l1 == null && l2 == null)

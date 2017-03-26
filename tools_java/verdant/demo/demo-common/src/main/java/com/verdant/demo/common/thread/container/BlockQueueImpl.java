@@ -16,7 +16,7 @@ public class BlockQueueImpl {
     private Lock lock = new ReentrantLock();
     private Condition notEmpty = lock.newCondition();
     private Condition notFull = lock.newCondition();
-    private Queue<Object> linkedList = new LinkedList<Object>();
+    private Queue<Object> linkedList = new LinkedList<>();
     private static final int maxLength = 10;
 
     public Object take() throws InterruptedException {

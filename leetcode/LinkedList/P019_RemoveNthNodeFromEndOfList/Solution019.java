@@ -1,5 +1,7 @@
 package LinkedList.P019_RemoveNthNodeFromEndOfList;
 
+import LinkedList.ListNode;
+
 /**
  * @Data Structures:
  * @Algorithms used:  TwoPointers
@@ -7,15 +9,6 @@ package LinkedList.P019_RemoveNthNodeFromEndOfList;
  * @Space Complexity:  O(1)
  */
 public class Solution019 {
-    static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
-    }
 
     public ListNode removeNthFromEnd(ListNode head, int n) {
         ListNode slow = head;

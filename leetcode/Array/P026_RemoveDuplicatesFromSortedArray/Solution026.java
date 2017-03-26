@@ -9,7 +9,7 @@ package Array.P026_RemoveDuplicatesFromSortedArray;
 public class Solution026 {
     public int removeDuplicates(int[] nums) {
         if (nums == null || nums.length <= 1)
-            return nums.length;
+            return 0;
         int counts = 1;
         for (int i = 1; i < nums.length; i++) {
             if (nums[i] != nums[i - 1])

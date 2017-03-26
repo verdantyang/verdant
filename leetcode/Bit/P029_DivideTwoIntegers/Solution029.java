@@ -9,24 +9,24 @@ package Bit.P029_DivideTwoIntegers;
 public class Solution029 {
     public int divide(int dividend, int divisor) {
         boolean neg = (dividend > 0) ^ (divisor > 0);
-        long ldividend = dividend > 0 ? (long) dividend : -(long) dividend;
-        long ldivisor = divisor > 0 ? (long) divisor : -(long) divisor;
-        if (ldivisor == 0)
+        long posDividend = dividend > 0 ? (long) dividend : -(long) dividend;
+        long posDivisor = divisor > 0 ? (long) divisor : -(long) divisor;
+        if (posDivisor == 0)
             return Integer.MAX_VALUE;
-        if ((ldividend == 0) || (ldividend < ldivisor))
+        if ((posDividend == 0) || (posDividend < posDivisor))
             return 0;
 
         int msb = 0; //msb记录除数需要左移的位数
         for (; msb < 64; msb++) {
-            if ((ldivisor << msb) >= ldividend)
+            if ((posDivisor << msb) >= posDividend)
                 break;
         }
         long quotient = 0; //记录每次除法的商
         for (int i = msb; i >= 0; i--) {
-            if ((ldivisor << i) > ldividend)
+            if ((posDivisor << i) > posDividend)
                 continue;
             quotient |= (1L << i);
-            ldividend -= (ldivisor << i);
+            posDividend -= (posDivisor << i);
         }
         if (neg)
             quotient = -quotient;

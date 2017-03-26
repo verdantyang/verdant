@@ -20,8 +20,8 @@ public class Solution003 {
             if (pos.containsKey(s.charAt(i)) && pos.get(s.charAt(i)) >= cursor) {
                 cursor = pos.get(s.charAt(i)) + 1;
                 pos.put(s.charAt(i), i);
-                ret = ret > counts ? ret : counts;
                 counts = i - cursor + 1;
+                ret = ret > counts ? ret : counts;
             } else {
                 pos.put(s.charAt(i), i);
                 counts++;

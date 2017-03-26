@@ -1,5 +1,7 @@
 package LinkedList.P025_ReverseNodesInKGroup;
 
+import LinkedList.ListNode;
+
 /**
  * @Data Structures:
  * @Algorithms used:  Recursion
@@ -7,15 +9,6 @@ package LinkedList.P025_ReverseNodesInKGroup;
  * @Space Complexity:  O(1)
  */
 public class Solution025 {
-    static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
-    }
 
     public ListNode reverseKGroup(ListNode head, int k) {
         ListNode cur = head;

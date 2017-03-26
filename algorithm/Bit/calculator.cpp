@@ -55,7 +55,7 @@ public:
         for (int i = msb; i >= 0; i--) {
             if ((b << i) > a)
                 continue;
-            quotient  |= (1 << i);
+            quotient |= (1 << i);
             a -= (b << i);
         }
         if (neg)
