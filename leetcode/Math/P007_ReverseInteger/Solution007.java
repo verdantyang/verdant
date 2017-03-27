@@ -7,7 +7,7 @@ package Math.P007_ReverseInteger;
  * @Space Complexity:  O(1)
  */
 public class Solution007 {
-    public static int reverse(int x) {
+    public int reverse(int x) {
         long ret = 0;
         while (x != 0) {
             ret = ret * 10 + (x % 10);
@@ -20,6 +20,7 @@ public class Solution007 {
     }
 
     public static void main(String[] args) {
-        System.out.println(Solution007.reverse(153423649));
+        Solution007 sol = new Solution007();
+        System.out.println(sol.reverse(153423649));
     }
 }

@@ -29,7 +29,7 @@ public class Solution004 {
         }
     }
 
-    public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         int m = nums1.length;
         int n = nums2.length;
         if ((m + n) % 2 == 0) {
@@ -40,8 +40,9 @@ public class Solution004 {
     }
 
     public static void main(String[] args) {
+        Solution004 sol = new Solution004();
         int[] nums1 = {1, 2};
         int[] nums2 = {3};
-        System.out.println(Solution004.findMedianSortedArrays(nums1, nums2));
+        System.out.println(sol.findMedianSortedArrays(nums1, nums2));
     }
 }

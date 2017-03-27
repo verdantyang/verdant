@@ -7,7 +7,7 @@ package Bit.P371_SumOfTwoIntegers;
  * @Space Complexity:  O(1)
  */
 public class Solution371 {
-    public static int getSum(int a, int b) {
+    public int getSum(int a, int b) {
         int carry = 0;
         int sum = 0;
         do {
@@ -20,6 +20,7 @@ public class Solution371 {
     }
 
     public static void main(String[] args) {
-        System.out.println(Solution371.getSum(5, 6));
+        Solution371 sol = new Solution371();
+        System.out.println(sol.getSum(5, 6));
     }
 }

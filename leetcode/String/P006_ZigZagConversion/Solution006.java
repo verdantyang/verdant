@@ -12,7 +12,7 @@ import java.util.Queue;
  * @Space Complexity:  O(m)
  */
 public class Solution006 {
-    public static String convert(String s, int numRows) {
+    public String convert(String s, int numRows) {
         int row = 0;
         boolean base = true;
         StringBuilder sb = new StringBuilder();
@@ -49,8 +49,9 @@ public class Solution006 {
     }
 
     public static void main(String[] args) {
+        Solution006 sol = new Solution006();
         String str = "PAYPALISHIRING";
         String str1 = "ABCDE";
-        System.out.println(Solution006.convert(str1, 3));
+        System.out.println(sol.convert(str1, 3));
     }
 }

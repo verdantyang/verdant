@@ -1,5 +1,7 @@
 package LinkedList.P206_ReverseLinkedList;
 
+import LinkedList.ListNode;
+
 /**
  * @Data Structures:
  * @Algorithms used:  TwoPointer
@@ -7,14 +9,6 @@ package LinkedList.P206_ReverseLinkedList;
  * @Space Complexity:  O(1)
  */
 public class Solution206 {
-    static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
 
     public ListNode reverseList(ListNode head) {
         if (head == null)

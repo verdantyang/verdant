@@ -1,5 +1,7 @@
 package LinkedList.P141_LinkedListCycle;
 
+import LinkedList.ListNode;
+
 /**
  * @Data Structures:
  * @Algorithms used:  TwoPointer
@@ -7,15 +9,6 @@ package LinkedList.P141_LinkedListCycle;
  * @Space Complexity:  O(1)
  */
 public class Solution141 {
-    static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
-    }
 
     public boolean hasCycle(ListNode head) {
         if (head == null)

@@ -10,7 +10,7 @@ import java.util.Map;
  * @Space Complexity:  O(n)
  */
 public class Solution003 {
-    public static int lengthOfLongestSubstring(String s) {
+    public int lengthOfLongestSubstring(String s) {
         int cursor = 0;
         int ret = 0;
         int counts = 0;
@@ -32,8 +32,9 @@ public class Solution003 {
     }
 
     public static void main(String[] args) {
+        Solution003 sol = new Solution003();
         String str = "abcabcbb";
         String str1 = "aab";
-        System.out.println(Solution003.lengthOfLongestSubstring(str1));
+        System.out.println(sol.lengthOfLongestSubstring(str1));
     }
 }

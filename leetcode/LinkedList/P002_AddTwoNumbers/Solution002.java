@@ -1,5 +1,7 @@
 package LinkedList.P002_AddTwoNumbers;
 
+import LinkedList.ListNode;
+
 /**
  * @Data Structures:
  * @Algorithms used:
@@ -7,14 +9,6 @@ package LinkedList.P002_AddTwoNumbers;
  * @Space Complexity:  O(1)
  */
 public class Solution002 {
-    static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode ret = new ListNode(0);

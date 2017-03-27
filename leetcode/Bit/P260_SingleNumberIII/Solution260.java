@@ -7,7 +7,7 @@ package Bit.P260_SingleNumberIII;
  * @Space Complexity:  O(1)
  */
 public class Solution260 {
-    public static int[] singleNumber(int[] nums) {
+    public int[] singleNumber(int[] nums) {
         int xor = 0;
         int a = 0, b = 0;
         for (int i = 0; i < nums.length; i++)
@@ -23,8 +23,9 @@ public class Solution260 {
     }
 
     public static void main(String[] args) {
+        Solution260 sol = new Solution260();
         int[] nums = {2, 1, 2, 3, 4, 1};
-        for (int elem : Solution260.singleNumber(nums))
+        for (int elem : sol.singleNumber(nums))
             System.out.println(elem);
     }
 }

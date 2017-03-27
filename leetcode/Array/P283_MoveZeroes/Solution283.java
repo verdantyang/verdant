@@ -7,7 +7,7 @@ package Array.P283_MoveZeroes;
  * @Space Complexity:  O(1)
  */
 public class Solution283 {
-    public static void moveZeroes(int[] nums) {
+    public void moveZeroes(int[] nums) {
         int cur = 0;
         for (int i = 0; i < nums.length; i++)
             if (nums[i] != 0)
@@ -17,8 +17,9 @@ public class Solution283 {
     }
 
     public static void main(String[] args) {
+        Solution283 sol = new Solution283();
         int[] nums = {0, 1, 0, 3, 12};
-        Solution283.moveZeroes(nums);
+        sol.moveZeroes(nums);
         for (int elem : nums)
             System.out.println(elem);
     }

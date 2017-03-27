@@ -21,7 +21,7 @@ public class Solution005 {
         }
     }
 
-    public static String longestPalindrome(String s) {
+    public String longestPalindrome(String s) {
         if (s.length() < 2)
             return s;
         for (int i = 0; i < s.length(); i++) {
@@ -32,8 +32,9 @@ public class Solution005 {
     }
 
     public static void main(String[] args) {
+        Solution005 sol = new Solution005();
         String str = "aaabaaaa";
         String str1 = "aab";
-        System.out.println(Solution005.longestPalindrome(str));
+        System.out.println(sol.longestPalindrome(str));
     }
 }

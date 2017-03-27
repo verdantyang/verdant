@@ -10,7 +10,7 @@ import java.util.Set;
  * @Space Complexity:  O(1)
  */
 public class Solution349 {
-    public static int[] intersection(int[] nums1, int[] nums2) {
+    public int[] intersection(int[] nums1, int[] nums2) {
         Set<Integer> cache = new HashSet<>();
         Set<Integer> intersect = new HashSet<>();
 
@@ -27,9 +27,10 @@ public class Solution349 {
     }
 
     public static void main(String[] args) {
+        Solution349 sol = new Solution349();
         int[] nums1 = {1, 2, 2, 1};
         int[] nums2 = {2, 2};
-        for (int elem : Solution349.intersection(nums1, nums2))
+        for (int elem : sol.intersection(nums1, nums2))
             System.out.println(elem);
     }
 }

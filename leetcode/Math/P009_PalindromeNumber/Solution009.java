@@ -7,7 +7,7 @@ package Math.P009_PalindromeNumber;
  * @Space Complexity:  O(1)
  */
 public class Solution009 {
-    public static boolean isPalindrome(int x) {
+    public boolean isPalindrome(int x) {
         if (x < 0 || (x != 0 && x % 10 == 0))
             return false;
         int rev = 0;
@@ -19,6 +19,7 @@ public class Solution009 {
     }
 
     public static void main(String[] args) {
-        System.out.println(Solution009.isPalindrome(12321));
+        Solution009 sol = new Solution009();
+        System.out.println(sol.isPalindrome(12321));
     }
 }

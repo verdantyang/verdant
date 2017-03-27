@@ -7,7 +7,7 @@ package Bit.P268_MissingNumber;
  * @Space Complexity:  O(1)
  */
 public class Solution268 {
-    public static int missingNumber(int[] nums) {
+    public int missingNumber(int[] nums) {
         int len = nums.length;
         int ret = len;
 
@@ -17,8 +17,9 @@ public class Solution268 {
     }
 
     public static void main(String[] args) {
+        Solution268 sol = new Solution268();
         int[] nums = {0, 1, 3};
-        System.out.println(Solution268.missingNumber(nums));
+        System.out.println(sol.missingNumber(nums));
     }
 }
 

@@ -7,7 +7,7 @@ package Array.P238_ProductOfArrayExceptSelf;
  * @Space Complexity:  O(1)
  */
 public class Solution238 {
-    public static int[] productExceptSelf(int[] nums) {
+    public int[] productExceptSelf(int[] nums) {
         int size = nums.length;
         int[] rets = new int[size];
         for (int i = 0; i < size; i++)
@@ -24,8 +24,9 @@ public class Solution238 {
     }
 
     public static void main(String[] args) {
+        Solution238 sol = new Solution238();
         int[] nums = new int[]{1, 2, 3, 4};
-        for (int elem : Solution238.productExceptSelf(nums))
+        for (int elem : sol.productExceptSelf(nums))
             System.out.println(elem);
     }
 }

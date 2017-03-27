@@ -10,7 +10,7 @@ import java.util.Map;
  * @Space Complexity:  O(n)
  */
 public class Solution001 {
-    public static int[] twoSum(int[] nums, int target) {
+    public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> findMap = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             if (findMap.containsKey(nums[i]))
@@ -22,9 +22,10 @@ public class Solution001 {
     }
 
     public static void main(String[] args) {
+        Solution001 sol = new Solution001();
         int[] numbers = {2, 7, 15, 11};
         int target = 13;
-        for (int elem : Solution001.twoSum(numbers, target))
+        for (int elem : sol.twoSum(numbers, target))
             System.out.println(elem);
     }
 }

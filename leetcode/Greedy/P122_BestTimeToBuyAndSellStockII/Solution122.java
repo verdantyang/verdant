@@ -7,7 +7,7 @@ package Greedy.P122_BestTimeToBuyAndSellStockII;
  * @Space Complexity:  O(1)
  */
 public class Solution122 {
-    public static int maxProfit(int[] prices) {
+    public int maxProfit(int[] prices) {
         if (prices.length == 0)
             return 0;
         int sum = 0;
@@ -19,6 +19,7 @@ public class Solution122 {
     }
 
     public static void main(String[] args) {
-        System.out.println(Solution122.maxProfit(new int[]{1, 2, 2, 3}));
+        Solution122 sol = new Solution122();
+        System.out.println(sol.maxProfit(new int[]{1, 2, 2, 3}));
     }
 }

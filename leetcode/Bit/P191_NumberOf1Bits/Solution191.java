@@ -7,7 +7,7 @@ package Bit.P191_NumberOf1Bits;
  * @Space Complexity:  O(1)
  */
 public class Solution191 {
-    public static int hammingWeight(long n) {
+    public int hammingWeight(long n) {
         int weight = 0;
         while (n != 0) {
             weight += (n & 1);
@@ -17,6 +17,7 @@ public class Solution191 {
     }
 
     public static void main(String[] args) {
-        System.out.println(Solution191.hammingWeight(2147483648L));
+        Solution191 sol = new Solution191();
+        System.out.println(sol.hammingWeight(2147483648L));
     }
 }
