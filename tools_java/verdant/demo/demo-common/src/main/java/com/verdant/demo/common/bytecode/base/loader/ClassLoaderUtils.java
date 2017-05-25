@@ -27,7 +27,6 @@ public class ClassLoaderUtils {
     private static final Logger logger = LoggerFactory.getLogger("ClassLoaderUtils");
 
     public static void loadJar(String filePath) throws Exception {
-
         // 系统类库路径
         File libPath = new File(filePath);
 
@@ -44,7 +43,7 @@ public class ClassLoaderUtils {
             Method method = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
             boolean accessible = method.isAccessible();     // 获取方法的访问权限
             try {
-                if (accessible == false) {
+                if (!accessible) {
                     method.setAccessible(true);     // 设置方法的访问权限
                 }
                 // 获取系统类加载器
@@ -87,6 +86,8 @@ public class ClassLoaderUtils {
                         return pathname.isDirectory() || pathname.getName().endsWith(".class");
                     }
                 });
+                if (classFiles == null)
+                    return;
                 for (File subFile : classFiles) {
                     if (subFile.isDirectory()) {
                         stack.push(subFile);
@@ -95,7 +96,7 @@ public class ClassLoaderUtils {
                             Method method = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
                             boolean accessible = method.isAccessible();
                             try {
-                                if (accessible == false) {
+                                if (!accessible) {
                                     method.setAccessible(true);
                                 }
                                 // 将当前类路径加入到类加载器中
@@ -109,8 +110,8 @@ public class ClassLoaderUtils {
                         className = className.substring(clazzPathLen, className.length() - 6);
                         className = className.replace(File.separatorChar, '.');
                         // 加载Class类
-//                        Class.forName(className);
-//                        logger.debug("读取应用程序类文件[class={}]", className);
+                        Class.forName(className);
+                        logger.debug("读取应用程序类文件[class={}]", className);
                     }
                 }
             }

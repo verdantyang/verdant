@@ -1,4 +1,4 @@
-package com.verdant.demo.common.bytecode.manipulation.assist;
+package com.verdant.demo.common.bytecode.manipulation.assist.util;
 
 import javassist.ClassPool;
 import javassist.CtClass;
