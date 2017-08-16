@@ -7,11 +7,10 @@
     <parent>
         <groupId>com.verdant</groupId>
         <artifactId>verdant</artifactId>
-        <version>${verdant.version}</version>
+        <version>0.0.1</version>
     </parent>
 
     <artifactId>jtools</artifactId>
-    <version>${verdant.version}</version>
     <packaging>pom</packaging>
     <modules>
         <module>jtools-common</module>
@@ -22,5 +21,4 @@
         <module>jtools-sched</module>
         <module>jtools-integration</module>
     </modules>
-
 </project>

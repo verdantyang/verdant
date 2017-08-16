@@ -23,7 +23,7 @@ public class IntEvent {
         return String.valueOf(value);
     }
 
-    public static EventFactory<IntEvent> INT_ENEVT_FACTORY = new EventFactory<IntEvent>() {
+    public static EventFactory<IntEvent> INT_EVENT_FACTORY = new EventFactory<IntEvent>() {
         public IntEvent newInstance() {
             return new IntEvent();
         }

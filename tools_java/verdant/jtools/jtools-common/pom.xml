@@ -7,7 +7,7 @@
     <parent>
         <artifactId>jtools</artifactId>
         <groupId>com.verdant</groupId>
-        <version>${verdant.version}</version>
+        <version>0.0.1</version>
     </parent>
 
     <artifactId>jtools-common</artifactId>
@@ -176,21 +176,10 @@
         </dependency>
         <!-- zk end -->
 
-        <!-- es start -->
-        <dependency>
-            <groupId>org.elasticsearch</groupId>
-            <artifactId>elasticsearch</artifactId>
-        </dependency>
-        <!-- es end -->
-
         <!-- file start -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml</artifactId>
         </dependency>
         <dependency>
             <groupId>com.itextpdf</groupId>

@@ -19,11 +19,11 @@ import java.util.concurrent.TimeUnit;
  * @since 2016/08/05
  */
 public class IntEventMain {
-    private static int bufferSize = 1024;
+    private static final int bufferSize = 1024;
 
     public static void main(String[] args) throws InterruptedException {
         //创建一个RingBuffer对象
-        RingBuffer<IntEvent> ringBuffer = RingBuffer.createMultiProducer(IntEvent.INT_ENEVT_FACTORY, bufferSize,
+        RingBuffer<IntEvent> ringBuffer = RingBuffer.createMultiProducer(IntEvent.INT_EVENT_FACTORY, bufferSize,
                 new SleepingWaitStrategy());
 
         SequenceBarrier produceBarrier = ringBuffer.newBarrier();
@@ -31,7 +31,7 @@ public class IntEventMain {
         for (int i = 0; i < producers.length; i++) {
             producers[i] = new IntEventProducer();
         }
-        WorkerPool<IntEvent> crawler = new WorkerPool<IntEvent>(ringBuffer, produceBarrier,
+        WorkerPool<IntEvent> crawler = new WorkerPool<>(ringBuffer, produceBarrier,
                 new IntEventExceptionHandler(), producers);
 
         SequenceBarrier processorBarrier = ringBuffer.newBarrier(crawler.getWorkerSequences());
@@ -39,10 +39,10 @@ public class IntEventMain {
         for (int i = 0; i < processors.length; i++) {
             processors[i] = new IntEventProcessor();
         }
-        WorkerPool<IntEvent> applier = new WorkerPool<IntEvent>(ringBuffer, processorBarrier,
+        WorkerPool<IntEvent> applier = new WorkerPool<>(ringBuffer, processorBarrier,
                 new IntEventExceptionHandler(), processors);
 
-        List<Sequence> gatingSequences = new ArrayList<Sequence>();
+        List<Sequence> gatingSequences = new ArrayList<>();
         for (Sequence s : crawler.getWorkerSequences()) {
             ringBuffer.addGatingSequences(s);
         }

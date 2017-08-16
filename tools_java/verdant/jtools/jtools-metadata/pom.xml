@@ -7,7 +7,7 @@
     <parent>
         <groupId>com.verdant</groupId>
         <artifactId>jtools</artifactId>
-        <version>${verdant.version}</version>
+        <version>0.0.1</version>
     </parent>
 
     <artifactId>jtools-metadata</artifactId>
