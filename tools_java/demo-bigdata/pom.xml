@@ -15,13 +15,6 @@
     <packaging>pom</packaging>
 
     <properties>
-        <!-- scala -->
-        <scala.version>2.11.8</scala.version>
-        <scala.unittest.version>2.2.1</scala.unittest.version>
-
-        <!-- hadoop -->
-        <hadoop.version>2.7.34</hadoop.version>
-        <hadoop.client.version>2.7.2</hadoop.client.version>
     </properties>
 
     <modules>
@@ -102,5 +95,4 @@
             </snapshots>
         </repository>
     </repositories>
-
 </project>

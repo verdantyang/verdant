@@ -14,19 +14,48 @@
     <artifactId>demo-spark</artifactId>
 
     <properties>
-        <!-- spark -->
         <jackson.version>2.6.7</jackson.version>
         <netty4.version>4.0.42.Final</netty4.version>
+
+        <scala.version>2.11.8</scala.version>
+        <scala.unittest.version>2.2.1</scala.unittest.version>
+
         <spark.version>2.1.1</spark.version>
         <spark.scala.version>2.11</spark.scala.version>
     </properties>
 
     <dependencies>
+        <!-- Spark start -->
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-core_${spark.scala.version}</artifactId>
+            <version>${spark.version}</version>
             <!--<scope>provided</scope>-->
         </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-streaming_${spark.scala.version}</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-mllib_${spark.scala.version}</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+        <!-- Spark end -->
+
+        <!-- Other start -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>javax.servlet</groupId>-->
+            <!--<artifactId>javax.servlet-api</artifactId>-->
+            <!--&lt;!&ndash;<scope>provided</scope>&ndash;&gt;-->
+        <!--</dependency>-->
+        <!-- Other end -->
+
         <!-- Scala -->
         <!--<dependency>-->
         <!--<groupId>org.scala-lang</groupId>-->
@@ -53,48 +82,6 @@
         <!--<artifactId>scalatest_${spark.scala.version}</artifactId>-->
         <!--<version>${scala.unittest.version}</version>-->
         <!--</dependency>-->
-
-        <!-- jackson -->
-        <!--<dependency>-->
-        <!--<groupId>com.fasterxml.jackson.core</groupId>-->
-        <!--<artifactId>jackson-core</artifactId>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>com.fasterxml.jackson.core</groupId>-->
-        <!--<artifactId>jackson-databind</artifactId>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>com.fasterxml.jackson.core</groupId>-->
-        <!--<artifactId>jackson-annotations</artifactId>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>com.fasterxml.jackson.module</groupId>-->
-        <!--<artifactId>jackson-module-scala_${spark.scala.version}</artifactId>-->
-        <!--</dependency>-->
-
-        <!-- Spark -->
-        <dependency>
-            <groupId>org.apache.spark</groupId>
-            <artifactId>spark-core_${spark.scala.version}</artifactId>
-            <version>${spark.version}</version>
-            <!--<scope>provided</scope>-->
-        </dependency>
-        <dependency>
-            <groupId>org.apache.spark</groupId>
-            <artifactId>spark-streaming_${spark.scala.version}</artifactId>
-            <version>${spark.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.spark</groupId>
-            <artifactId>spark-mllib_${spark.scala.version}</artifactId>
-            <version>${spark.version}</version>
-        </dependency>
-
-        <!-- Apache Commons Pool2 -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-pool2</artifactId>
-        </dependency>
     </dependencies>
 
     <build>

@@ -16,6 +16,7 @@
 
     <properties>
         <hadoop.version>2.7.3</hadoop.version>
+        <hadoop.client.version>2.7.2</hadoop.client.version>
     </properties>
 
     <dependencies>
@@ -40,7 +41,6 @@
             <version>${hadoop.version}</version>
         </dependency>
 
-        <!-- Hadoop -->
         <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-client</artifactId>
