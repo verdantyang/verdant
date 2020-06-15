@@ -10,7 +10,7 @@ public class Solution011 {
     public int maxArea(int[] height) {
         int lo = 0;
         int hi = height.length - 1;
-        int h = 0;
+        int h;
         int res = 0;
         while (lo < hi) {
             h = height[lo] > height[hi] ? height[hi] : height[lo];

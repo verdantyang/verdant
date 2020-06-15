@@ -142,6 +142,10 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+        </dependency>
         <!-- Spring end -->
 
         <!-- basic -->
@@ -198,6 +202,13 @@
     </dependencies>
 
     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+
         <finalName>${project.artifactId}</finalName>
         <resources>
             <resource>
@@ -216,8 +227,6 @@
                 </includes>
             </resource>
         </resources>
-        <plugins>
-        </plugins>
     </build>
 
 </project>

@@ -42,7 +42,7 @@ public class CacheUtil extends ApplicationObjectSupport {
         INSTANCE = getApplicationContext().getBean(CacheUtil.class);
     }
 
-    public CacheUtil getInstance() {
+    public static CacheUtil getInstance() {
         return INSTANCE;
     }
 

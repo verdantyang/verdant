@@ -1,6 +1,6 @@
 package LinkedList.P025_ReverseNodesInKGroup;
 
-import LinkedList.ListNode;
+import struct.ListNode;
 
 /**
  * @Data Structures:

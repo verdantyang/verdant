@@ -19,12 +19,12 @@ public class SessionAuthorizeStorage<T> implements IAuthorizeStorage {
         if (user == null) {
             throw new ServiceException(ResultCode.ERROR_PARAMETER_REQUIRED);
         }
-        WebUtils2.getSession().setAttribute(CommonEnum.TOKEN.name(), user);
+//        WebUtils2.getSession().setAttribute(CommonEnum.TOKEN.name(), user);
     }
 
     @Override
     public void remove(String tokenValue) throws ServiceException {
-        WebUtils2.getSession().removeAttribute(CommonEnum.TOKEN.name());
+//        WebUtils2.getSession().removeAttribute(CommonEnum.TOKEN.name());
     }
 
     @Override

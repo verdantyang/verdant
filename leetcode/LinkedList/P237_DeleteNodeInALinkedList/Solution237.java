@@ -1,6 +1,6 @@
 package LinkedList.P237_DeleteNodeInALinkedList;
 
-import LinkedList.ListNode;
+import struct.ListNode;
 
 /**
  * @Data Structures:

@@ -44,13 +44,13 @@ public class ElasticSearchManager extends AbstractManager {
      * @param config
      */
     public void register(String key, ElasticSearchConfiguration config) {
-        Settings.Builder settingBuilder = Settings.builder();
-        settingBuilder.put(config.getParams());
-        TransportClient.Builder clientBuilder = TransportClient.builder();
-        clientBuilder.settings(settingBuilder);
-        Client client = clientBuilder.build();
-        ((TransportClient) client).addTransportAddress(config.getTransportAddress());
-        clients.put(key, client);
+//        Settings.Builder settingBuilder = Settings.builder();
+//        settingBuilder.put(config.getParams());
+//        TransportClient.Builder clientBuilder = TransportClient.builder();
+//        clientBuilder.settings(settingBuilder);
+//        Client client = clientBuilder.build();
+//        ((TransportClient) client).addTransportAddress(config.getTransportAddress());
+//        clients.put(key, client);
 
     }
 

@@ -1,6 +1,6 @@
 package LinkedList.P141_LinkedListCycle;
 
-import LinkedList.ListNode;
+import struct.ListNode;
 
 /**
  * @Data Structures:
@@ -9,7 +9,6 @@ import LinkedList.ListNode;
  * @Space Complexity:  O(1)
  */
 public class Solution141 {
-
     public boolean hasCycle(ListNode head) {
         if (head == null)
             return false;

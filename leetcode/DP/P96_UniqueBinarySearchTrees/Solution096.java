@@ -1,8 +1,5 @@
 package DP.P96_UniqueBinarySearchTrees;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @Data Structures:
  * @Algorithms used:  DP

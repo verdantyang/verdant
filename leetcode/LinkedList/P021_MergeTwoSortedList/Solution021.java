@@ -1,6 +1,6 @@
 package LinkedList.P021_MergeTwoSortedList;
 
-import LinkedList.ListNode;
+import struct.ListNode;
 
 /**
  * @Data Structures:
@@ -19,7 +19,7 @@ public class Solution021 {
             if (l1.val <= l2.val) {
                 now.next = l1;
                 l1 = l1.next;
-            } else if (l1.val >= l2.val) {
+            } else {
                 now.next = l2;
                 l2 = l2.next;
             }

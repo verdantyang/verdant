@@ -1,6 +1,6 @@
 package LinkedList.P206_ReverseLinkedList;
 
-import LinkedList.ListNode;
+import struct.ListNode;
 
 /**
  * @Data Structures:

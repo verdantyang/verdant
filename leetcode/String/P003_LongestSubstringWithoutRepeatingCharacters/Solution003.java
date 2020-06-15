@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * Longest Substring Without Repeating Characters
+ * 引入一个类似字串窗口的cursor
+ *
  * @Data Structures:   Map
  * @Algorithms used:
  * @Time Complexity:   O(n)
@@ -19,14 +22,12 @@ public class Solution003 {
         for (int i = 0; i < s.length(); i++) {
             if (pos.containsKey(s.charAt(i)) && pos.get(s.charAt(i)) >= cursor) {
                 cursor = pos.get(s.charAt(i)) + 1;
-                pos.put(s.charAt(i), i);
                 counts = i - cursor + 1;
-                ret = ret > counts ? ret : counts;
             } else {
-                pos.put(s.charAt(i), i);
                 counts++;
-                ret = ret > counts ? ret : counts;
             }
+            pos.put(s.charAt(i), i);
+            ret = ret > counts ? ret : counts;
         }
         return ret;
     }
@@ -34,7 +35,7 @@ public class Solution003 {
     public static void main(String[] args) {
         Solution003 sol = new Solution003();
         String str = "abcabcbb";
-        String str1 = "aab";
-        System.out.println(sol.lengthOfLongestSubstring(str1));
+//        String str1 = "aab";
+        System.out.println(sol.lengthOfLongestSubstring(str));
     }
 }

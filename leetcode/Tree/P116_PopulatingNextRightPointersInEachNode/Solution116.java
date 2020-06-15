@@ -1,6 +1,6 @@
 package Tree.P116_PopulatingNextRightPointersInEachNode;
 
-import Tree.TreeLinkNode;
+import struct.TreeLinkNode;
 
 /**
  * @Data Structures:

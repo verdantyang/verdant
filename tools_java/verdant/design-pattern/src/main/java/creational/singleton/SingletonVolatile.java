@@ -4,7 +4,13 @@ import utils.DebugLog;
 import utils.DebugLogFactory;
 import utils.DesignPatternEnum;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.ObjectStreamException;
+import java.io.Serializable;
 
 /**
  * 单例模式（懒加载）
@@ -17,8 +23,9 @@ public class SingletonVolatile implements Serializable {
 
     private static final DebugLog logger = DebugLogFactory.getLogger(SingletonVolatile.class, DesignPatternEnum.Singleton);
 
+    //防止反射攻击
+    private static boolean flag = false;
     private volatile static SingletonVolatile instance;
-    private static int count = 1;
 
     private SingletonVolatile() {
     }
@@ -31,9 +38,14 @@ public class SingletonVolatile implements Serializable {
     public static SingletonVolatile getInstance() {
         if (instance == null) {
             synchronized (SingletonVolatile.class) {
-                if (instance == null)
+                if (flag == false) {
+                    flag = !flag;
+                } else {
+                    throw new RuntimeException("单例模式正在被攻击");
+                }
+                if (instance == null) {
                     instance = new SingletonVolatile();
-                count++;
+                }
             }
         }
         return instance;
@@ -51,10 +63,6 @@ public class SingletonVolatile implements Serializable {
 
     public static void destroy() {
         synchronized (SingletonVolatile.class) {
-            if (count > 1) {
-                count--;
-                return;
-            }
             if (instance != null)
                 instance = null;
         }

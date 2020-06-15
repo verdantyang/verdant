@@ -8,7 +8,7 @@ package Array.P026_RemoveDuplicatesFromSortedArray;
  */
 public class Solution026 {
     public int removeDuplicates(int[] nums) {
-        if (nums == null || nums.length <= 1)
+        if (nums == null || nums.length < 1)
             return 0;
         int counts = 1;
         for (int i = 1; i < nums.length; i++) {
@@ -20,7 +20,7 @@ public class Solution026 {
 
     public static void main(String[] args) {
         Solution026 sol = new Solution026();
-        int[] nums = {1, 1, 2};
+        int[] nums = {1};
         System.out.println(sol.removeDuplicates(nums));
     }
 }

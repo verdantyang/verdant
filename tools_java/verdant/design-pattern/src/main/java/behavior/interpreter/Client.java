@@ -18,6 +18,7 @@ public class Client {
         ctx.addValue("b", 8);
         ctx.addValue("c", 2);
 
+        //a-b+c
         NonterminalExpressionSubtract subtractExpression = new NonterminalExpressionSubtract(
                 new TerminalExpression(ctx.getValue("a")),
                 new TerminalExpression(ctx.getValue("b")));

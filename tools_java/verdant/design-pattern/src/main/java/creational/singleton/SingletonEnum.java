@@ -6,20 +6,27 @@ package creational.singleton;
  * @author verdant
  * @since 2016/07/27
  */
-public enum SingletonEnum {
-    INSTANCE(3);
+public class SingletonEnum {
 
-    private Integer point;
+    private SingletonEnum() {
 
-    SingletonEnum(Integer point) {
-        this.point = point;
     }
 
-    public Integer getPoint() {
-        return point;
+    public static SingletonEnum getInstance() {
+        return Singleton.INSTANCE.getInstance();
     }
 
-    public void setPoint(Integer point) {
-        this.point = point;
+    private enum Singleton {
+        INSTANCE;
+
+        private SingletonEnum instance;
+
+        Singleton() {
+            instance = new SingletonEnum();
+        }
+
+        public SingletonEnum getInstance() {
+            return instance;
+        }
     }
 }

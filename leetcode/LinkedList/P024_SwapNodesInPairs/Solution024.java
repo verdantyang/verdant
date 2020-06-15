@@ -1,6 +1,6 @@
 package LinkedList.P024_SwapNodesInPairs;
 
-import LinkedList.ListNode;
+import struct.ListNode;
 
 /**
  * @Data Structures:
@@ -13,12 +13,14 @@ public class Solution024 {
     public ListNode swapPairs(ListNode head) {
         ListNode start = new ListNode(0);
         start.next = head;
+
         ListNode prev = start;
         ListNode first = start.next;
         while (first != null && first.next != null) {
             ListNode second = first.next;
+//            ListNode temp = second.next;
             prev.next = second;
-            first.next = second.next;
+            first.next = second.next;   //temp store
             second.next = first;
 
             prev = first;

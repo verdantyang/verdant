@@ -1,6 +1,6 @@
 package Tree.P235_LowestCommonAncestorOfABinarySearchTree;
 
-import Tree.TreeNode;
+import struct.TreeNode;
 
 /**
  * @Data Structures:

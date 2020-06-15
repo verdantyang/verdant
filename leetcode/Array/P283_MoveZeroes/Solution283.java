@@ -9,11 +9,14 @@ package Array.P283_MoveZeroes;
 public class Solution283 {
     public void moveZeroes(int[] nums) {
         int cur = 0;
-        for (int i = 0; i < nums.length; i++)
-            if (nums[i] != 0)
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
                 nums[cur++] = nums[i];
-        for (; cur < nums.length; cur++)
+            }
+        }
+        for (; cur < nums.length; cur++) {
             nums[cur] = 0;
+        }
     }
 
     public static void main(String[] args) {

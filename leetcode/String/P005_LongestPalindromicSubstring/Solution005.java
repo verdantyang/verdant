@@ -7,10 +7,10 @@ package String.P005_LongestPalindromicSubstring;
  * @Space Complexity:  O(1)
  */
 public class Solution005 {
-    private static int lo = 0;
-    private static int maxLen = 0;
 
-    private static void extendPalindrome(String s, int i, int j) {
+    private String extendPalindrome(String s, int i, int j) {
+        int lo = i;
+        int maxLen = 0;
         while (i >= 0 && j < s.length() && s.charAt(i) == s.charAt(j)) {
             i--;
             j++;
@@ -19,22 +19,26 @@ public class Solution005 {
             lo = i + 1;
             maxLen = j - i - 1;
         }
+        return s.substring(lo, lo + maxLen);
     }
 
     public String longestPalindrome(String s) {
         if (s.length() < 2)
             return s;
+        String result = "";
         for (int i = 0; i < s.length(); i++) {
-            extendPalindrome(s, i, i);
-            extendPalindrome(s, i, i + 1);
+            String even = extendPalindrome(s, i, i);
+            String odd = extendPalindrome(s, i, i + 1);
+            result = result.length() > even.length() ? result : even;
+            result = result.length() > odd.length() ? result : odd;
         }
-        return s.substring(lo, lo + maxLen);
+        return result;
     }
 
     public static void main(String[] args) {
         Solution005 sol = new Solution005();
-        String str = "aaabaaaa";
-        String str1 = "aab";
+//        String str = "ac";
+        String str = "ccaabaaff";
         System.out.println(sol.longestPalindrome(str));
     }
 }

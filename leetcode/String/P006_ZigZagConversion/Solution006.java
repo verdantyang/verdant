@@ -14,27 +14,27 @@ import java.util.Queue;
 public class Solution006 {
     public String convert(String s, int numRows) {
         int row = 0;
-        boolean base = true;
+        boolean down = true;
         StringBuilder sb = new StringBuilder();
         Map<Integer, Queue<Character>> queues = new HashMap<>();
         for (int i = 0; i < numRows; i++)
-            queues.put(i, new ArrayDeque<Character>());
+            queues.put(i, new ArrayDeque<>());
 
         if (numRows == 1)
             return s;
         for (int i = 0; i < s.length(); i++) {
             row %= numRows;
             queues.get(row).offer(s.charAt(i));
-            if (base) {
+            if (down) {
                 row++;
                 if (row == numRows) {
-                    base = false;
+                    down = false;
                     row -= 2;
                 }
             } else {
                 row--;
                 if (row < 0) {
-                    base = true;
+                    down = true;
                     row += 2;
                 }
             }

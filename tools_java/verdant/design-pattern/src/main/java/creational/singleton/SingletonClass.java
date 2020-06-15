@@ -7,6 +7,8 @@ import utils.DesignPatternEnum;
 /**
  * 单例模式
  * 线程安全通过静态内部类（保证只在加载的时候执行一次）
+ * 因为SingletonClass没有static的属性，因此并不会被初始化
+ * 直到调用getInstance()的时候，会首先加载SingletonClassInstance类
  *
  * @author verdant
  * @since 2016/07/27
