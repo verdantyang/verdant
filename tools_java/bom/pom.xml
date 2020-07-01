@@ -128,7 +128,7 @@
         <disruptor.version>3.3.6</disruptor.version>
 
         <!-- scheduler -->
-        <quartz.scheduler.version>2.2.1</quartz.scheduler.version>
+        <quartz.scheduler.version>2.3.2</quartz.scheduler.version>
 
         <!-- bytecode -->
         <cglib.version>3.2.2</cglib.version>
