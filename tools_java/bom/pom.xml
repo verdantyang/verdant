@@ -48,7 +48,7 @@
         <commons.pool.version>1.6</commons.pool.version>
         <commons.pool2.version>2.4.1</commons.pool2.version>
         <commons.dbcp.version>1.4</commons.dbcp.version>
-        <httpclient.version>4.5.1</httpclient.version>
+        <httpclient.version>4.5.13</httpclient.version>
 
         <!-- log -->
         <slf4j.version>1.7.12</slf4j.version>
