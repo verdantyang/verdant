@@ -115,7 +115,7 @@
         <rocketmq.version>4.1.0-incubating</rocketmq.version>
 
         <!-- Search -->
-        <elasticsearch.version>5.2.2</elasticsearch.version>
+        <elasticsearch.version>6.8.17</elasticsearch.version>
 
         <!-- Document -->
         <poi.version>3.15</poi.version>
