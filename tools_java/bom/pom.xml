@@ -98,7 +98,7 @@
         <mina.version>2.0.13</mina.version>
 
         <!-- RPC -->
-        <resteasy.version>3.0.18.Final</resteasy.version>
+        <resteasy.version>4.6.1.Final</resteasy.version>
         <dubbo.version>2.8.4</dubbo.version>
 
         <!-- ZK -->
