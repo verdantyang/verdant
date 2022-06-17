@@ -85,7 +85,7 @@
         <canal.version>1.0.22</canal.version>
 
         <!-- json -->
-        <fastjson.version>1.2.28</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <jackson.version>2.9.0</jackson.version>
 
         <!-- serialize -->
