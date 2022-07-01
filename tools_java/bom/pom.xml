@@ -111,7 +111,7 @@
         <jedis.version>2.7.3</jedis.version>
 
         <!-- MQ -->
-        <kafka.version>0.10.0.1</kafka.version>
+        <kafka.version>0.10.2.2</kafka.version>
         <rocketmq.version>4.1.0-incubating</rocketmq.version>
 
         <!-- Search -->
